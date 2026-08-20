@@ -207,7 +207,320 @@ nav{
   color:#111;
   letter-spacing:-20px;
 }
+/* =========================================================
+   VYRO — WINTER 26 HERO UPGRADE
+========================================================= */
 
+.hero{
+  min-height:calc(100vh - 112px);
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 78% 42%,
+      rgba(255,255,255,.09),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(255,255,255,.04),
+      transparent 30%
+    ),
+    linear-gradient(
+      120deg,
+      #050505 0%,
+      #0d0d0d 50%,
+      #181818 100%
+    );
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.85),
+      rgba(0,0,0,.25),
+      rgba(0,0,0,.65)
+    );
+
+  pointer-events:none;
+}
+
+.hero-content{
+  width:100%;
+  padding:80px 8%;
+  position:relative;
+  z-index:3;
+
+  animation:
+    heroReveal 1s ease forwards;
+}
+
+@keyframes heroReveal{
+
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+.eyebrow{
+  font-size:11px;
+  letter-spacing:6px;
+  color:#aaa;
+  margin-bottom:24px;
+}
+
+.hero h1{
+  font-size:clamp(70px,12vw,155px);
+  line-height:.78;
+  letter-spacing:-8px;
+  font-weight:900;
+  max-width:950px;
+}
+
+.hero h1 span{
+  display:block;
+  color:transparent;
+
+  -webkit-text-stroke:
+    1px rgba(255,255,255,.9);
+
+  text-stroke:
+    1px rgba(255,255,255,.9);
+}
+
+.hero-copy{
+  max-width:500px;
+  color:#999;
+  margin-top:32px;
+  font-size:14px;
+  line-height:1.8;
+  letter-spacing:.3px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  margin-top:35px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  position:relative;
+  overflow:hidden;
+
+  border:1px solid #fff;
+  padding:15px 28px;
+
+  background:#fff;
+  color:#000;
+
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  cursor:pointer;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:transparent;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.btn.secondary{
+  background:transparent;
+  color:#fff;
+}
+
+.btn.secondary:hover{
+  background:#fff;
+  color:#000;
+}
+
+.hero-meta{
+  display:flex;
+  gap:25px;
+
+  margin-top:55px;
+
+  color:#555;
+
+  font-size:9px;
+  letter-spacing:3px;
+}
+
+.hero-meta span{
+  position:relative;
+}
+
+.hero-meta span:not(:last-child)::after{
+  content:"/";
+
+  position:absolute;
+  right:-15px;
+
+  color:#333;
+}
+
+.hero-mark{
+  position:absolute;
+
+  right:-3%;
+  bottom:-14%;
+
+  font-size:
+    clamp(220px,35vw,520px);
+
+  font-weight:900;
+
+  color:#101010;
+
+  letter-spacing:-30px;
+
+  user-select:none;
+
+  z-index:1;
+
+  animation:
+    markReveal 1.4s ease forwards;
+}
+
+@keyframes markReveal{
+
+  from{
+    opacity:0;
+    transform:translateX(80px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+
+}
+
+.hero-glow{
+  position:absolute;
+
+  width:420px;
+  height:420px;
+
+  right:8%;
+  top:25%;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.08),
+      transparent 65%
+    );
+
+  filter:blur(25px);
+
+  z-index:1;
+
+  animation:
+    glowMove 6s ease-in-out infinite alternate;
+}
+
+@keyframes glowMove{
+
+  from{
+    transform:translate(0,0) scale(1);
+  }
+
+  to{
+    transform:translate(-30px,20px) scale(1.08);
+  }
+
+}
+
+/* MOBILE HERO */
+
+@media(max-width:600px){
+
+  .hero{
+    min-height:
+      calc(100vh - 96px);
+
+    align-items:center;
+  }
+
+  .hero-content{
+    padding:
+      65px 7% 80px;
+  }
+
+  .eyebrow{
+    font-size:9px;
+    letter-spacing:4px;
+    margin-bottom:20px;
+  }
+
+  .hero h1{
+    font-size:
+      clamp(65px,20vw,95px);
+
+    letter-spacing:-5px;
+  }
+
+  .hero-copy{
+    font-size:12px;
+    max-width:340px;
+    margin-top:25px;
+  }
+
+  .hero-buttons{
+    margin-top:28px;
+  }
+
+  .btn{
+    width:100%;
+    text-align:center;
+    padding:14px 20px;
+  }
+
+  .hero-meta{
+    margin-top:35px;
+    gap:20px;
+    font-size:8px;
+  }
+
+  .hero-mark{
+    right:-15%;
+    bottom:-3%;
+    font-size:210px;
+    letter-spacing:-15px;
+  }
+
+  .hero-glow{
+    width:260px;
+    height:260px;
+    right:-10%;
+    top:30%;
+  }
+
+}
+  
 /* INTRO */
 .intro{
   padding:100px 8%;
@@ -952,62 +1265,51 @@ VYRO WINTER 26 — WEAR YOUR VISION
 
 <section class="hero">
 
-<div class="hero-content">
+  <div class="hero-content">
 
-<div class="eyebrow">
-VYRO / WINTER 26
-</div>
+    <div class="eyebrow">
+      VYRO / WINTER 26
+    </div>
 
-<h1>
-WEAR
-<span>YOUR</span>
-VISION.
-</h1>
+    <h1>
+      WEAR
+      <span>YOUR</span>
+      VISION.
+    </h1>
 
-<p class="hero-copy">
-A new winter chapter built around clean silhouettes,
-heavyweight essentials and a stronger VYRO identity.
-</p>
+    <p class="hero-copy">
+      WINTER 26 IS HERE.
+      Heavyweight essentials, clean silhouettes
+      and a stronger VYRO identity.
+    </p>
 
-<div class="hero-buttons">
+    <div class="hero-buttons">
 
-<a href="#collection" class="btn">
-SHOP COLLECTION
-</a>
+      <a href="#collection" class="btn">
+        SHOP WINTER 26
+      </a>
 
-<a href="#story" class="btn secondary">
-DISCOVER VYRO
-</a>
+      <a href="#story" class="btn secondary">
+        DISCOVER VYRO
+      </a>
 
-</div>
+    </div>
 
-</div>
+    <div class="hero-meta">
+      <span>DROP 01</span>
+      <span>WINTER 26</span>
+      <span>EGYPT</span>
+    </div>
 
-<div class="hero-mark">
-V
-</div>
+  </div>
 
-</section>
+  <div class="hero-glow"></div>
 
-
-<section class="intro">
-
-<small>
-THE NEW DROP
-</small>
-
-<h2>
-BUILT FOR THE COLD.<br>
-DESIGNED FOR YOU.
-</h2>
-
-<p>
-VYRO Winter 26 brings a minimal streetwear language,
-everyday comfort and a bold visual identity.
-</p>
+  <div class="hero-mark">
+    V
+  </div>
 
 </section>
-
 
 <section class="section" id="collection">
 
