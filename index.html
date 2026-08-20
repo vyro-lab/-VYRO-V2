@@ -25,6 +25,10 @@ body{
   line-height:1.5;
 }
 
+body.modal-open{
+  overflow:hidden;
+}
+
 a{
   color:inherit;
   text-decoration:none;
@@ -294,6 +298,7 @@ nav{
   align-items:center;
   justify-content:center;
   overflow:hidden;
+  cursor:pointer;
 }
 
 .product-image img{
@@ -324,6 +329,26 @@ nav{
   font-weight:800;
   letter-spacing:1px;
   z-index:2;
+}
+
+.quick-label{
+  position:absolute;
+  bottom:12px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,.78);
+  border:1px solid #555;
+  padding:9px 13px;
+  font-size:9px;
+  letter-spacing:1.5px;
+  white-space:nowrap;
+  opacity:0;
+  transition:.3s;
+  z-index:2;
+}
+
+.product-image:hover .quick-label{
+  opacity:1;
 }
 
 .product-info{
@@ -628,6 +653,133 @@ footer{
   font-weight:800;
 }
 
+/* QUICK VIEW */
+.quick-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(8px);
+  z-index:3000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.quick-overlay.active{
+  display:flex;
+}
+
+.quick-modal{
+  width:min(900px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:#111;
+  border:1px solid #333;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;
+  animation:quickIn .3s ease;
+}
+
+@keyframes quickIn{
+  from{
+    opacity:0;
+    transform:translateY(20px) scale(.98);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.quick-image{
+  min-height:520px;
+  background:#1a1a1a;
+  overflow:hidden;
+}
+
+.quick-image img{
+  width:100%;
+  height:100%;
+  min-height:520px;
+  object-fit:cover;
+}
+
+.quick-details{
+  padding:50px 40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.quick-label-small{
+  color:#777;
+  font-size:10px;
+  letter-spacing:4px;
+  margin-bottom:15px;
+}
+
+.quick-details h2{
+  font-size:34px;
+  line-height:1;
+  letter-spacing:-1px;
+}
+
+.quick-description{
+  color:#888;
+  font-size:13px;
+  margin-top:15px;
+}
+
+.quick-price{
+  font-size:22px;
+  font-weight:800;
+  margin-top:25px;
+}
+
+.quick-selects{
+  display:flex;
+  gap:8px;
+  margin-top:25px;
+}
+
+.quick-selects select{
+  flex:1;
+  background:#0b0b0b;
+  color:#fff;
+  border:1px solid #333;
+  padding:13px;
+  font-size:11px;
+}
+
+.quick-add{
+  width:100%;
+  margin-top:12px;
+  padding:16px;
+  background:#fff;
+  color:#000;
+  border:0;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+  cursor:pointer;
+}
+
+.quick-close{
+  position:absolute;
+  right:15px;
+  top:12px;
+  width:38px;
+  height:38px;
+  background:rgba(0,0,0,.7);
+  color:#fff;
+  border:1px solid #444;
+  font-size:22px;
+  cursor:pointer;
+  z-index:5;
+}
+
 /* MOBILE */
 @media(max-width:900px){
   .nav-links{
@@ -644,6 +796,24 @@ footer{
 
   .story-visual{
     min-height:350px;
+  }
+
+  .quick-modal{
+    grid-template-columns:1fr;
+    max-height:92vh;
+  }
+
+  .quick-image{
+    min-height:330px;
+    max-height:45vh;
+  }
+
+  .quick-image img{
+    min-height:330px;
+  }
+
+  .quick-details{
+    padding:30px 25px 35px;
   }
 }
 
@@ -718,6 +888,40 @@ footer{
     flex-direction:column;
     gap:8px;
   }
+
+  .quick-modal{
+    width:100%;
+  }
+
+  .quick-image{
+    min-height:280px;
+    max-height:38vh;
+  }
+
+  .quick-image img{
+    min-height:280px;
+  }
+
+  .quick-details{
+    padding:25px 20px 30px;
+  }
+
+  .quick-details h2{
+    font-size:27px;
+  }
+
+  .quick-price{
+    font-size:19px;
+    margin-top:18px;
+  }
+
+  .quick-selects{
+    margin-top:18px;
+  }
+
+  .quick-add{
+    padding:14px;
+  }
 }
 </style>
 </head>
@@ -791,17 +995,41 @@ footer{
 
     <!-- PRODUCT 1 -->
     <article class="product-card">
-      <div class="product-image">
+
+      <div class="product-image"
+           onclick="openQuickView(
+             'VYRO Essential T-Shirt',
+             499,
+             'Heavyweight everyday essential',
+             'IMG_8132.jpeg',
+             'Black,White,Grey',
+             'color1',
+             'size1'
+           )">
+
         <span class="badge">NEW</span>
-        <img src="IMG_8132.jpeg" alt="VYRO Essential T-Shirt">
+
+        <img src="IMG_8132.jpeg"
+             alt="VYRO Essential T-Shirt">
+
+        <span class="quick-label">
+          QUICK VIEW
+        </span>
+
       </div>
 
       <div class="product-info">
+
         <h3>VYRO Essential T-Shirt</h3>
+
         <p>Heavyweight everyday essential</p>
-        <div class="price">499 EGP</div>
+
+        <div class="price">
+          499 EGP
+        </div>
 
         <div class="product-options">
+
           <select id="color1">
             <option>Black</option>
             <option>White</option>
@@ -814,35 +1042,75 @@ footer{
             <option>XL</option>
             <option>XXL</option>
           </select>
+
         </div>
 
         <div class="product-actions">
+
           <button class="add-btn"
-            onclick="addToCart('VYRO Essential T-Shirt',499,'color1','size1')">
+            onclick="addToCart(
+              'VYRO Essential T-Shirt',
+              499,
+              'color1',
+              'size1'
+            )">
             ADD TO CART
           </button>
 
           <button class="buy-btn"
-            onclick="buyNow('VYRO Essential T-Shirt',499,'color1','size1')">
+            onclick="buyNow(
+              'VYRO Essential T-Shirt',
+              499,
+              'color1',
+              'size1'
+            )">
             ↗
           </button>
+
         </div>
+
       </div>
+
     </article>
+
 
     <!-- PRODUCT 2 -->
     <article class="product-card">
-      <div class="product-image">
+
+      <div class="product-image"
+           onclick="openQuickView(
+             'VYRO Oversized T-Shirt',
+             599,
+             'Relaxed oversized silhouette',
+             'IMG_8133.jpeg',
+             'Black,White,Beige',
+             'color2',
+             'size2'
+           )">
+
         <span class="badge">NEW</span>
-        <img src="IMG_8133.jpeg" alt="VYRO Oversized T-Shirt">
+
+        <img src="IMG_8133.jpeg"
+             alt="VYRO Oversized T-Shirt">
+
+        <span class="quick-label">
+          QUICK VIEW
+        </span>
+
       </div>
 
       <div class="product-info">
+
         <h3>VYRO Oversized T-Shirt</h3>
+
         <p>Relaxed oversized silhouette</p>
-        <div class="price">599 EGP</div>
+
+        <div class="price">
+          599 EGP
+        </div>
 
         <div class="product-options">
+
           <select id="color2">
             <option>Black</option>
             <option>White</option>
@@ -855,35 +1123,76 @@ footer{
             <option>XL</option>
             <option>XXL</option>
           </select>
+
         </div>
 
         <div class="product-actions">
+
           <button class="add-btn"
-            onclick="addToCart('VYRO Oversized T-Shirt',599,'color2','size2')">
+            onclick="addToCart(
+              'VYRO Oversized T-Shirt',
+              599,
+              'color2',
+              'size2'
+            )">
             ADD TO CART
           </button>
 
           <button class="buy-btn"
-            onclick="buyNow('VYRO Oversized T-Shirt',599,'color2','size2')">
+            onclick="buyNow(
+              'VYRO Oversized T-Shirt',
+              599,
+              'color2',
+              'size2'
+            )">
             ↗
           </button>
+
         </div>
+
       </div>
+
     </article>
+
 
     <!-- PRODUCT 3 -->
     <article class="product-card">
-      <div class="product-image">
+
+      <div class="product-image"
+           onclick="openQuickView(
+             'VYRO Hoodie',
+             899,
+             'Heavyweight winter hoodie',
+             '',
+             'Black,Grey,Off White',
+             'color3',
+             'size3'
+           )">
+
         <span class="badge">WINTER</span>
-        <div class="image-placeholder">PRODUCT IMAGE</div>
+
+        <div class="image-placeholder">
+          PRODUCT IMAGE
+        </div>
+
+        <span class="quick-label">
+          QUICK VIEW
+        </span>
+
       </div>
 
       <div class="product-info">
+
         <h3>VYRO Hoodie</h3>
+
         <p>Heavyweight winter hoodie</p>
-        <div class="price">899 EGP</div>
+
+        <div class="price">
+          899 EGP
+        </div>
 
         <div class="product-options">
+
           <select id="color3">
             <option>Black</option>
             <option>Grey</option>
@@ -896,35 +1205,76 @@ footer{
             <option>XL</option>
             <option>XXL</option>
           </select>
+
         </div>
 
         <div class="product-actions">
+
           <button class="add-btn"
-            onclick="addToCart('VYRO Hoodie',899,'color3','size3')">
+            onclick="addToCart(
+              'VYRO Hoodie',
+              899,
+              'color3',
+              'size3'
+            )">
             ADD TO CART
           </button>
 
           <button class="buy-btn"
-            onclick="buyNow('VYRO Hoodie',899,'color3','size3')">
+            onclick="buyNow(
+              'VYRO Hoodie',
+              899,
+              'color3',
+              'size3'
+            )">
             ↗
           </button>
+
         </div>
+
       </div>
+
     </article>
+
 
     <!-- PRODUCT 4 -->
     <article class="product-card">
-      <div class="product-image">
+
+      <div class="product-image"
+           onclick="openQuickView(
+             'VYRO Cargo Pants',
+             799,
+             'Utility fit / everyday comfort',
+             '',
+             'Black,Olive,Beige',
+             'color4',
+             'size4'
+           )">
+
         <span class="badge">WINTER</span>
-        <div class="image-placeholder">PRODUCT IMAGE</div>
+
+        <div class="image-placeholder">
+          PRODUCT IMAGE
+        </div>
+
+        <span class="quick-label">
+          QUICK VIEW
+        </span>
+
       </div>
 
       <div class="product-info">
+
         <h3>VYRO Cargo Pants</h3>
+
         <p>Utility fit / everyday comfort</p>
-        <div class="price">799 EGP</div>
+
+        <div class="price">
+          799 EGP
+        </div>
 
         <div class="product-options">
+
           <select id="color4">
             <option>Black</option>
             <option>Olive</option>
@@ -937,24 +1287,40 @@ footer{
             <option>XL</option>
             <option>XXL</option>
           </select>
+
         </div>
 
         <div class="product-actions">
+
           <button class="add-btn"
-            onclick="addToCart('VYRO Cargo Pants',799,'color4','size4')">
+            onclick="addToCart(
+              'VYRO Cargo Pants',
+              799,
+              'color4',
+              'size4'
+            )">
             ADD TO CART
           </button>
 
           <button class="buy-btn"
-            onclick="buyNow('VYRO Cargo Pants',799,'color4','size4')">
+            onclick="buyNow(
+              'VYRO Cargo Pants',
+              799,
+              'color4',
+              'size4'
+            )">
             ↗
           </button>
+
         </div>
+
       </div>
+
     </article>
 
   </div>
 </section>
+
 
 <section class="story" id="story">
 
@@ -963,30 +1329,42 @@ footer{
   </div>
 
   <div class="story-content">
+
     <small>02 / OUR IDENTITY</small>
 
-    <h2>WEAR<br>YOUR<br>VISION.</h2>
+    <h2>
+      WEAR<br>
+      YOUR<br>
+      VISION.
+    </h2>
 
     <p>
       VYRO is built around one idea:
       your clothes should feel like an extension of your identity.
       Clean lines. Strong silhouettes. No unnecessary noise.
     </p>
+
   </div>
 
 </section>
 
+
 <section class="section size-guide" id="size">
 
-  <div class="section-label">03 / Size Guide</div>
+  <div class="section-label">
+    03 / Size Guide
+  </div>
 
-  <h2>Find Your Fit</h2>
+  <h2>
+    Find Your Fit
+  </h2>
 
   <p>
     Use our basic size guide before placing your order.
   </p>
 
   <table class="size-table">
+
     <tr>
       <th>SIZE</th>
       <th>CHEST</th>
@@ -1016,38 +1394,66 @@ footer{
       <td>61 CM</td>
       <td>76 CM</td>
     </tr>
+
   </table>
 
 </section>
+
 
 <footer>
 
   <div class="footer-top">
 
     <div>
-      <div class="footer-logo">VYRO</div>
+
+      <div class="footer-logo">
+        VYRO
+      </div>
 
       <p class="footer-copy">
         Modern local clothing.
         Minimal design. Strong identity.
         Wear your vision.
       </p>
+
     </div>
 
     <div class="footer-links">
 
       <div>
+
         <strong>EXPLORE</strong>
-        <a href="#collection">Collection</a>
-        <a href="#story">Our Story</a>
-        <a href="#size">Size Guide</a>
+
+        <a href="#collection">
+          Collection
+        </a>
+
+        <a href="#story">
+          Our Story
+        </a>
+
+        <a href="#size">
+          Size Guide
+        </a>
+
       </div>
 
       <div>
+
         <strong>SOCIAL</strong>
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="#">TikTok</a>
+
+        <a href="#">
+          Instagram
+        </a>
+
+        <a href="#">
+          Facebook
+        </a>
+
+        <a href="#">
+          TikTok
+        </a>
+
       </div>
 
     </div>
@@ -1055,50 +1461,172 @@ footer{
   </div>
 
   <div class="footer-bottom">
-    <span>© 2026 VYRO. ALL RIGHTS RESERVED.</span>
-    <span>WEAR YOUR VISION.</span>
+
+    <span>
+      © 2026 VYRO. ALL RIGHTS RESERVED.
+    </span>
+
+    <span>
+      WEAR YOUR VISION.
+    </span>
+
   </div>
 
 </footer>
 
-<div class="overlay" id="overlay" onclick="closeCart()"></div>
 
-<aside class="cart" id="cart">
+<!-- CART -->
+
+<div class="overlay"
+     id="overlay"
+     onclick="closeCart()">
+</div>
+
+<aside class="cart"
+       id="cart">
 
   <div class="cart-head">
-    <h3>YOUR CART</h3>
-    <button class="close" onclick="closeCart()">×</button>
+
+    <h3>
+      YOUR CART
+    </h3>
+
+    <button class="close"
+            onclick="closeCart()">
+      ×
+    </button>
+
   </div>
 
-  <div class="cart-items" id="cartItems">
+  <div class="cart-items"
+       id="cartItems">
+
     <div class="empty-cart">
       Your cart is empty.
     </div>
+
   </div>
 
   <div class="cart-bottom">
 
     <div class="total">
-      <span>TOTAL</span>
-      <span id="cartTotal">0 EGP</span>
+
+      <span>
+        TOTAL
+      </span>
+
+      <span id="cartTotal">
+        0 EGP
+      </span>
+
     </div>
 
-    <button class="btn" style="width:100%;" onclick="checkoutWhatsApp()">
+    <button class="btn"
+            style="width:100%;"
+            onclick="checkoutWhatsApp()">
+
       ORDER VIA WHATSAPP
+
     </button>
 
   </div>
 
 </aside>
 
+
+<!-- QUICK VIEW -->
+
+<div class="quick-overlay"
+     id="quickOverlay"
+     onclick="closeQuickView(event)">
+
+  <div class="quick-modal"
+       onclick="event.stopPropagation()">
+
+    <button class="quick-close"
+            onclick="closeQuickView()">
+      ×
+    </button>
+
+    <div class="quick-image">
+
+      <img id="quickImage"
+           src=""
+           alt="VYRO Product">
+
+    </div>
+
+    <div class="quick-details">
+
+      <div class="quick-label-small">
+        VYRO / WINTER 26
+      </div>
+
+      <h2 id="quickName">
+        Product
+      </h2>
+
+      <p class="quick-description"
+         id="quickDescription">
+      </p>
+
+      <div class="quick-price"
+           id="quickPrice">
+        0 EGP
+      </div>
+
+      <div class="quick-selects">
+
+        <select id="quickColor">
+        </select>
+
+        <select id="quickSize">
+
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+          <option>XXL</option>
+
+        </select>
+
+      </div>
+
+      <button class="quick-add"
+              onclick="addQuickToCart()">
+
+        ADD TO CART
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
 <script>
 
 let cart = [];
 
+let quickProduct = {
+  name:"",
+  price:0,
+  description:"",
+  image:"",
+  colors:[]
+};
+
+
+/* CART */
+
 function addToCart(name,price,colorId,sizeId){
 
-  const color = document.getElementById(colorId).value;
-  const size = document.getElementById(sizeId).value;
+  const color =
+    document.getElementById(colorId).value;
+
+  const size =
+    document.getElementById(sizeId).value;
 
   cart.push({
     name:name,
@@ -1112,10 +1640,14 @@ function addToCart(name,price,colorId,sizeId){
   openCart();
 }
 
+
 function buyNow(name,price,colorId,sizeId){
 
-  const color = document.getElementById(colorId).value;
-  const size = document.getElementById(sizeId).value;
+  const color =
+    document.getElementById(colorId).value;
+
+  const size =
+    document.getElementById(sizeId).value;
 
   cart = [{
     name:name,
@@ -1125,23 +1657,32 @@ function buyNow(name,price,colorId,sizeId){
   }];
 
   updateCart();
+
   openCart();
 }
 
+
 function updateCart(){
 
-  const items = document.getElementById("cartItems");
-  const count = document.getElementById("cartCount");
-  const total = document.getElementById("cartTotal");
+  const items =
+    document.getElementById("cartItems");
 
-  count.textContent = cart.length;
+  const count =
+    document.getElementById("cartCount");
+
+  const total =
+    document.getElementById("cartTotal");
+
+  count.textContent =
+    cart.length;
 
   if(cart.length === 0){
 
     items.innerHTML =
       '<div class="empty-cart">Your cart is empty.</div>';
 
-    total.textContent = "0 EGP";
+    total.textContent =
+      "0 EGP";
 
     return;
   }
@@ -1154,9 +1695,11 @@ function updateCart(){
 
     totalPrice += item.price;
 
-    const div = document.createElement("div");
+    const div =
+      document.createElement("div");
 
-    div.className = "cart-item";
+    div.className =
+      "cart-item";
 
     div.innerHTML = `
       <div>
@@ -1166,16 +1709,23 @@ function updateCart(){
         <p>${item.price} EGP</p>
       </div>
 
-      <button class="remove" onclick="removeItem(${index})">
+      <button
+        class="remove"
+        onclick="removeItem(${index})">
+
         REMOVE
+
       </button>
     `;
 
     items.appendChild(div);
+
   });
 
-  total.textContent = totalPrice + " EGP";
+  total.textContent =
+    totalPrice + " EGP";
 }
+
 
 function removeItem(index){
 
@@ -1184,19 +1734,145 @@ function removeItem(index){
   updateCart();
 }
 
+
 function openCart(){
 
-  document.getElementById("cart").classList.add("active");
+  document
+    .getElementById("cart")
+    .classList.add("active");
 
-  document.getElementById("overlay").classList.add("active");
+  document
+    .getElementById("overlay")
+    .classList.add("active");
 }
+
 
 function closeCart(){
 
-  document.getElementById("cart").classList.remove("active");
+  document
+    .getElementById("cart")
+    .classList.remove("active");
 
-  document.getElementById("overlay").classList.remove("active");
+  document
+    .getElementById("overlay")
+    .classList.remove("active");
 }
+
+
+/* QUICK VIEW */
+
+function openQuickView(
+  name,
+  price,
+  description,
+  image,
+  colors
+){
+
+  quickProduct = {
+    name:name,
+    price:price,
+    description:description,
+    image:image,
+    colors:colors.split(",")
+  };
+
+  document.getElementById("quickName")
+    .textContent = name;
+
+  document.getElementById("quickPrice")
+    .textContent = price + " EGP";
+
+  document.getElementById("quickDescription")
+    .textContent = description;
+
+  const imageElement =
+    document.getElementById("quickImage");
+
+  if(image){
+
+    imageElement.src = image;
+    imageElement.style.display = "block";
+
+  }else{
+
+    imageElement.removeAttribute("src");
+    imageElement.style.display = "none";
+
+  }
+
+  const colorSelect =
+    document.getElementById("quickColor");
+
+  colorSelect.innerHTML = "";
+
+  quickProduct.colors.forEach(color=>{
+
+    const option =
+      document.createElement("option");
+
+    option.textContent = color;
+    option.value = color;
+
+    colorSelect.appendChild(option);
+
+  });
+
+  document
+    .getElementById("quickOverlay")
+    .classList.add("active");
+
+  document.body.classList.add("modal-open");
+}
+
+
+function closeQuickView(event){
+
+  if(
+    event &&
+    event.target !==
+    document.getElementById("quickOverlay")
+  ){
+    return;
+  }
+
+  document
+    .getElementById("quickOverlay")
+    .classList.remove("active");
+
+  document.body.classList.remove("modal-open");
+}
+
+
+function addQuickToCart(){
+
+  const color =
+    document.getElementById("quickColor").value;
+
+  const size =
+    document.getElementById("quickSize").value;
+
+  cart.push({
+
+    name:quickProduct.name,
+
+    price:quickProduct.price,
+
+    color:color,
+
+    size:size
+
+  });
+
+  updateCart();
+
+  closeQuickView();
+
+  openCart();
+}
+
+
+/* WHATSAPP */
 
 function checkoutWhatsApp(){
 
@@ -1207,14 +1883,16 @@ function checkoutWhatsApp(){
     return;
   }
 
-  let message = "VYRO ORDER%0A%0A";
+  let message =
+    "VYRO ORDER%0A%0A";
 
   let total = 0;
 
   cart.forEach((item,index)=>{
 
     message +=
-      (index + 1) + ". " +
+      (index + 1) +
+      ". " +
       item.name +
       "%0AColor: " +
       item.color +
@@ -1225,24 +1903,33 @@ function checkoutWhatsApp(){
       " EGP%0A%0A";
 
     total += item.price;
+
   });
 
-  message += "TOTAL: " + total + " EGP";
+  message +=
+    "TOTAL: " +
+    total +
+    " EGP";
 
   /*
-    IMPORTANT:
-    Replace 201XXXXXXXXX with your real WhatsApp number.
-    Example for Egypt:
+    Replace this with your real WhatsApp number.
+
+    Egypt example:
     201012345678
   */
 
-  const phone = "201XXXXXXXXX";
+  const phone =
+    "201XXXXXXXXX";
 
   window.open(
-    "https://wa.me/" + phone + "?text=" + message,
+    "https://wa.me/" +
+    phone +
+    "?text=" +
+    message,
     "_blank"
   );
 }
+
 
 updateCart();
 
