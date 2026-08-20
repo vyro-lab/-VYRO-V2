@@ -582,150 +582,200 @@ nav{
   padding-bottom:5px;
 }
 
-/* PRODUCTS */
+/* PRODUCTS — VYRO PREMIUM */
+
 .products{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:18px;
+  gap:20px;
 }
 
 .product-card{
+  position:relative;
   background:#111;
-  border:1px solid #222;
+  border:1px solid #242424;
   overflow:hidden;
-  transition:.35s;
+  transition:
+    transform .4s ease,
+    border-color .4s ease,
+    box-shadow .4s ease;
 }
 
 .product-card:hover{
-  transform:translateY(-5px);
-  border-color:#444;
+  transform:translateY(-8px);
+  border-color:#555;
+  box-shadow:0 18px 45px rgba(0,0,0,.45);
 }
+
+/* IMAGE */
 
 .product-image{
   aspect-ratio:4/5;
-  background:#181818;
   position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   overflow:hidden;
+  background:#181818;
   cursor:pointer;
 }
 
 .product-image img{
   width:100%;
   height:100%;
+  display:block;
   object-fit:cover;
-  transition:.5s;
+  transition:
+    transform .7s cubic-bezier(.2,.7,.2,1),
+    filter .5s ease;
 }
 
 .product-card:hover .product-image img{
-  transform:scale(1.04);
+  transform:scale(1.07);
+  filter:brightness(.88);
 }
 
-.image-placeholder{
-  color:#555;
-  font-size:11px;
-  letter-spacing:2px;
+/* IMAGE DARK OVERLAY */
+
+.product-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,.45),
+    transparent 45%
+  );
+  pointer-events:none;
 }
+
+/* BADGE */
 
 .badge{
   position:absolute;
-  top:12px;
-  left:12px;
+  top:14px;
+  left:14px;
+  z-index:3;
   background:#fff;
   color:#000;
-  padding:7px 10px;
-  font-size:8px;
-  font-weight:800;
-  letter-spacing:1px;
-  z-index:2;
+  padding:8px 11px;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.5px;
 }
+
+/* QUICK VIEW */
 
 .quick-label{
   position:absolute;
-  bottom:12px;
   left:50%;
-  transform:translateX(-50%);
-  background:rgba(0,0,0,.8);
-  border:1px solid #555;
-  padding:9px 13px;
-  font-size:8px;
-  letter-spacing:1.5px;
+  bottom:18px;
+  transform:translate(-50%,10px);
+  z-index:4;
+
+  background:rgba(0,0,0,.82);
+  border:1px solid rgba(255,255,255,.35);
+
+  padding:11px 17px;
+
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:2px;
   white-space:nowrap;
+
   opacity:0;
-  transition:.3s;
-  z-index:2;
+  transition:
+    opacity .35s ease,
+    transform .35s ease;
 }
 
 .product-image:hover .quick-label{
   opacity:1;
+  transform:translate(-50%,0);
 }
 
+/* INFO */
+
 .product-info{
-  padding:18px;
+  padding:20px;
 }
 
 .product-info h3{
-  font-size:14px;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:.2px;
   margin-bottom:6px;
 }
 
 .product-info p{
   color:#777;
   font-size:11px;
+  line-height:1.5;
 }
 
+/* PRICE */
+
 .price{
-  margin-top:12px;
-  font-weight:800;
-  font-size:14px;
+  margin-top:13px;
+
+  font-size:17px;
+  font-weight:900;
+  letter-spacing:.3px;
+
+  color:#fff;
 }
+
+/* OPTIONS */
 
 .product-options{
   display:flex;
-  gap:7px;
-  margin-top:15px;
+  gap:8px;
+  margin-top:17px;
 }
 
 .product-options select{
   width:50%;
-  background:#0b0b0b;
+
+  background:#0a0a0a;
   color:#fff;
-  border:1px solid #333;
-  padding:10px;
+
+  border:1px solid #303030;
+
+  padding:11px 9px;
+
   font-size:10px;
+
+  outline:none;
+  cursor:pointer;
+
+  transition:.3s;
 }
+
+.product-options select:hover,
+.product-options select:focus{
+  border-color:#777;
+}
+
+/* ACTIONS */
 
 .product-actions{
   display:flex;
   gap:8px;
-  margin-top:12px;
+  margin-top:10px;
 }
+
+/* ADD TO CART */
 
 .add-btn{
   flex:1;
+
   background:#fff;
   color:#000;
-  border:0;
-  padding:12px;
-  font-size:9px;
-  font-weight:800;
-  letter-spacing:1px;
-  cursor:pointer;
-}
 
-.add-btn:hover{
-  background:#ddd;
-}
+  border:1px solid #fff;
 
-.buy-btn{
-  width:45px;
-  background:#222;
-  color:#fff;
-  border:1px solid #333;
-  cursor:pointer;
-}
+  padding:13px 10px;
+
+  font-size:10px;
+  font-weight:900;
+  letter-spacing
 
 /* STORY */
 .story{
