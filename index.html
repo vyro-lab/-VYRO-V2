@@ -8,6 +8,7 @@
 <meta name="description" content="VYRO — Winter 26. Wear Your Vision.">
 
 <style>
+
 *{
   margin:0;
   padding:0;
@@ -20,7 +21,7 @@ html{
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#0b0b0b;
+  background:#080808;
   color:#fff;
   line-height:1.5;
 }
@@ -39,29 +40,43 @@ select{
   font:inherit;
 }
 
-/* TOP BAR */
+button{
+  cursor:pointer;
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
 .topbar{
   background:#fff;
   color:#000;
   text-align:center;
   padding:9px 15px;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:2px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:2.5px;
 }
 
-/* NAV */
+/* =========================
+   NAVIGATION
+========================= */
+
 nav{
   position:sticky;
   top:0;
   z-index:1000;
   height:72px;
-  background:rgba(11,11,11,.94);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid #242424;
+
+  background:rgba(8,8,8,.90);
+  backdrop-filter:blur(16px);
+
+  border-bottom:1px solid #252525;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   padding:0 6%;
 }
 
@@ -78,110 +93,185 @@ nav{
 }
 
 .nav-links a{
-  font-size:12px;
+  font-size:11px;
   letter-spacing:1.5px;
   text-transform:uppercase;
-  opacity:.8;
+
+  color:#aaa;
+
   transition:.3s;
 }
 
 .nav-links a:hover{
-  opacity:1;
+  color:#fff;
 }
 
 .nav-icons{
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:12px;
 }
 
 .icon-btn{
   background:none;
   border:0;
+
   color:#fff;
-  cursor:pointer;
+
   font-size:19px;
+
+  padding:5px;
 }
 
 .cart-count{
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
+
   width:18px;
   height:18px;
+
   border-radius:50%;
+
   background:#fff;
   color:#000;
+
   font-size:10px;
-  font-weight:700;
-  margin-left:-12px;
-  margin-top:-17px;
+  font-weight:800;
+
+  margin-left:-13px;
+  margin-top:-18px;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
+
 .hero{
   min-height:calc(100vh - 112px);
+
   display:flex;
   align-items:center;
+
   position:relative;
+
   overflow:hidden;
+
   background:
-    radial-gradient(circle at 75% 30%,#252525 0,transparent 35%),
-    linear-gradient(120deg,#080808,#151515);
+    radial-gradient(
+      circle at 78% 35%,
+      #303030 0,
+      transparent 28%
+    ),
+    linear-gradient(
+      120deg,
+      #070707,
+      #151515
+    );
+}
+
+.hero:after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.15),
+      transparent 55%,
+      rgba(0,0,0,.25)
+    );
+
+  pointer-events:none;
 }
 
 .hero-content{
   width:100%;
-  padding:70px 8%;
+
+  padding:75px 8%;
+
   position:relative;
   z-index:2;
 }
 
 .eyebrow{
-  font-size:12px;
+  font-size:11px;
+
   letter-spacing:5px;
-  color:#aaa;
+
+  color:#999;
+
   margin-bottom:20px;
 }
 
 .hero h1{
-  font-size:clamp(60px,12vw,150px);
-  line-height:.82;
-  letter-spacing:-7px;
+  font-size:clamp(
+    62px,
+    12vw,
+    150px
+  );
+
+  line-height:.80;
+
+  letter-spacing:-8px;
+
   font-weight:900;
+
   max-width:900px;
 }
 
 .hero h1 span{
   display:block;
+
   color:transparent;
+
   -webkit-text-stroke:1px #fff;
 }
 
 .hero-copy{
-  max-width:480px;
-  color:#aaa;
-  margin-top:30px;
-  font-size:15px;
+  max-width:500px;
+
+  color:#999;
+
+  margin-top:32px;
+
+  font-size:14px;
 }
 
 .hero-buttons{
   display:flex;
+
   gap:12px;
+
   margin-top:35px;
+
   flex-wrap:wrap;
 }
 
 .btn{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
   border:1px solid #fff;
+
   padding:15px 27px;
+
   background:#fff;
   color:#000;
-  font-size:11px;
-  font-weight:800;
+
+  font-size:10px;
+
+  font-weight:900;
+
   letter-spacing:2px;
+
   text-transform:uppercase;
-  cursor:pointer;
+
   transition:.3s;
 }
 
@@ -202,152 +292,246 @@ nav{
 
 .hero-mark{
   position:absolute;
-  right:-4%;
-  bottom:-10%;
-  font-size:clamp(160px,30vw,450px);
+
+  right:-3%;
+  bottom:-12%;
+
+  font-size:clamp(
+    180px,
+    32vw,
+    480px
+  );
+
   font-weight:900;
+
   color:#111;
-  letter-spacing:-20px;
+
+  letter-spacing:-25px;
+
   user-select:none;
 }
 
-/* INTRO */
+/* =========================
+   INTRO
+========================= */
+
 .intro{
-  padding:100px 8%;
+  padding:105px 8%;
+
   text-align:center;
+
   border-bottom:1px solid #222;
 }
 
 .intro small{
-  color:#888;
+  color:#777;
+
   letter-spacing:4px;
+
   font-size:10px;
 }
 
 .intro h2{
-  font-size:clamp(34px,5vw,65px);
+  font-size:clamp(
+    35px,
+    5vw,
+    65px
+  );
+
+  line-height:1;
+
   margin:18px auto;
-  max-width:850px;
-  letter-spacing:-2px;
+
+  max-width:900px;
+
+  letter-spacing:-2.5px;
 }
 
 .intro p{
-  color:#999;
+  color:#888;
+
   max-width:650px;
+
   margin:auto;
+
+  font-size:14px;
 }
 
-/* SECTION */
+/* =========================
+   SECTION
+========================= */
+
 .section{
   padding:90px 6%;
 }
 
 .section-head{
   display:flex;
+
   align-items:end;
+
   justify-content:space-between;
+
   margin-bottom:35px;
+
   gap:20px;
 }
 
 .section-label{
   color:#777;
-  font-size:10px;
+
   letter-spacing:4px;
+
+  font-size:10px;
+
   text-transform:uppercase;
 }
 
 .section h2{
-  font-size:clamp(35px,5vw,60px);
-  letter-spacing:-2px;
-  margin-top:7px;
+  font-size:clamp(
+    36px,
+    5vw,
+    60px
+  );
+
+  letter-spacing:-2.5px;
+
+  line-height:1;
+
+  margin-top:8px;
 }
 
 .view-all{
-  font-size:11px;
+  font-size:10px;
+
   letter-spacing:2px;
+
   text-transform:uppercase;
+
   border-bottom:1px solid #fff;
+
   padding-bottom:5px;
 }
 
-/* PRODUCTS */
+/* =========================
+   PRODUCTS
+========================= */
+
 .products{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap:18px;
 }
 
 .product-card{
-  background:#121212;
+  background:#111;
+
   border:1px solid #222;
+
   overflow:hidden;
+
   transition:.35s;
 }
 
 .product-card:hover{
-  transform:translateY(-5px);
+  transform:translateY(-6px);
+
   border-color:#444;
 }
 
 .product-image{
   aspect-ratio:4/5;
-  background:#1a1a1a;
+
+  background:#181818;
+
   position:relative;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   overflow:hidden;
+
   cursor:pointer;
 }
 
 .product-image img{
   width:100%;
   height:100%;
+
   object-fit:cover;
-  transition:.5s;
+
+  transition:.55s;
 }
 
-.product-card:hover .product-image img{
-  transform:scale(1.04);
+.product-card:hover
+.product-image img{
+  transform:scale(1.05);
 }
 
 .image-placeholder{
   color:#555;
-  font-size:12px;
+
+  font-size:10px;
+
   letter-spacing:2px;
 }
 
 .badge{
   position:absolute;
+
   top:12px;
   left:12px;
+
   background:#fff;
+
   color:#000;
+
   padding:7px 10px;
+
   font-size:9px;
-  font-weight:800;
+
+  font-weight:900;
+
   letter-spacing:1px;
+
   z-index:2;
 }
 
 .quick-label{
   position:absolute;
+
   bottom:12px;
+
   left:50%;
+
   transform:translateX(-50%);
-  background:rgba(0,0,0,.78);
+
+  background:rgba(0,0,0,.82);
+
   border:1px solid #555;
+
   padding:9px 13px;
+
   font-size:9px;
+
   letter-spacing:1.5px;
+
   white-space:nowrap;
+
   opacity:0;
+
   transition:.3s;
+
   z-index:2;
 }
 
-.product-image:hover .quick-label{
+.product-image:hover
+.quick-label{
   opacity:1;
 }
 
@@ -356,116 +540,183 @@ nav{
 }
 
 .product-info h3{
-  font-size:14px;
-  margin-bottom:7px;
+  font-size:13px;
+
+  margin-bottom:6px;
 }
 
 .product-info p{
-  color:#888;
-  font-size:12px;
+  color:#777;
+
+  font-size:11px;
 }
 
 .price{
   margin-top:12px;
-  font-weight:800;
+
+  font-weight:900;
+
   font-size:14px;
 }
 
 .product-options{
   display:flex;
+
   gap:7px;
+
   margin-top:15px;
 }
 
 .product-options select{
   width:50%;
-  background:#0c0c0c;
+
+  background:#0b0b0b;
+
   color:#fff;
+
   border:1px solid #333;
+
   padding:10px;
-  font-size:11px;
+
+  font-size:10px;
+
+  outline:none;
 }
 
 .product-actions{
   display:flex;
+
   gap:8px;
+
   margin-top:12px;
 }
 
 .add-btn{
   flex:1;
+
   background:#fff;
+
   color:#000;
+
   border:0;
+
   padding:12px;
-  font-size:10px;
-  font-weight:800;
+
+  font-size:9px;
+
+  font-weight:900;
+
   letter-spacing:1px;
-  cursor:pointer;
 }
 
 .buy-btn{
   width:45px;
+
   background:#222;
+
   color:#fff;
+
   border:1px solid #333;
-  cursor:pointer;
 }
 
-/* STORY */
+/* =========================
+   STORY
+========================= */
+
 .story{
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   min-height:600px;
+
   border-top:1px solid #222;
+
   border-bottom:1px solid #222;
 }
 
 .story-visual{
   background:
-    linear-gradient(135deg,#222,#090909);
+    radial-gradient(
+      circle at center,
+      #292929,
+      #090909 65%
+    );
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   min-height:500px;
+
+  overflow:hidden;
 }
 
 .story-visual span{
-  font-size:clamp(80px,13vw,180px);
+  font-size:clamp(
+    80px,
+    13vw,
+    180px
+  );
+
   font-weight:900;
+
   letter-spacing:-10px;
+
   color:#151515;
 }
 
 .story-content{
   display:flex;
+
   flex-direction:column;
+
   justify-content:center;
+
   padding:70px 10%;
 }
 
 .story-content small{
   color:#777;
+
   letter-spacing:4px;
+
   font-size:10px;
 }
 
 .story-content h2{
-  font-size:clamp(38px,5vw,70px);
-  line-height:.95;
+  font-size:clamp(
+    38px,
+    5vw,
+    70px
+  );
+
+  line-height:.9;
+
   margin:20px 0;
+
   letter-spacing:-3px;
 }
 
 .story-content p{
-  color:#999;
+  color:#888;
+
   max-width:500px;
+
+  font-size:14px;
 }
 
-/* SIZE */
+/* =========================
+   SIZE GUIDE
+========================= */
+
 .size-guide{
   text-align:center;
+
   background:#f4f4f4;
+
   color:#000;
 }
 
@@ -475,88 +726,132 @@ nav{
 
 .size-guide p{
   color:#666;
+
   max-width:550px;
+
   margin:auto;
 }
 
 .size-table{
   width:100%;
+
   max-width:800px;
+
   margin:40px auto 0;
+
   border-collapse:collapse;
 }
 
 .size-table th,
 .size-table td{
   border-bottom:1px solid #ccc;
+
   padding:15px;
-  font-size:12px;
+
+  font-size:11px;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
+
 footer{
-  padding:60px 6% 25px;
+  padding:65px 6% 25px;
+
   background:#050505;
 }
 
 .footer-top{
   display:flex;
+
   justify-content:space-between;
+
   gap:40px;
+
   flex-wrap:wrap;
+
   padding-bottom:50px;
 }
 
 .footer-logo{
   font-size:35px;
+
   font-weight:900;
+
   letter-spacing:7px;
 }
 
 .footer-copy{
   color:#777;
+
   max-width:300px;
-  font-size:12px;
+
+  font-size:11px;
+
   margin-top:12px;
 }
 
 .footer-links{
   display:flex;
-  gap:40px;
+
+  gap:55px;
 }
 
 .footer-links div{
   display:flex;
+
   flex-direction:column;
+
   gap:10px;
 }
 
 .footer-links strong{
-  font-size:10px;
+  font-size:9px;
+
   letter-spacing:2px;
+
   margin-bottom:5px;
 }
 
 .footer-links a{
   color:#777;
-  font-size:11px;
+
+  font-size:10px;
+
+  transition:.2s;
+}
+
+.footer-links a:hover{
+  color:#fff;
 }
 
 .footer-bottom{
   border-top:1px solid #222;
+
   padding-top:20px;
+
   color:#555;
-  font-size:10px;
+
+  font-size:9px;
+
   display:flex;
+
   justify-content:space-between;
 }
 
-/* CART */
+/* =========================
+   CART
+========================= */
+
 .overlay{
   position:fixed;
+
   inset:0;
-  background:rgba(0,0,0,.7);
+
+  background:rgba(0,0,0,.72);
+
   z-index:2000;
+
   display:none;
 }
 
@@ -566,16 +861,29 @@ footer{
 
 .cart{
   position:fixed;
+
   right:0;
   top:0;
+
   height:100%;
-  width:min(430px,100%);
+
+  width:min(
+    430px,
+    100%
+  );
+
   background:#111;
+
   z-index:2100;
+
   transform:translateX(100%);
+
   transition:.35s;
+
   border-left:1px solid #333;
+
   display:flex;
+
   flex-direction:column;
 }
 
@@ -585,84 +893,121 @@ footer{
 
 .cart-head{
   padding:22px;
+
   display:flex;
+
   justify-content:space-between;
+
   border-bottom:1px solid #2b2b2b;
 }
 
 .cart-head h3{
-  font-size:14px;
+  font-size:13px;
+
   letter-spacing:2px;
 }
 
 .close{
   border:0;
+
   background:none;
+
   color:#fff;
-  cursor:pointer;
+
   font-size:22px;
 }
 
 .cart-items{
   flex:1;
+
   overflow:auto;
+
   padding:20px;
 }
 
 .empty-cart{
   color:#666;
+
   text-align:center;
+
   margin-top:80px;
-  font-size:12px;
+
+  font-size:11px;
 }
 
 .cart-item{
   display:flex;
+
   justify-content:space-between;
+
   gap:15px;
+
   padding:15px 0;
+
   border-bottom:1px solid #222;
 }
 
 .cart-item h4{
-  font-size:12px;
+  font-size:11px;
 }
 
 .cart-item p{
   color:#777;
-  font-size:10px;
-  margin-top:5px;
+
+  font-size:9px;
+
+  margin-top:4px;
 }
 
 .remove{
   background:none;
+
   color:#777;
+
   border:0;
-  cursor:pointer;
+
+  font-size:9px;
 }
 
 .cart-bottom{
   padding:20px;
+
   border-top:1px solid #2b2b2b;
 }
 
 .total{
   display:flex;
+
   justify-content:space-between;
+
   margin-bottom:15px;
-  font-weight:800;
+
+  font-weight:900;
+
+  font-size:12px;
 }
 
-/* QUICK VIEW */
+/* =========================
+   QUICK VIEW
+========================= */
+
 .quick-overlay{
   position:fixed;
+
   inset:0;
-  background:rgba(0,0,0,.82);
+
+  background:rgba(0,0,0,.84);
+
   backdrop-filter:blur(8px);
+
   z-index:3000;
+
   display:none;
+
   align-items:center;
+
   justify-content:center;
+
   padding:20px;
 }
 
@@ -671,123 +1016,189 @@ footer{
 }
 
 .quick-modal{
-  width:min(900px,100%);
+  width:min(
+    900px,
+    100%
+  );
+
   max-height:90vh;
+
   overflow:auto;
+
   background:#111;
+
   border:1px solid #333;
+
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   position:relative;
-  animation:quickIn .3s ease;
+
+  animation:
+    quickIn .3s ease;
 }
 
 @keyframes quickIn{
+
   from{
     opacity:0;
-    transform:translateY(20px) scale(.98);
+
+    transform:
+      translateY(20px)
+      scale(.98);
   }
+
   to{
     opacity:1;
-    transform:translateY(0) scale(1);
+
+    transform:
+      translateY(0)
+      scale(1);
   }
+
 }
 
 .quick-image{
   min-height:520px;
+
   background:#1a1a1a;
+
   overflow:hidden;
 }
 
 .quick-image img{
   width:100%;
+
   height:100%;
+
   min-height:520px;
+
   object-fit:cover;
 }
 
 .quick-details{
   padding:50px 40px;
+
   display:flex;
+
   flex-direction:column;
+
   justify-content:center;
 }
 
 .quick-label-small{
   color:#777;
-  font-size:10px;
+
+  font-size:9px;
+
   letter-spacing:4px;
+
   margin-bottom:15px;
 }
 
 .quick-details h2{
   font-size:34px;
+
   line-height:1;
+
   letter-spacing:-1px;
 }
 
 .quick-description{
   color:#888;
-  font-size:13px;
+
+  font-size:12px;
+
   margin-top:15px;
 }
 
 .quick-price{
-  font-size:22px;
-  font-weight:800;
+  font-size:21px;
+
+  font-weight:900;
+
   margin-top:25px;
 }
 
 .quick-selects{
   display:flex;
+
   gap:8px;
+
   margin-top:25px;
 }
 
 .quick-selects select{
   flex:1;
+
   background:#0b0b0b;
+
   color:#fff;
+
   border:1px solid #333;
+
   padding:13px;
-  font-size:11px;
+
+  font-size:10px;
 }
 
 .quick-add{
   width:100%;
+
   margin-top:12px;
+
   padding:16px;
+
   background:#fff;
+
   color:#000;
+
   border:0;
-  font-size:11px;
-  font-weight:800;
+
+  font-size:10px;
+
+  font-weight:900;
+
   letter-spacing:2px;
-  cursor:pointer;
 }
 
 .quick-close{
   position:absolute;
+
   right:15px;
+
   top:12px;
+
   width:38px;
+
   height:38px;
+
   background:rgba(0,0,0,.7);
+
   color:#fff;
+
   border:1px solid #444;
+
   font-size:22px;
-  cursor:pointer;
+
   z-index:5;
 }
 
-/* MOBILE */
+/* =========================
+   TABLET
+========================= */
+
 @media(max-width:900px){
+
   .nav-links{
     display:none;
   }
 
   .products{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
   .story{
@@ -800,11 +1211,13 @@ footer{
 
   .quick-modal{
     grid-template-columns:1fr;
+
     max-height:92vh;
   }
 
   .quick-image{
     min-height:330px;
+
     max-height:45vh;
   }
 
@@ -815,11 +1228,18 @@ footer{
   .quick-details{
     padding:30px 25px 35px;
   }
+
 }
 
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:600px){
+
   nav{
     height:64px;
+
     padding:0 5%;
   }
 
@@ -828,7 +1248,8 @@ footer{
   }
 
   .hero{
-    min-height:calc(100vh - 96px);
+    min-height:
+      calc(100vh - 96px);
   }
 
   .hero-content{
@@ -837,12 +1258,15 @@ footer{
 
   .hero h1{
     font-size:70px;
+
     letter-spacing:-4px;
   }
 
   .hero-mark{
     right:-10%;
+
     bottom:2%;
+
     font-size:190px;
   }
 
@@ -851,7 +1275,6 @@ footer{
   }
 
   .products{
-    grid-template-columns:1fr 1fr;
     gap:10px;
   }
 
@@ -873,6 +1296,7 @@ footer{
 
   .buy-btn{
     width:100%;
+
     height:38px;
   }
 
@@ -886,6 +1310,7 @@ footer{
 
   .footer-bottom{
     flex-direction:column;
+
     gap:8px;
   }
 
@@ -895,6 +1320,7 @@ footer{
 
   .quick-image{
     min-height:280px;
+
     max-height:38vh;
   }
 
@@ -912,6 +1338,7 @@ footer{
 
   .quick-price{
     font-size:19px;
+
     margin-top:18px;
   }
 
@@ -922,7 +1349,9 @@ footer{
   .quick-add{
     padding:14px;
   }
+
 }
+
 </style>
 </head>
 
@@ -933,23 +1362,63 @@ footer{
 </div>
 
 <nav>
-  <a href="#" class="logo">VYRO</a>
+
+  <a href="#" class="logo">
+    VYRO
+  </a>
 
   <ul class="nav-links">
-    <li><a href="#collection">Collection</a></li>
-    <li><a href="#story">Story</a></li>
-    <li><a href="#size">Size Guide</a></li>
+
+    <li>
+      <a href="#collection">
+        Collection
+      </a>
+    </li>
+
+    <li>
+      <a href="#story">
+        Story
+      </a>
+    </li>
+
+    <li>
+      <a href="#size">
+        Size Guide
+      </a>
+    </li>
+
   </ul>
 
   <div class="nav-icons">
-    <button class="icon-btn" onclick="openCart()">🛒</button>
-    <span class="cart-count" id="cartCount">0</span>
+
+    <button
+      class="icon-btn"
+      onclick="openCart()"
+      aria-label="Open cart">
+
+      🛒
+
+    </button>
+
+    <span
+      class="cart-count"
+      id="cartCount">
+
+      0
+
+    </span>
+
   </div>
+
 </nav>
 
 <section class="hero">
+
   <div class="hero-content">
-    <div class="eyebrow">VYRO / WINTER 26</div>
+
+    <div class="eyebrow">
+      VYRO / WINTER 26
+    </div>
 
     <h1>
       WEAR
@@ -958,38 +1427,72 @@ footer{
     </h1>
 
     <p class="hero-copy">
-      A new winter chapter built around clean silhouettes,
-      heavyweight essentials and a stronger VYRO identity.
+
+      A new winter chapter built around
+      clean silhouettes, heavyweight essentials
+      and a stronger VYRO identity.
+
     </p>
 
     <div class="hero-buttons">
-      <a href="#collection" class="btn">Shop Collection</a>
-      <a href="#story" class="btn secondary">Discover VYRO</a>
+
+      <a
+        href="#collection"
+        class="btn">
+
+        Shop Collection
+
+      </a>
+
+      <a
+        href="#story"
+        class="btn secondary">
+
+        Discover VYRO
+
+      </a>
+
     </div>
+
   </div>
 
-  <div class="hero-mark">V</div>
+  <div class="hero-mark">
+    V
+  </div>
+
 </section>
 
 <section class="intro">
-  <small>THE NEW DROP</small>
+
+  <small>
+    THE NEW DROP
+  </small>
 
   <h2>
+
     BUILT FOR THE COLD.<br>
     DESIGNED FOR YOU.
+
   </h2>
 
   <p>
-    VYRO Winter 26 brings a minimal streetwear language,
-    everyday comfort and a bold visual identity.
+
+    VYRO Winter 26 brings a minimal
+    streetwear language, everyday comfort
+    and a bold visual identity.
+
   </p>
+
 </section>
 
-<section class="section" id="collection">
+<section
+  class="section"
+  id="collection">
 
   <div class="section-head">
 
     <div>
+
       <div class="section-label">
         01 / Collection
       </div>
@@ -997,18 +1500,20 @@ footer{
       <h2>
         Winter 26
       </h2>
+
     </div>
 
-    <a href="#collection"
-       class="view-all">
+    <a
+      href="#collection"
+      class="view-all">
+
       View All
+
     </a>
 
   </div>
 
-
   <div class="products">
-
 
     <!-- PRODUCT 1 -->
 
@@ -1023,9 +1528,7 @@ footer{
              'Black,White,Grey'
            )">
 
-        <span class="badge">
-          NEW
-        </span>
+        <span class="badge">NEW</span>
 
         <img
           src="IMG_8132.jpeg"
@@ -1037,52 +1540,30 @@ footer{
 
       </div>
 
-
       <div class="product-info">
 
-        <h3>
-          VYRO Essential T-Shirt
-        </h3>
+        <h3>VYRO Essential T-Shirt</h3>
 
-        <p>
-          Heavyweight everyday essential
-        </p>
+        <p>Heavyweight everyday essential</p>
 
-        <div class="price">
-          499 EGP
-        </div>
-
+        <div class="price">499 EGP</div>
 
         <div class="product-options">
 
           <select id="color1">
-
-            <option>
-              Black
-            </option>
-
-            <option>
-              White
-            </option>
-
-            <option>
-              Grey
-            </option>
-
+            <option>Black</option>
+            <option>White</option>
+            <option>Grey</option>
           </select>
 
-
           <select id="size1">
-
             <option>M</option>
             <option>L</option>
             <option>XL</option>
             <option>XXL</option>
-
           </select>
 
         </div>
-
 
         <div class="product-actions">
 
@@ -1094,11 +1575,8 @@ footer{
               'color1',
               'size1'
             )">
-
             ADD TO CART
-
           </button>
-
 
           <button
             class="buy-btn"
@@ -1108,9 +1586,7 @@ footer{
               'color1',
               'size1'
             )">
-
             ↗
-
           </button>
 
         </div>
@@ -1118,7 +1594,6 @@ footer{
       </div>
 
     </article>
-
 
 
     <!-- PRODUCT 2 -->
@@ -1134,9 +1609,7 @@ footer{
              'Black,White,Beige'
            )">
 
-        <span class="badge">
-          NEW
-        </span>
+        <span class="badge">NEW</span>
 
         <img
           src="IMG_8133.jpeg"
@@ -1148,52 +1621,30 @@ footer{
 
       </div>
 
-
       <div class="product-info">
 
-        <h3>
-          VYRO Oversized T-Shirt
-        </h3>
+        <h3>VYRO Oversized T-Shirt</h3>
 
-        <p>
-          Relaxed oversized silhouette
-        </p>
+        <p>Relaxed oversized silhouette</p>
 
-        <div class="price">
-          599 EGP
-        </div>
-
+        <div class="price">599 EGP</div>
 
         <div class="product-options">
 
           <select id="color2">
-
-            <option>
-              Black
-            </option>
-
-            <option>
-              White
-            </option>
-
-            <option>
-              Beige
-            </option>
-
+            <option>Black</option>
+            <option>White</option>
+            <option>Beige</option>
           </select>
 
-
           <select id="size2">
-
             <option>M</option>
             <option>L</option>
             <option>XL</option>
             <option>XXL</option>
-
           </select>
 
         </div>
-
 
         <div class="product-actions">
 
@@ -1205,11 +1656,8 @@ footer{
               'color2',
               'size2'
             )">
-
             ADD TO CART
-
           </button>
-
 
           <button
             class="buy-btn"
@@ -1219,9 +1667,7 @@ footer{
               'color2',
               'size2'
             )">
-
             ↗
-
           </button>
 
         </div>
@@ -1229,7 +1675,6 @@ footer{
       </div>
 
     </article>
-
 
 
     <!-- PRODUCT 3 -->
@@ -1245,9 +1690,7 @@ footer{
              'Black,Grey,Off White'
            )">
 
-        <span class="badge">
-          WINTER
-        </span>
+        <span class="badge">WINTER</span>
 
         <div class="image-placeholder">
           PRODUCT IMAGE
@@ -1259,52 +1702,30 @@ footer{
 
       </div>
 
-
       <div class="product-info">
 
-        <h3>
-          VYRO Hoodie
-        </h3>
+        <h3>VYRO Hoodie</h3>
 
-        <p>
-          Heavyweight winter hoodie
-        </p>
+        <p>Heavyweight winter hoodie</p>
 
-        <div class="price">
-          899 EGP
-        </div>
-
+        <div class="price">899 EGP</div>
 
         <div class="product-options">
 
           <select id="color3">
-
-            <option>
-              Black
-            </option>
-
-            <option>
-              Grey
-            </option>
-
-            <option>
-              Off White
-            </option>
-
+            <option>Black</option>
+            <option>Grey</option>
+            <option>Off White</option>
           </select>
 
-
           <select id="size3">
-
             <option>M</option>
             <option>L</option>
             <option>XL</option>
             <option>XXL</option>
-
           </select>
 
         </div>
-
 
         <div class="product-actions">
 
@@ -1316,11 +1737,8 @@ footer{
               'color3',
               'size3'
             )">
-
             ADD TO CART
-
           </button>
-
 
           <button
             class="buy-btn"
@@ -1330,9 +1748,7 @@ footer{
               'color3',
               'size3'
             )">
-
             ↗
-
           </button>
 
         </div>
@@ -1340,7 +1756,6 @@ footer{
       </div>
 
     </article>
-
 
 
     <!-- PRODUCT 4 -->
@@ -1356,9 +1771,7 @@ footer{
              'Black,Olive,Beige'
            )">
 
-        <span class="badge">
-          WINTER
-        </span>
+        <span class="badge">WINTER</span>
 
         <div class="image-placeholder">
           PRODUCT IMAGE
@@ -1370,52 +1783,30 @@ footer{
 
       </div>
 
-
       <div class="product-info">
 
-        <h3>
-          VYRO Cargo Pants
-        </h3>
+        <h3>VYRO Cargo Pants</h3>
 
-        <p>
-          Utility fit / everyday comfort
-        </p>
+        <p>Utility fit / everyday comfort</p>
 
-        <div class="price">
-          799 EGP
-        </div>
-
+        <div class="price">799 EGP</div>
 
         <div class="product-options">
 
           <select id="color4">
-
-            <option>
-              Black
-            </option>
-
-            <option>
-              Olive
-            </option>
-
-            <option>
-              Beige
-            </option>
-
+            <option>Black</option>
+            <option>Olive</option>
+            <option>Beige</option>
           </select>
 
-
           <select id="size4">
-
             <option>M</option>
             <option>L</option>
             <option>XL</option>
             <option>XXL</option>
-
           </select>
 
         </div>
-
 
         <div class="product-actions">
 
@@ -1427,11 +1818,8 @@ footer{
               'color4',
               'size4'
             )">
-
             ADD TO CART
-
           </button>
-
 
           <button
             class="buy-btn"
@@ -1441,9 +1829,7 @@ footer{
               'color4',
               'size4'
             )">
-
             ↗
-
           </button>
 
         </div>
@@ -1457,24 +1843,17 @@ footer{
 </section>
 
 
+<!-- STORY -->
 
-<section class="story"
-         id="story">
+<section class="story" id="story">
 
   <div class="story-visual">
-
-    <span>
-      VYRO
-    </span>
-
+    <span>VYRO</span>
   </div>
-
 
   <div class="story-content">
 
-    <small>
-      02 / OUR IDENTITY
-    </small>
+    <small>02 / OUR IDENTITY</small>
 
     <h2>
       WEAR<br>
@@ -1493,22 +1872,19 @@ footer{
 </section>
 
 
+<!-- SIZE GUIDE -->
 
-<section class="section size-guide"
-         id="size">
+<section class="section size-guide" id="size">
 
   <div class="section-label">
     03 / Size Guide
   </div>
 
-  <h2>
-    Find Your Fit
-  </h2>
+  <h2>Find Your Fit</h2>
 
   <p>
     Use our basic size guide before placing your order.
   </p>
-
 
   <table class="size-table">
 
@@ -1547,6 +1923,7 @@ footer{
 </section>
 
 
+<!-- FOOTER -->
 
 <footer>
 
@@ -1566,54 +1943,31 @@ footer{
 
     </div>
 
-
     <div class="footer-links">
 
       <div>
 
-        <strong>
-          EXPLORE
-        </strong>
+        <strong>EXPLORE</strong>
 
-        <a href="#collection">
-          Collection
-        </a>
-
-        <a href="#story">
-          Our Story
-        </a>
-
-        <a href="#size">
-          Size Guide
-        </a>
+        <a href="#collection">Collection</a>
+        <a href="#story">Our Story</a>
+        <a href="#size">Size Guide</a>
 
       </div>
 
-
       <div>
 
-        <strong>
-          SOCIAL
-        </strong>
+        <strong>SOCIAL</strong>
 
-        <a href="#">
-          Instagram
-        </a>
-
-        <a href="#">
-          Facebook
-        </a>
-
-        <a href="#">
-          TikTok
-        </a>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">TikTok</a>
 
       </div>
 
     </div>
 
   </div>
-
 
   <div class="footer-bottom">
 
@@ -1630,37 +1984,31 @@ footer{
 </footer>
 
 
-
 <!-- CART -->
 
-<div class="overlay"
-     id="overlay"
-     onclick="closeCart()">
+<div
+  class="overlay"
+  id="overlay"
+  onclick="closeCart()">
 </div>
 
-
-<aside class="cart"
-       id="cart">
+<aside class="cart" id="cart">
 
   <div class="cart-head">
 
-    <h3>
-      YOUR CART
-    </h3>
+    <h3>YOUR CART</h3>
 
     <button
       class="close"
       onclick="closeCart()">
-
       ×
-
     </button>
 
   </div>
 
-
-  <div class="cart-items"
-       id="cartItems">
+  <div
+    class="cart-items"
+    id="cartItems">
 
     <div class="empty-cart">
       Your cart is empty.
@@ -1668,21 +2016,17 @@ footer{
 
   </div>
 
-
   <div class="cart-bottom">
 
     <div class="total">
 
-      <span>
-        TOTAL
-      </span>
+      <span>TOTAL</span>
 
       <span id="cartTotal">
         0 EGP
       </span>
 
     </div>
-
 
     <button
       class="btn"
@@ -1698,25 +2042,22 @@ footer{
 </aside>
 
 
-
 <!-- QUICK VIEW -->
 
-<div class="quick-overlay"
-     id="quickOverlay"
-     onclick="closeQuickView(event)">
+<div
+  class="quick-overlay"
+  id="quickOverlay"
+  onclick="closeQuickView(event)">
 
-  <div class="quick-modal"
-       onclick="event.stopPropagation()">
-
+  <div
+    class="quick-modal"
+    onclick="event.stopPropagation()">
 
     <button
       class="quick-close"
       onclick="closeQuickView()">
-
       ×
-
     </button>
-
 
     <div class="quick-image">
 
@@ -1727,51 +2068,39 @@ footer{
 
     </div>
 
-
     <div class="quick-details">
 
       <div class="quick-label-small">
         VYRO / WINTER 26
       </div>
 
-
       <h2 id="quickName">
         Product
       </h2>
-
 
       <p
         class="quick-description"
         id="quickDescription">
       </p>
 
-
       <div
         class="quick-price"
         id="quickPrice">
-
         0 EGP
-
       </div>
-
 
       <div class="quick-selects">
 
-        <select id="quickColor">
-        </select>
-
+        <select id="quickColor"></select>
 
         <select id="quickSize">
-
           <option>M</option>
           <option>L</option>
           <option>XL</option>
           <option>XXL</option>
-
         </select>
 
       </div>
-
 
       <button
         class="quick-add"
@@ -1788,11 +2117,9 @@ footer{
 </div>
 
 
-
 <script>
 
 let cart = [];
-
 
 let quickProduct = {
   name:"",
@@ -1803,50 +2130,29 @@ let quickProduct = {
 };
 
 
-
 /* CART */
 
-function addToCart(
-  name,
-  price,
-  colorId,
-  sizeId
-){
+function addToCart(name,price,colorId,sizeId){
 
   const color =
     document.getElementById(colorId).value;
 
   const size =
     document.getElementById(sizeId).value;
-
 
   cart.push({
-
     name:name,
-
     price:price,
-
     color:color,
-
     size:size
-
   });
 
-
   updateCart();
-
   openCart();
-
 }
 
 
-
-function buyNow(
-  name,
-  price,
-  colorId,
-  sizeId
-){
+function buyNow(name,price,colorId,sizeId){
 
   const color =
     document.getElementById(colorId).value;
@@ -1854,26 +2160,16 @@ function buyNow(
   const size =
     document.getElementById(sizeId).value;
 
-
   cart = [{
-
     name:name,
-
     price:price,
-
     color:color,
-
     size:size
-
   }];
 
-
   updateCart();
-
   openCart();
-
 }
-
 
 
 function updateCart(){
@@ -1881,97 +2177,68 @@ function updateCart(){
   const items =
     document.getElementById("cartItems");
 
-
   const count =
     document.getElementById("cartCount");
-
 
   const total =
     document.getElementById("cartTotal");
 
-
-  count.textContent =
-    cart.length;
-
+  count.textContent = cart.length;
 
   if(cart.length === 0){
 
     items.innerHTML =
       '<div class="empty-cart">Your cart is empty.</div>';
 
-    total.textContent =
-      "0 EGP";
+    total.textContent = "0 EGP";
 
     return;
-
   }
-
 
   let totalPrice = 0;
 
-
   items.innerHTML = "";
 
+  cart.forEach((item,index)=>{
 
-  cart.forEach(
-    (item,index)=>{
+    totalPrice += item.price;
 
-      totalPrice += item.price;
+    const div =
+      document.createElement("div");
 
+    div.className = "cart-item";
 
-      const div =
-        document.createElement("div");
+    div.innerHTML = `
 
+      <div>
 
-      div.className =
-        "cart-item";
+        <h4>${item.name}</h4>
 
+        <p>Color: ${item.color}</p>
 
-      div.innerHTML = `
+        <p>Size: ${item.size}</p>
 
-        <div>
+        <p>${item.price} EGP</p>
 
-          <h4>
-            ${item.name}
-          </h4>
+      </div>
 
-          <p>
-            Color: ${item.color}
-          </p>
+      <button
+        class="remove"
+        onclick="removeItem(${index})">
 
-          <p>
-            Size: ${item.size}
-          </p>
+        REMOVE
 
-          <p>
-            ${item.price} EGP
-          </p>
+      </button>
 
-        </div>
+    `;
 
+    items.appendChild(div);
 
-        <button
-          class="remove"
-          onclick="removeItem(${index})">
-
-          REMOVE
-
-        </button>
-
-      `;
-
-
-      items.appendChild(div);
-
-    }
-  );
-
+  });
 
   total.textContent =
     totalPrice + " EGP";
-
 }
-
 
 
 function removeItem(index){
@@ -1983,20 +2250,17 @@ function removeItem(index){
 }
 
 
-
 function openCart(){
 
   document
     .getElementById("cart")
     .classList.add("active");
 
-
   document
     .getElementById("overlay")
     .classList.add("active");
 
 }
-
 
 
 function closeCart(){
@@ -2005,13 +2269,11 @@ function closeCart(){
     .getElementById("cart")
     .classList.remove("active");
 
-
   document
     .getElementById("overlay")
     .classList.remove("active");
 
 }
-
 
 
 /* QUICK VIEW */
@@ -2027,96 +2289,67 @@ function openQuickView(
   quickProduct = {
 
     name:name,
-
     price:price,
-
     description:description,
-
     image:image,
-
     colors:colors.split(",")
 
   };
 
-
   document
     .getElementById("quickName")
     .textContent = name;
-
 
   document
     .getElementById("quickPrice")
     .textContent =
       price + " EGP";
 
-
   document
     .getElementById("quickDescription")
     .textContent =
       description;
 
-
   const imageElement =
     document.getElementById("quickImage");
 
-
   if(image){
 
-    imageElement.src =
-      image;
-
-    imageElement.style.display =
-      "block";
+    imageElement.src = image;
+    imageElement.style.display = "block";
 
   }else{
 
     imageElement.removeAttribute("src");
-
-    imageElement.style.display =
-      "none";
+    imageElement.style.display = "none";
 
   }
-
 
   const colorSelect =
     document.getElementById("quickColor");
 
-
   colorSelect.innerHTML = "";
 
+  quickProduct.colors.forEach(color=>{
 
-  quickProduct.colors.forEach(
-    color=>{
+    const option =
+      document.createElement("option");
 
-      const option =
-        document.createElement("option");
+    option.textContent = color;
+    option.value = color;
 
+    colorSelect.appendChild(option);
 
-      option.textContent =
-        color;
-
-      option.value =
-        color;
-
-
-      colorSelect.appendChild(
-        option
-      );
-
-    }
-  );
-
+  });
 
   document
     .getElementById("quickOverlay")
     .classList.add("active");
 
-
   document.body
     .classList.add("modal-open");
 
 }
-
 
 
 function closeQuickView(event){
@@ -2126,22 +2359,17 @@ function closeQuickView(event){
     event.target !==
     document.getElementById("quickOverlay")
   ){
-
     return;
-
   }
-
 
   document
     .getElementById("quickOverlay")
     .classList.remove("active");
 
-
   document.body
     .classList.remove("modal-open");
 
 }
-
 
 
 function addQuickToCart(){
@@ -2151,40 +2379,27 @@ function addQuickToCart(){
       .getElementById("quickColor")
       .value;
 
-
   const size =
     document
       .getElementById("quickSize")
       .value;
 
-
   cart.push({
 
-    name:
-      quickProduct.name,
-
-    price:
-      quickProduct.price,
-
-    color:
-      color,
-
-    size:
-      size
+    name:quickProduct.name,
+    price:quickProduct.price,
+    color:color,
+    size:size
 
   });
 
-
   updateCart();
 
-
   closeQuickView();
-
 
   openCart();
 
 }
-
 
 
 /* WHATSAPP */
@@ -2193,74 +2408,51 @@ function checkoutWhatsApp(){
 
   if(cart.length === 0){
 
-    alert(
-      "Your cart is empty."
-    );
+    alert("Your cart is empty.");
 
     return;
-
   }
-
 
   let message =
     "VYRO ORDER%0A%0A";
 
-
   let total = 0;
 
+  cart.forEach((item,index)=>{
 
-  cart.forEach(
-    (item,index)=>{
+    message +=
+      (index + 1) +
+      ". " +
+      item.name +
+      "%0AColor: " +
+      item.color +
+      "%0ASize: " +
+      item.size +
+      "%0APrice: " +
+      item.price +
+      " EGP%0A%0A";
 
-      message +=
-        (index + 1) +
-        ". " +
-        item.name +
-        "%0AColor: " +
-        item.color +
-        "%0ASize: " +
-        item.size +
-        "%0APrice: " +
-        item.price +
-        " EGP%0A%0A";
+    total += item.price;
 
-
-      total +=
-        item.price;
-
-    }
-  );
-
+  });
 
   message +=
     "TOTAL: " +
     total +
     " EGP";
 
-
-  /*
-    VYRO WhatsApp
-    Egypt:
-    01129327133
-  */
-
   const phone =
     "201129327133";
 
-
   window.open(
-
     "https://wa.me/" +
     phone +
     "?text=" +
     message,
-
     "_blank"
-
   );
 
 }
-
 
 
 updateCart();
