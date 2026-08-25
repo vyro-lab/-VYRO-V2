@@ -130,21 +130,40 @@ nav{
 
   display:flex;
   align-items:center;
-  justify-content:space-between;
 
   padding:0 6%;
 
-  background:rgba(8,8,8,.88);
+  background:rgba(8,8,8,.78);
 
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
 
-  border-bottom:1px solid #202020;
+  border-bottom:1px solid rgba(255,255,255,.08);
+
+  transition:
+    height .35s var(--ease),
+    background .35s ease,
+    box-shadow .35s ease;
+
+}
+
+nav.scrolled{
+
+  height:62px;
+
+  background:
+    rgba(5,5,5,.95);
+
+  box-shadow:
+    0 15px 40px
+    rgba(0,0,0,.25);
 
 }
 
 
-/* LOGO */
+/* =========================================================
+   LOGO
+========================================================= */
 
 .logo{
 
@@ -159,7 +178,9 @@ nav{
 }
 
 
-/* NAV LINKS */
+/* =========================================================
+   NAV LINKS
+========================================================= */
 
 .nav-links{
 
@@ -170,6 +191,10 @@ nav{
   gap:34px;
 
   list-style:none;
+
+  margin-left:auto;
+
+  margin-right:35px;
 
 }
 
@@ -191,6 +216,12 @@ nav{
 
 }
 
+.nav-links a:hover{
+
+  color:#fff;
+
+}
+
 .nav-links a::after{
 
   content:"";
@@ -198,9 +229,11 @@ nav{
   position:absolute;
 
   left:0;
+
   bottom:-7px;
 
   width:0;
+
   height:1px;
 
   background:#fff;
@@ -209,16 +242,16 @@ nav{
 
 }
 
-.nav-links a:hover{
-  color:#fff;
-}
-
 .nav-links a:hover::after{
+
   width:100%;
+
 }
 
 
-/* NAV ACTIONS */
+/* =========================================================
+   NAV ACTIONS
+========================================================= */
 
 .nav-actions{
 
@@ -257,6 +290,7 @@ nav{
 .nav-icon:hover{
 
   background:#fff;
+
   color:#000;
 
   border-color:#fff;
@@ -268,38 +302,48 @@ nav{
   position:absolute;
 
   top:-5px;
+
   right:-5px;
 
   min-width:16px;
+
   height:16px;
 
   padding:0 4px;
 
   display:flex;
+
   align-items:center;
+
   justify-content:center;
 
   border-radius:50%;
 
   background:#fff;
+
   color:#000;
 
   font-size:8px;
+
   font-weight:900;
 
 }
 
 
-/* MOBILE MENU */
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
 
 .mobile-menu-btn{
 
   display:none;
 
   width:40px;
+
   height:40px;
 
   align-items:center;
+
   justify-content:center;
 
   border:1px solid #292929;
@@ -310,11 +354,21 @@ nav{
 
   font-size:18px;
 
+  transition:.3s;
+
+}
+
+.mobile-menu-btn:hover{
+
+  background:#fff;
+
+  color:#000;
+
 }
 
 
 /* =========================================================
-   MOBILE MENU PANEL
+   MOBILE MENU
 ========================================================= */
 
 .mobile-menu{
@@ -322,6 +376,7 @@ nav{
   position:fixed;
 
   top:108px;
+
   left:0;
   right:0;
 
@@ -364,11 +419,15 @@ nav{
 }
 
 .mobile-menu a:last-child{
+
   border-bottom:0;
+
 }
 
 .mobile-menu a:hover{
+
   color:#fff;
+
 }
 
 
@@ -392,20 +451,14 @@ nav{
   background:
 
     radial-gradient(
-      circle at 78% 40%,
-      rgba(255,255,255,.10),
-      transparent 25%
-    ),
-
-    radial-gradient(
-      circle at 20% 80%,
-      rgba(255,255,255,.04),
-      transparent 30%
+      circle at 80% 40%,
+      rgba(255,255,255,.12),
+      transparent 23%
     ),
 
     linear-gradient(
       120deg,
-      #040404 0%,
+      #030303 0%,
       #0c0c0c 48%,
       #181818 100%
     );
@@ -413,7 +466,7 @@ nav{
 }
 
 
-/* HERO GRID */
+/* HERO OVERLAY */
 
 .hero::before{
 
@@ -427,17 +480,15 @@ nav{
 
     linear-gradient(
       90deg,
-      rgba(0,0,0,.92),
-      rgba(0,0,0,.25),
-      rgba(0,0,0,.7)
+      rgba(0,0,0,.94),
+      rgba(0,0,0,.20),
+      rgba(0,0,0,.72)
     );
-
-  pointer-events:none;
 
 }
 
 
-/* HERO LINES */
+/* HERO FRAME */
 
 .hero::after{
 
@@ -447,7 +498,8 @@ nav{
 
   inset:8% 6%;
 
-  border:1px solid rgba(255,255,255,.04);
+  border:1px solid
+    rgba(255,255,255,.05);
 
   pointer-events:none;
 
@@ -479,13 +531,21 @@ nav{
 @keyframes heroReveal{
 
   from{
+
     opacity:0;
-    transform:translateY(35px);
+
+    transform:
+      translateY(35px);
+
   }
 
   to{
+
     opacity:1;
-    transform:translateY(0);
+
+    transform:
+      translateY(0);
+
   }
 
 }
@@ -518,6 +578,7 @@ nav{
   content:"";
 
   width:28px;
+
   height:1px;
 
   background:#777;
@@ -592,6 +653,7 @@ nav{
   display:inline-flex;
 
   align-items:center;
+
   justify-content:center;
 
   min-height:50px;
@@ -622,7 +684,8 @@ nav{
 
   color:#fff;
 
-  transform:translateY(-3px);
+  transform:
+    translateY(-3px);
 
 }
 
@@ -689,6 +752,7 @@ nav{
   z-index:1;
 
   right:-4%;
+
   bottom:-16%;
 
   color:#101010;
@@ -716,7 +780,8 @@ nav{
 
     opacity:0;
 
-    transform:translateX(80px);
+    transform:
+      translateX(80px);
 
   }
 
@@ -724,7 +789,8 @@ nav{
 
     opacity:1;
 
-    transform:translateX(0);
+    transform:
+      translateX(0);
 
   }
 
@@ -740,9 +806,11 @@ nav{
   z-index:1;
 
   right:8%;
+
   top:23%;
 
   width:430px;
+
   height:430px;
 
   border-radius:50%;
@@ -751,7 +819,7 @@ nav{
 
     radial-gradient(
       circle,
-      rgba(255,255,255,.08),
+      rgba(255,255,255,.09),
       transparent 65%
     );
 
@@ -781,6 +849,66 @@ nav{
     transform:
       translate(-35px,20px)
       scale(1.08);
+
+  }
+
+}
+
+
+/* SCROLL INDICATOR */
+
+.scroll-indicator{
+
+  position:absolute;
+
+  z-index:6;
+
+  right:7%;
+
+  bottom:35px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  color:#555;
+
+  font-size:8px;
+
+  letter-spacing:3px;
+
+  writing-mode:vertical-rl;
+
+}
+
+.scroll-indicator i{
+
+  display:block;
+
+  width:1px;
+
+  height:55px;
+
+  background:#444;
+
+  animation:
+    scrollLine
+    1.8s
+    ease-in-out
+    infinite;
+
+}
+
+@keyframes scrollLine{
+
+  50%{
+
+    transform:
+      scaleY(.45);
+
+    opacity:.4;
 
   }
 
@@ -844,6 +972,103 @@ nav{
 
 
 /* =========================================================
+   EDITORIAL
+========================================================= */
+
+.editorial{
+
+  position:relative;
+
+  min-height:430px;
+
+  display:flex;
+
+  align-items:center;
+
+  overflow:hidden;
+
+  border-bottom:1px solid #222;
+
+  background:
+    linear-gradient(
+      110deg,
+      #0a0a0a,
+      #161616
+    );
+
+}
+
+.editorial::before{
+
+  content:"WINTER";
+
+  position:absolute;
+
+  right:-4%;
+
+  bottom:-45px;
+
+  font-size:
+    clamp(150px,25vw,350px);
+
+  font-weight:900;
+
+  letter-spacing:-18px;
+
+  color:#101010;
+
+}
+
+.editorial-content{
+
+  position:relative;
+
+  z-index:2;
+
+  padding:
+    70px 8%;
+
+  max-width:700px;
+
+}
+
+.editorial-content small{
+
+  color:#555;
+
+  font-size:9px;
+
+  letter-spacing:4px;
+
+}
+
+.editorial-content h2{
+
+  margin:15px 0;
+
+  font-size:
+    clamp(45px,7vw,85px);
+
+  line-height:.85;
+
+  letter-spacing:-5px;
+
+}
+
+.editorial-content p{
+
+  max-width:470px;
+
+  color:#777;
+
+  font-size:12px;
+
+  line-height:1.8;
+
+}
+
+
+/* =========================================================
    GENERAL SECTION
 ========================================================= */
 
@@ -859,6 +1084,7 @@ nav{
   display:flex;
 
   align-items:flex-end;
+
   justify-content:space-between;
 
   gap:25px;
@@ -913,12 +1139,14 @@ nav{
 }
 
 .view-all:hover{
+
   color:#fff;
+
 }
 
 
 /* =========================================================
-   PRODUCTS GRID
+   PRODUCTS
 ========================================================= */
 
 .products{
@@ -931,9 +1159,6 @@ nav{
   gap:18px;
 
 }
-
-
-/* PRODUCT CARD */
 
 .product-card{
 
@@ -954,7 +1179,8 @@ nav{
 
 .product-card:hover{
 
-  transform:translateY(-7px);
+  transform:
+    translateY(-7px);
 
   border-color:#4a4a4a;
 
@@ -963,9 +1189,6 @@ nav{
     rgba(0,0,0,.45);
 
 }
-
-
-/* PRODUCT IMAGE */
 
 .product-image{
 
@@ -984,6 +1207,7 @@ nav{
 .product-image img{
 
   width:100%;
+
   height:100%;
 
   display:block;
@@ -1005,9 +1229,6 @@ nav{
 
 }
 
-
-/* IMAGE OVERLAY */
-
 .product-image::after{
 
   content:"";
@@ -1026,9 +1247,6 @@ nav{
   pointer-events:none;
 
 }
-
-
-/* PLACEHOLDER */
 
 .image-placeholder{
 
@@ -1057,9 +1275,6 @@ nav{
 
 }
 
-
-/* BADGE */
-
 .badge{
 
   position:absolute;
@@ -1067,11 +1282,13 @@ nav{
   z-index:5;
 
   top:13px;
+
   left:13px;
 
   padding:7px 10px;
 
   background:#fff;
+
   color:#000;
 
   font-size:8px;
@@ -1082,9 +1299,6 @@ nav{
 
 }
 
-
-/* QUICK VIEW */
-
 .quick-label{
 
   position:absolute;
@@ -1092,6 +1306,7 @@ nav{
   z-index:6;
 
   left:50%;
+
   bottom:18px;
 
   padding:11px 16px;
@@ -1115,9 +1330,7 @@ nav{
 
   letter-spacing:2px;
 
-  transition:
-    opacity .3s ease,
-    transform .3s ease;
+  transition:.3s;
 
 }
 
@@ -1130,9 +1343,6 @@ nav{
     translate(-50%,0);
 
 }
-
-
-/* PRODUCT INFO */
 
 .product-info{
 
@@ -1148,8 +1358,6 @@ nav{
 
   font-weight:800;
 
-  letter-spacing:.2px;
-
 }
 
 .product-info p{
@@ -1158,12 +1366,7 @@ nav{
 
   font-size:10px;
 
-  line-height:1.5;
-
 }
-
-
-/* PRICE */
 
 .price{
 
@@ -1174,9 +1377,6 @@ nav{
   font-weight:900;
 
 }
-
-
-/* PRODUCT OPTIONS */
 
 .product-options{
 
@@ -1204,21 +1404,7 @@ nav{
 
   font-size:9px;
 
-  cursor:pointer;
-
-  transition:.3s;
-
 }
-
-.product-options select:hover,
-.product-options select:focus{
-
-  border-color:#777;
-
-}
-
-
-/* PRODUCT ACTIONS */
 
 .product-actions{
 
@@ -1229,9 +1415,6 @@ nav{
   margin-top:9px;
 
 }
-
-
-/* ADD BUTTON */
 
 .add-btn{
 
@@ -1261,12 +1444,7 @@ nav{
 
   color:#fff;
 
-  transform:translateY(-2px);
-
 }
-
-
-/* BUY BUTTON */
 
 .buy-btn{
 
@@ -1292,10 +1470,6 @@ nav{
 
   color:#000;
 
-  border-color:#fff;
-
-  transform:translateY(-2px);
-
 }
 
 
@@ -1313,12 +1487,10 @@ nav{
   min-height:600px;
 
   border-top:1px solid #222;
+
   border-bottom:1px solid #222;
 
 }
-
-
-/* STORY VISUAL */
 
 .story-visual{
 
@@ -1327,6 +1499,7 @@ nav{
   display:flex;
 
   align-items:center;
+
   justify-content:center;
 
   overflow:hidden;
@@ -1375,20 +1548,7 @@ nav{
 
   letter-spacing:-11px;
 
-  transition:.5s var(--ease);
-
 }
-
-.story-visual:hover span{
-
-  transform:scale(1.05);
-
-  color:#1e1e1e;
-
-}
-
-
-/* STORY CONTENT */
 
 .story-content{
 
@@ -1453,11 +1613,15 @@ nav{
 }
 
 .size-guide .section-label{
+
   color:#777;
+
 }
 
 .size-guide h2{
+
   margin-top:10px;
+
 }
 
 .size-guide p{
@@ -1595,7 +1759,9 @@ footer{
 }
 
 .footer-links a:hover{
+
   color:#fff;
+
 }
 
 .footer-bottom{
@@ -1620,7 +1786,7 @@ footer{
 
 
 /* =========================================================
-   CART OVERLAY
+   CART
 ========================================================= */
 
 .overlay{
@@ -1650,11 +1816,6 @@ footer{
 
 }
 
-
-/* =========================================================
-   CART
-========================================================= */
-
 .cart{
 
   position:fixed;
@@ -1662,6 +1823,7 @@ footer{
   z-index:2100;
 
   top:0;
+
   right:0;
 
   width:min(450px,100%);
@@ -1714,11 +1876,13 @@ footer{
 .close{
 
   width:36px;
+
   height:36px;
 
   display:flex;
 
   align-items:center;
+
   justify-content:center;
 
   border:1px solid #333;
@@ -1729,19 +1893,15 @@ footer{
 
   font-size:20px;
 
-  transition:.3s;
-
 }
 
 .close:hover{
 
   background:#fff;
+
   color:#000;
 
 }
-
-
-/* CART ITEMS */
 
 .cart-items{
 
@@ -1764,9 +1924,6 @@ footer{
   font-size:10px;
 
 }
-
-
-/* CART ITEM */
 
 .cart-item{
 
@@ -1814,16 +1971,13 @@ footer{
 
   letter-spacing:1px;
 
-  transition:.3s;
-
 }
 
 .remove:hover{
+
   color:#fff;
+
 }
-
-
-/* CART BOTTOM */
 
 .cart-bottom{
 
@@ -1867,6 +2021,7 @@ footer{
   display:none;
 
   align-items:center;
+
   justify-content:center;
 
   padding:20px;
@@ -1879,7 +2034,9 @@ footer{
 }
 
 .quick-overlay.active{
+
   display:flex;
+
 }
 
 .quick-modal{
@@ -1894,7 +2051,8 @@ footer{
 
   display:grid;
 
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:
+    1fr 1fr;
 
   background:#111;
 
@@ -1919,6 +2077,7 @@ footer{
 .quick-image img{
 
   width:100%;
+
   height:100%;
 
   min-height:520px;
@@ -2033,8 +2192,6 @@ footer{
 
   letter-spacing:2px;
 
-  transition:.3s;
-
 }
 
 .quick-add:hover{
@@ -2045,9 +2202,6 @@ footer{
 
 }
 
-
-/* QUICK CLOSE */
-
 .quick-close{
 
   position:absolute;
@@ -2055,9 +2209,11 @@ footer{
   z-index:10;
 
   top:13px;
+
   right:13px;
 
   width:38px;
+
   height:38px;
 
   border:1px solid #444;
@@ -2090,6 +2246,7 @@ footer{
   z-index:5000;
 
   left:50%;
+
   bottom:25px;
 
   transform:
@@ -2134,19 +2291,27 @@ footer{
 @media(max-width:900px){
 
   nav{
+
     padding:0 5%;
+
   }
 
   .nav-links{
+
     display:none;
+
   }
 
   .mobile-menu-btn{
+
     display:flex;
+
   }
 
   .nav-actions{
+
     margin-left:auto;
+
   }
 
   .products{
@@ -2164,7 +2329,9 @@ footer{
   }
 
   .story-visual{
+
     min-height:400px;
+
   }
 
   .quick-modal{
@@ -2227,6 +2394,12 @@ footer{
 
   }
 
+  nav.scrolled{
+
+    height:58px;
+
+  }
+
   .logo{
 
     font-size:22px;
@@ -2238,9 +2411,18 @@ footer{
   .nav-icon{
 
     width:38px;
+
     height:38px;
 
     font-size:15px;
+
+  }
+
+  .mobile-menu-btn{
+
+    width:38px;
+
+    height:38px;
 
   }
 
@@ -2348,11 +2530,18 @@ footer{
   .hero-glow{
 
     width:260px;
+
     height:260px;
 
     right:-10%;
 
     top:30%;
+
+  }
+
+  .scroll-indicator{
+
+    display:none;
 
   }
 
@@ -2376,6 +2565,28 @@ footer{
   .intro p{
 
     font-size:11px;
+
+  }
+
+
+  /* EDITORIAL */
+
+  .editorial{
+
+    min-height:390px;
+
+  }
+
+  .editorial-content{
+
+    padding:
+      55px 7%;
+
+  }
+
+  .editorial-content h2{
+
+    font-size:55px;
 
   }
 
@@ -2434,6 +2645,7 @@ footer{
   .badge{
 
     top:8px;
+
     left:8px;
 
     padding:5px 7px;
@@ -2744,7 +2956,6 @@ footer{
 
 </head>
 
-
 <body>
 
 
@@ -2760,10 +2971,10 @@ VYRO WINTER 26 — WEAR YOUR VISION
 
 
 <!-- =====================================================
-     NAVIGATION
+     NAVBAR
 ===================================================== -->
 
-<nav>
+<nav id="navbar">
 
 <button
 class="mobile-menu-btn"
@@ -2832,7 +3043,9 @@ id="cartCount">
 </nav>
 
 
-<!-- MOBILE MENU -->
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
 
 <div
 class="mobile-menu"
@@ -2956,6 +3169,15 @@ V
 </div>
 
 
+<div class="scroll-indicator">
+
+<i></i>
+
+SCROLL
+
+</div>
+
+
 </section>
 
 
@@ -2985,6 +3207,44 @@ VYRO is a modern clothing identity built around
 clean design, strong silhouettes and everyday confidence.
 
 </p>
+
+</section>
+
+
+<!-- =====================================================
+     EDITORIAL
+===================================================== -->
+
+<section class="editorial">
+
+
+<div class="editorial-content">
+
+<small>
+
+WINTER 26 / DROP 01
+
+</small>
+
+
+<h2>
+
+BUILT FOR<br>
+THE COLD.
+
+</h2>
+
+
+<p>
+
+Heavyweight layers.
+Quiet details.
+A sharper uniform for the season ahead.
+
+</p>
+
+</div>
+
 
 </section>
 
@@ -3034,9 +3294,7 @@ VIEW ALL
 <div class="products">
 
 
-<!-- ===================================================
-     PRODUCT 1
-=================================================== -->
+<!-- PRODUCT 1 -->
 
 <article class="product-card">
 
@@ -3078,23 +3336,17 @@ QUICK VIEW
 
 
 <h3>
-
 VYRO Essential T-Shirt
-
 </h3>
 
 
 <p>
-
 Heavyweight everyday essential.
-
 </p>
 
 
 <div class="price">
-
 499 EGP
-
 </div>
 
 
@@ -3161,9 +3413,7 @@ aria-label="Buy now">
 </article>
 
 
-<!-- ===================================================
-     PRODUCT 2
-=================================================== -->
+<!-- PRODUCT 2 -->
 
 <article class="product-card">
 
@@ -3205,23 +3455,17 @@ QUICK VIEW
 
 
 <h3>
-
 VYRO Oversized T-Shirt
-
 </h3>
 
 
 <p>
-
 Relaxed oversized silhouette.
-
 </p>
 
 
 <div class="price">
-
 599 EGP
-
 </div>
 
 
@@ -3288,9 +3532,7 @@ aria-label="Buy now">
 </article>
 
 
-<!-- ===================================================
-     PRODUCT 3
-=================================================== -->
+<!-- PRODUCT 3 -->
 
 <article class="product-card">
 
@@ -3333,23 +3575,17 @@ QUICK VIEW
 
 
 <h3>
-
 VYRO Hoodie
-
 </h3>
 
 
 <p>
-
 Heavyweight winter hoodie.
-
 </p>
 
 
 <div class="price">
-
 899 EGP
-
 </div>
 
 
@@ -3416,9 +3652,7 @@ aria-label="Buy now">
 </article>
 
 
-<!-- ===================================================
-     PRODUCT 4
-=================================================== -->
+<!-- PRODUCT 4 -->
 
 <article class="product-card">
 
@@ -3461,23 +3695,17 @@ QUICK VIEW
 
 
 <h3>
-
 VYRO Cargo Pants
-
 </h3>
 
 
 <p>
-
 Utility fit / everyday comfort.
-
 </p>
 
 
 <div class="price">
-
 799 EGP
-
 </div>
 
 
@@ -3594,6 +3822,8 @@ VYRO is built around one simple idea:
 your clothes should feel like an extension
 of your identity.
 
+<br><br>
+
 Clean lines.
 Strong silhouettes.
 No unnecessary noise.
@@ -3640,85 +3870,55 @@ Use our basic size guide before placing your order.
 
 <tr>
 
-<th>
-SIZE
-</th>
+<th>SIZE</th>
 
-<th>
-CHEST
-</th>
+<th>CHEST</th>
 
-<th>
-LENGTH
-</th>
+<th>LENGTH</th>
 
 </tr>
 
 
 <tr>
 
-<td>
-M
-</td>
+<td>M</td>
 
-<td>
-52 CM
-</td>
+<td>52 CM</td>
 
-<td>
-70 CM
-</td>
+<td>70 CM</td>
 
 </tr>
 
 
 <tr>
 
-<td>
-L
-</td>
+<td>L</td>
 
-<td>
-55 CM
-</td>
+<td>55 CM</td>
 
-<td>
-72 CM
-</td>
+<td>72 CM</td>
 
 </tr>
 
 
 <tr>
 
-<td>
-XL
-</td>
+<td>XL</td>
 
-<td>
-58 CM
-</td>
+<td>58 CM</td>
 
-<td>
-74 CM
-</td>
+<td>74 CM</td>
 
 </tr>
 
 
 <tr>
 
-<td>
-XXL
-</td>
+<td>XXL</td>
 
-<td>
-61 CM
-</td>
+<td>61 CM</td>
 
-<td>
-76 CM
-</td>
+<td>76 CM</td>
 
 </tr>
 
@@ -3863,9 +4063,7 @@ id="cart">
 
 
 <h3>
-
 YOUR CART
-
 </h3>
 
 
@@ -3901,18 +4099,16 @@ Your cart is empty.
 
 <div class="total">
 
+
 <span>
-
 TOTAL
-
 </span>
 
 
 <span id="cartTotal">
-
 0 EGP
-
 </span>
+
 
 </div>
 
@@ -3963,7 +4159,6 @@ onclick="closeQuickView()">
 id="quickImage"
 src=""
 alt="VYRO Product">
-
 
 </div>
 
@@ -4077,20 +4272,6 @@ let quickProduct = {
 
 
 /* =========================================================
-   SAVE CART
-========================================================= */
-
-function saveCart(){
-
-  localStorage.setItem(
-    "vyroCart",
-    JSON.stringify(cart)
-  );
-
-}
-
-
-/* =========================================================
    TOAST
 ========================================================= */
 
@@ -4114,6 +4295,20 @@ function showToast(message){
       toast.classList.remove("active");
 
     },2200);
+
+}
+
+
+/* =========================================================
+   SAVE CART
+========================================================= */
+
+function saveCart(){
+
+  localStorage.setItem(
+    "vyroCart",
+    JSON.stringify(cart)
+  );
 
 }
 
@@ -4143,8 +4338,11 @@ function addToCart(
   cart.push({
 
     name:name,
+
     price:price,
+
     color:color,
+
     size:size
 
   });
@@ -4188,8 +4386,11 @@ function buyNow(
   cart = [{
 
     name:name,
+
     price:price,
+
     color:color,
+
     size:size
 
   }];
@@ -4696,14 +4897,13 @@ function checkoutWhatsApp(){
 
 function toggleMobileMenu(){
 
-  const menu =
-    document.getElementById(
+  document
+    .getElementById(
       "mobileMenu"
+    )
+    .classList.toggle(
+      "active"
     );
-
-  menu.classList.toggle(
-    "active"
-  );
 
 }
 
@@ -4719,6 +4919,38 @@ function closeMobileMenu(){
     );
 
 }
+
+
+/* =========================================================
+   NAVBAR SCROLL EFFECT
+========================================================= */
+
+window.addEventListener(
+  "scroll",
+  ()=>{
+
+    const navbar =
+      document.getElementById(
+        "navbar"
+      );
+
+
+    if(window.scrollY > 30){
+
+      navbar.classList.add(
+        "scrolled"
+      );
+
+    }else{
+
+      navbar.classList.remove(
+        "scrolled"
+      );
+
+    }
+
+  }
+);
 
 
 /* =========================================================
@@ -4750,7 +4982,6 @@ document.addEventListener(
 updateCart();
 
 </script>
-
 
 </body>
 </html>
