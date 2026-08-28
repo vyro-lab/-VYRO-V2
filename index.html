@@ -1,38 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>VYRO — Winter 26</title>
-
 <meta name="description" content="VYRO — Winter 26. Wear Your Vision.">
-<meta name="theme-color" content="#080808">
+<meta name="theme-color" content="#11110f">
 
 <style>
 
-/* =========================================================
-   VYRO — WINTER 26
-   PREMIUM FASHION EDITORIAL
-========================================================= */
+:root{
+  --black:#11110f;
+  --paper:#f3f0e8;
+  --white:#ffffff;
+  --muted:#77746c;
+  --line:rgba(17,17,15,.14);
+  --green:#25D366;
+}
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-}
-
-:root{
-  --black:#080808;
-  --black-soft:#0d0d0d;
-  --black-card:#111;
-  --white:#f5f5f2;
-  --muted:#858585;
-  --muted-dark:#555;
-  --line:#252525;
-  --line-soft:rgba(255,255,255,.09);
-  --ease:cubic-bezier(.2,.7,.2,1);
 }
 
 html{
@@ -41,25 +31,9 @@ html{
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:var(--black);
-  color:var(--white);
-  line-height:1.5;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
-
-body.modal-open{
-  overflow:hidden;
-}
-
-::selection{
-  background:#fff;
-  color:#000;
-}
-
-img{
-  max-width:100%;
+  background:var(--paper);
+  color:var(--black);
+  line-height:1.4;
 }
 
 a{
@@ -68,1971 +42,830 @@ a{
 }
 
 button,
-select,
-input{
+select{
   font:inherit;
 }
 
-button{
-  cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
-}
-
-/* =========================================================
-   SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar{
-  width:6px;
-}
-
-::-webkit-scrollbar-track{
-  background:#080808;
-}
-
-::-webkit-scrollbar-thumb{
-  background:#303030;
-}
-
-/* =========================================================
+/* =========================
    LOADER
-========================================================= */
+========================= */
 
-.page-loader{
+.loader{
   position:fixed;
   inset:0;
-  z-index:10000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#080808;
-  transition:opacity .7s var(--ease),visibility .7s;
+  background:var(--black);
+  color:white;
+  display:grid;
+  place-items:center;
+  z-index:9999;
+  animation:loaderHide .8s 1.2s forwards;
 }
 
-.page-loader.hide{
-  opacity:0;
-  visibility:hidden;
-}
-
-.loader-inner{
-  text-align:center;
-}
-
-.loader-logo{
+.loader span{
   font-size:34px;
   font-weight:900;
-  letter-spacing:10px;
-  padding-left:10px;
-  animation:loaderPulse 1.2s ease-in-out infinite alternate;
+  letter-spacing:.25em;
 }
 
-.loader-line{
-  width:100px;
-  height:1px;
-  margin:18px auto 0;
-  background:#252525;
-  overflow:hidden;
+@keyframes loaderHide{
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
 }
 
-.loader-line::after{
-  content:"";
-  display:block;
-  width:45%;
-  height:100%;
-  background:#fff;
-  animation:loaderLine 1.1s ease-in-out infinite;
-}
-
-@keyframes loaderPulse{
-  from{opacity:.35}
-  to{opacity:1}
-}
-
-@keyframes loaderLine{
-  from{transform:translateX(-130%)}
-  to{transform:translateX(330%)}
-}
-
-/* =========================================================
-   TOPBAR
-========================================================= */
+/* =========================
+   TOP BAR
+========================= */
 
 .topbar{
-  min-height:34px;
+  background:var(--black);
+  color:white;
+  text-align:center;
+  padding:9px 15px;
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+  position:fixed;
+  top:30px;
+  left:0;
+  width:100%;
+  z-index:1000;
+
+  padding:20px 5vw;
+
   display:flex;
   align-items:center;
-  justify-content:center;
-  padding:8px 15px;
-  background:var(--white);
-  color:#080808;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:3px;
-  text-align:center;
-  position:relative;
-  z-index:1200;
+  justify-content:space-between;
+
+  color:white;
+
+  transition:.35s ease;
 }
 
-/* =========================================================
-   NAVBAR
-========================================================= */
-
-nav{
-  position:sticky;
+.navbar.scrolled{
   top:0;
-  z-index:1100;
-  height:76px;
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
-  padding:0 5.5%;
-  background:rgba(8,8,8,.72);
-  backdrop-filter:blur(22px);
-  -webkit-backdrop-filter:blur(22px);
-  border-bottom:1px solid rgba(255,255,255,.07);
-  transition:.4s var(--ease);
+  background:rgba(17,17,15,.94);
+  backdrop-filter:blur(14px);
 }
-
-nav.scrolled{
-  height:68px;
-  background:rgba(6,6,6,.96);
-  border-color:#222;
-  box-shadow:0 18px 50px rgba(0,0,0,.3);
-}
-
-/* LOGO */
 
 .logo{
-  justify-self:start;
-  position:relative;
-  display:inline-block;
   font-size:25px;
-  line-height:1;
   font-weight:900;
-  letter-spacing:7px;
-  padding-left:7px;
-  transition:.3s var(--ease);
+  letter-spacing:.18em;
 }
-
-.logo:hover{
-  opacity:.7;
-}
-
-/* NAV LINKS */
 
 .nav-links{
   display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:38px;
-  list-style:none;
+  gap:32px;
+
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
 }
 
 .nav-links a{
   position:relative;
-  color:#858585;
-  font-size:9px;
-  font-weight:800;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  transition:.3s ease;
-}
-
-.nav-links a:hover{
-  color:#fff;
 }
 
 .nav-links a::after{
   content:"";
   position:absolute;
   left:0;
-  bottom:-8px;
-  width:100%;
+  bottom:-7px;
+  width:0;
   height:1px;
-  background:#fff;
-  transform:scaleX(0);
-  transform-origin:right;
-  transition:transform .35s var(--ease);
+  background:white;
+  transition:.3s;
 }
 
 .nav-links a:hover::after{
-  transform:scaleX(1);
-  transform-origin:left;
+  width:100%;
 }
 
-/* NAV ACTIONS */
+.cart-button{
+  background:transparent;
+  color:white;
+  border:1px solid rgba(255,255,255,.4);
 
-.nav-actions{
-  justify-self:end;
-  display:flex;
-  align-items:center;
-  gap:8px;
+  padding:9px 14px;
+
+  font-size:10px;
+  letter-spacing:.12em;
+
+  cursor:pointer;
+
+  transition:.25s;
 }
 
-.nav-icon{
-  position:relative;
-  width:42px;
-  height:42px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid #292929;
-  background:#101010;
-  color:#fff;
-  font-size:17px;
-  transition:.3s var(--ease);
+.cart-button:hover{
+  background:white;
+  color:var(--black);
 }
 
-.nav-icon:hover{
-  background:#fff;
-  color:#000;
-  border-color:#fff;
-  transform:translateY(-2px);
-}
-
-.nav-count{
-  position:absolute;
-  top:-5px;
-  right:-5px;
-  min-width:17px;
-  height:17px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:0 4px;
-  border-radius:50%;
-  background:#fff;
-  color:#000;
-  border:2px solid #080808;
-  font-size:7px;
-  font-weight:900;
-}
-
-/* MOBILE BUTTON */
-
-.mobile-menu-btn{
-  display:none;
-  width:40px;
-  height:40px;
-  align-items:center;
-  justify-content:center;
-  border:1px solid #292929;
-  background:#111;
-  color:#fff;
-  font-size:17px;
-}
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-.mobile-menu{
-  position:fixed;
-  top:110px;
-  left:0;
-  right:0;
-  z-index:1000;
-  padding:18px 7%;
-  background:rgba(8,8,8,.98);
-  border-bottom:1px solid #292929;
-  transform:translateY(-120%);
-  opacity:0;
-  visibility:hidden;
-  transition:.45s var(--ease);
-}
-
-.mobile-menu.active{
-  transform:translateY(0);
-  opacity:1;
-  visibility:visible;
-}
-
-.mobile-menu a{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 0;
-  border-bottom:1px solid #222;
-  color:#888;
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:2.5px;
-}
-
-.mobile-menu a::after{
-  content:"↗";
-  color:#555;
-}
-
-.mobile-menu a:last-child{
-  border-bottom:0;
-}
-
-.mobile-menu a:hover{
-  color:#fff;
-}
-
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero{
-  position:relative;
-  min-height:calc(100vh - 110px);
-  display:flex;
-  align-items:center;
-  overflow:hidden;
-  background:
-    radial-gradient(
-      ellipse at 78% 50%,
-      rgba(255,255,255,.075),
-      transparent 34%
-    ),
-    linear-gradient(
-      115deg,
-      #050505 0%,
-      #0b0b0b 48%,
-      #151515 100%
-    );
-}
+  min-height:92vh;
 
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
+  position:relative;
+
+  display:flex;
+  align-items:flex-end;
+
+  padding:150px 7vw 70px;
+
+  color:white;
+
   background:
     linear-gradient(
       90deg,
-      rgba(0,0,0,.96) 0%,
-      rgba(0,0,0,.52) 45%,
-      rgba(0,0,0,.7) 100%
+      rgba(0,0,0,.68),
+      rgba(0,0,0,.18)
+    ),
+    url("hero.jpg") center/cover no-repeat;
+
+  overflow:hidden;
+}
+
+.hero::after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      transparent 60%,
+      rgba(0,0,0,.55)
     );
 }
 
-.hero-grid{
-  position:absolute;
-  inset:0;
-  opacity:.09;
-  background-image:
-    linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
-  background-size:90px 90px;
-  mask-image:linear-gradient(
-    90deg,
-    transparent,
-    black 25%,
-    black 75%,
-    transparent
-  );
-}
-
-.hero-frame{
-  position:absolute;
-  inset:5%;
-  border:1px solid rgba(255,255,255,.055);
-  pointer-events:none;
-}
-
-.hero-frame::before,
-.hero-frame::after{
-  content:"";
-  position:absolute;
-  width:45px;
-  height:45px;
-}
-
-.hero-frame::before{
-  top:-1px;
-  left:-1px;
-  border-top:1px solid rgba(255,255,255,.35);
-  border-left:1px solid rgba(255,255,255,.35);
-}
-
-.hero-frame::after{
-  right:-1px;
-  bottom:-1px;
-  border-right:1px solid rgba(255,255,255,.35);
-  border-bottom:1px solid rgba(255,255,255,.35);
-}
-
-/* HERO CONTENT */
-
 .hero-content{
   position:relative;
-  z-index:5;
-  width:100%;
-  padding:100px 8% 120px;
-  animation:heroReveal 1s var(--ease) both;
+  z-index:2;
+  max-width:900px;
 }
 
-@keyframes heroReveal{
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-.eyebrow{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  margin-bottom:30px;
-  color:#777;
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:5px;
-}
-
-.eyebrow::before{
-  content:"";
-  width:32px;
-  height:1px;
-  background:#777;
+.hero-kicker{
+  font-size:10px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  margin-bottom:20px;
 }
 
 .hero h1{
-  max-width:1000px;
-  font-size:clamp(70px,11.5vw,155px);
-  line-height:.79;
-  letter-spacing:-8px;
+  font-size:clamp(60px,11vw,155px);
+  line-height:.82;
+  letter-spacing:-.075em;
   font-weight:900;
 }
 
-.hero h1 span{
-  display:block;
-  color:transparent;
-  -webkit-text-stroke:1px rgba(255,255,255,.9);
+.hero-description{
+  max-width:480px;
+  margin-top:30px;
+
+  color:#ddd;
+
+  font-size:15px;
 }
 
-.hero-copy{
-  max-width:440px;
-  margin-top:38px;
-  color:#777;
-  font-size:12px;
-  line-height:1.9;
-  letter-spacing:.4px;
-}
+.primary-button{
+  display:inline-block;
 
-.hero-buttons{
-  display:flex;
-  gap:9px;
-  margin-top:34px;
-  flex-wrap:wrap;
-}
+  margin-top:28px;
 
-.btn{
-  position:relative;
-  min-height:50px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:0 27px;
-  overflow:hidden;
-  isolation:isolate;
-  border:1px solid #fff;
-  background:#fff;
-  color:#000;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:2.2px;
+  padding:15px 23px;
+
+  background:white;
+  color:var(--black);
+
+  border:1px solid white;
+
+  font-size:10px;
+  font-weight:bold;
+  letter-spacing:.16em;
   text-transform:uppercase;
-  transition:.35s var(--ease);
+
+  cursor:pointer;
+
+  transition:.3s;
 }
 
-.btn::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  background:#000;
-  transform:translateX(-101%);
-  transition:transform .4s var(--ease);
-}
-
-.btn:hover::before{
-  transform:translateX(0);
-}
-
-.btn:hover{
-  color:#fff;
-  transform:translateY(-3px);
-}
-
-.btn.secondary{
+.primary-button:hover{
   background:transparent;
-  color:#fff;
+  color:white;
 }
 
-.btn.secondary::before{
-  background:#fff;
-}
-
-.btn.secondary:hover{
-  color:#000;
-}
-
-.hero-meta{
-  display:flex;
-  gap:27px;
-  margin-top:55px;
-  color:#4e4e4e;
-  font-size:7px;
-  font-weight:800;
-  letter-spacing:3px;
-}
-
-.hero-meta span{
-  position:relative;
-}
-
-.hero-meta span:not(:last-child)::after{
-  content:"/";
-  position:absolute;
-  right:-17px;
-  color:#303030;
-}
-
-.hero-side-info{
-  position:absolute;
-  z-index:5;
-  right:5%;
-  bottom:8%;
-  writing-mode:vertical-rl;
-  color:#444;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:3px;
-}
-
-/* HERO BACKGROUND MARK */
-
-.hero-mark{
-  position:absolute;
-  right:-3%;
-  bottom:-17%;
-  z-index:1;
-  color:#101010;
-  font-size:clamp(230px,36vw,560px);
-  font-weight:900;
-  letter-spacing:-35px;
-  user-select:none;
-  pointer-events:none;
-  animation:markReveal 1.3s var(--ease) both;
-}
-
-@keyframes markReveal{
-  from{
-    opacity:0;
-    transform:translateX(80px);
-  }
-  to{
-    opacity:1;
-    transform:translateX(0);
-  }
-}
-
-.hero-glow{
-  position:absolute;
-  right:9%;
-  top:24%;
-  width:420px;
-  height:420px;
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(255,255,255,.07),
-    transparent 68%
-  );
-  filter:blur(30px);
-  animation:glowMove 9s ease-in-out infinite alternate;
-}
-
-@keyframes glowMove{
-  from{
-    transform:translate(0,0) scale(1);
-  }
-  to{
-    transform:translate(-30px,20px) scale(1.08);
-  }
-}
-
-.hero-scroll{
-  position:absolute;
-  left:8%;
-  bottom:32px;
-  z-index:5;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:#4e4e4e;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:3px;
-}
-
-.hero-scroll-line{
-  position:relative;
-  width:35px;
-  height:1px;
-  overflow:hidden;
-  background:#444;
-}
-
-.hero-scroll-line::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:#fff;
-  animation:scrollLine 2.2s ease-in-out infinite;
-}
-
-@keyframes scrollLine{
-  0%{transform:translateX(-100%)}
-  50%{transform:translateX(0)}
-  100%{transform:translateX(100%)}
-}
-
-/* =========================================================
-   INTRO
-========================================================= */
-
-.intro{
-  position:relative;
-  padding:145px 8% 135px;
-  text-align:center;
-  border-bottom:1px solid #202020;
-  overflow:hidden;
-}
-
-.intro::before{
-  content:"VYRO";
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  color:#0d0d0d;
-  font-size:clamp(130px,22vw,330px);
-  font-weight:900;
-  letter-spacing:-17px;
-  pointer-events:none;
-}
-
-.intro > *{
-  position:relative;
-  z-index:2;
-}
-
-.intro small{
-  color:#555;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:4px;
-}
-
-.intro h2{
-  max-width:900px;
-  margin:20px auto;
-  font-size:clamp(38px,5.2vw,68px);
-  line-height:.96;
-  letter-spacing:-3px;
-}
-
-.intro p{
-  max-width:600px;
-  margin:auto;
-  color:#707070;
-  font-size:12px;
-  line-height:1.9;
-}
-
-/* =========================================================
-   GENERAL SECTION
-========================================================= */
+/* =========================
+   SECTIONS
+========================= */
 
 .section{
-  position:relative;
-  padding:110px 6%;
+  padding:105px 6vw;
 }
 
-.section-head{
+.section-header{
   display:flex;
-  align-items:flex-end;
   justify-content:space-between;
-  gap:30px;
-  margin-bottom:48px;
+  align-items:flex-end;
+
+  border-bottom:1px solid var(--line);
+
+  padding-bottom:20px;
+  margin-bottom:35px;
 }
 
-.section-label{
-  color:#505050;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:4px;
+.eyebrow{
+  font-size:10px;
+  color:var(--muted);
+
+  letter-spacing:.25em;
   text-transform:uppercase;
 }
 
-.section h2{
-  margin-top:10px;
-  font-size:clamp(40px,5.5vw,68px);
-  line-height:.9;
-  letter-spacing:-4px;
+.section-title{
+  font-size:clamp(42px,6vw,82px);
+  line-height:.88;
+
+  letter-spacing:-.065em;
+
+  margin-top:8px;
 }
 
-.view-all{
-  position:relative;
-  padding-bottom:8px;
-  color:#888;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-.view-all::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:0;
-  width:100%;
-  height:1px;
-  background:#fff;
-  transform:scaleX(.35);
-  transform-origin:left;
-  transition:.35s var(--ease);
-}
-
-.view-all:hover{
-  color:#fff;
-}
-
-.view-all:hover::after{
-  transform:scaleX(1);
-}
-
-.collection-section{
-  overflow:hidden;
-}
-
-.collection-section::before{
-  content:"01";
-  position:absolute;
-  right:5%;
-  top:68px;
-  color:#101010;
-  font-size:170px;
-  line-height:1;
-  font-weight:900;
-  pointer-events:none;
-}
-
-/* =========================================================
+/* =========================
    PRODUCTS
-========================================================= */
+========================= */
 
-.products{
+.product-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:18px;
 }
 
 .product-card{
   position:relative;
-  background:#0e0e0e;
-  border:1px solid #202020;
-  overflow:hidden;
-  transition:.5s var(--ease);
-}
-
-.product-card:hover{
-  transform:translateY(-6px);
-  border-color:#383838;
-  box-shadow:0 28px 70px rgba(0,0,0,.45);
 }
 
 .product-image{
   position:relative;
+
   aspect-ratio:4/5;
+
   overflow:hidden;
-  background:#161616;
-  cursor:pointer;
+
+  background:#ddd;
 }
 
 .product-image img{
   width:100%;
   height:100%;
-  display:block;
+
   object-fit:cover;
-  transition:transform .9s var(--ease),filter .5s ease;
+
+  display:block;
+
+  transition:
+    transform .65s cubic-bezier(.2,.7,.2,1);
 }
 
-.product-card:hover .product-image img{
-  transform:scale(1.055);
-  filter:brightness(.9);
+.product-card:hover img{
+  transform:scale(1.045);
 }
 
-.product-image::before{
-  content:"";
+.product-badge{
   position:absolute;
-  z-index:4;
-  top:0;
-  left:-120%;
-  width:60%;
-  height:100%;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.09),
-    transparent
-  );
-  transform:skewX(-20deg);
-  transition:left .8s var(--ease);
-  pointer-events:none;
-}
 
-.product-card:hover .product-image::before{
-  left:140%;
-}
-
-.product-image::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to top,
-    rgba(0,0,0,.45),
-    transparent 55%
-  );
-  pointer-events:none;
-}
-
-.image-placeholder{
-  width:100%;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:
-    radial-gradient(circle at center,#292929,#111 68%);
-  color:#505050;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:3px;
-}
-
-.badge{
-  position:absolute;
-  z-index:7;
-  top:13px;
-  left:13px;
-  padding:7px 10px;
-  background:#fff;
-  color:#000;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:1.5px;
-}
-
-.wishlist-btn{
-  position:absolute;
-  z-index:8;
   top:12px;
-  right:12px;
-  width:35px;
-  height:35px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(0,0,0,.58);
-  color:#fff;
-  font-size:15px;
-  transition:.3s var(--ease);
-}
+  left:12px;
 
-.wishlist-btn:hover,
-.wishlist-btn.active{
-  background:#fff;
-  color:#000;
-  border-color:#fff;
-}
+  z-index:2;
 
-.quick-label{
-  position:absolute;
-  z-index:8;
-  left:50%;
-  bottom:17px;
-  padding:10px 15px;
-  transform:translate(-50%,12px);
-  opacity:0;
-  white-space:nowrap;
-  background:rgba(0,0,0,.88);
-  border:1px solid rgba(255,255,255,.3);
-  color:#fff;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:2px;
-  transition:.3s ease;
-}
+  background:var(--black);
+  color:white;
 
-.product-image:hover .quick-label{
-  opacity:1;
-  transform:translate(-50%,0);
+  padding:7px 9px;
+
+  font-size:9px;
+
+  letter-spacing:.12em;
+  text-transform:uppercase;
 }
 
 .product-info{
-  padding:20px;
+  padding:15px 2px 0;
 }
 
-.product-info h3{
-  margin-bottom:5px;
+.product-name{
+  font-size:14px;
+  font-weight:600;
+}
+
+.product-price{
+  margin-top:5px;
+
+  color:var(--muted);
+
   font-size:13px;
-  font-weight:800;
-}
-
-.product-info p{
-  color:#666;
-  font-size:9px;
-  line-height:1.5;
-}
-
-.price{
-  margin-top:12px;
-  font-size:15px;
-  font-weight:900;
 }
 
 .product-options{
   display:flex;
-  gap:6px;
-  margin-top:16px;
+  gap:8px;
+
+  margin-top:12px;
 }
 
 .product-options select{
-  width:50%;
-  padding:10px 8px;
-  border:1px solid #2a2a2a;
-  outline:none;
-  background:#090909;
-  color:#fff;
-  font-size:8px;
-  cursor:pointer;
-}
+  flex:1;
 
-.product-options select:focus{
-  border-color:#666;
+  padding:9px;
+
+  background:transparent;
+
+  border:1px solid var(--line);
+
+  font-size:11px;
+
+  outline:none;
 }
 
 .product-actions{
   display:flex;
-  gap:6px;
-  margin-top:8px;
+  gap:8px;
+
+  margin-top:10px;
 }
 
-.add-btn{
+.product-actions button{
   flex:1;
-  min-height:42px;
-  border:1px solid #fff;
-  background:#fff;
-  color:#000;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:1.4px;
-  transition:.3s var(--ease);
+
+  padding:11px;
+
+  border:1px solid var(--black);
+
+  background:var(--black);
+  color:white;
+
+  font-size:9px;
+  font-weight:bold;
+
+  letter-spacing:.09em;
+  text-transform:uppercase;
+
+  cursor:pointer;
+
+  transition:.25s;
 }
 
-.add-btn:hover{
-  background:#000;
-  color:#fff;
+.product-actions .buy{
+  background:transparent;
+  color:var(--black);
 }
 
-.buy-btn{
-  width:44px;
-  min-height:42px;
-  border:1px solid #2f2f2f;
-  background:#161616;
-  color:#fff;
-  font-size:16px;
-  transition:.3s var(--ease);
+.product-actions button:hover{
+  opacity:.75;
 }
 
-.buy-btn:hover{
-  background:#fff;
-  color:#000;
-  border-color:#fff;
-}
-
-/* =========================================================
+/* =========================
    STORY
-========================================================= */
+========================= */
 
 .story{
-  min-height:650px;
   display:grid;
+
   grid-template-columns:1fr 1fr;
-  border-top:1px solid #202020;
-  border-bottom:1px solid #202020;
-  background:#090909;
-}
 
-.story-visual{
-  position:relative;
-  min-height:650px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  border-right:1px solid #202020;
-  background:
-    radial-gradient(
-      circle at center,
-      #252525 0%,
-      #111 40%,
-      #080808 73%
-    );
-}
+  min-height:540px;
 
-.story-visual::before{
-  content:"";
-  position:absolute;
-  inset:12%;
-  border:1px solid rgba(255,255,255,.05);
-}
-
-.story-visual::after{
-  content:"";
-  position:absolute;
-  width:310px;
-  height:310px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.07);
-  box-shadow:
-    0 0 0 55px rgba(255,255,255,.012),
-    0 0 0 110px rgba(255,255,255,.008);
-}
-
-.story-visual span{
-  position:relative;
-  z-index:2;
-  font-size:clamp(75px,12vw,170px);
-  font-weight:900;
-  letter-spacing:-10px;
-  color:#151515;
-  -webkit-text-stroke:1px rgba(255,255,255,.1);
+  background:var(--black);
+  color:white;
 }
 
 .story-content{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:11%;
+  padding:9vw;
 }
 
-.story-content small{
-  color:#505050;
-  font-size:8px;
+.story-title{
+  margin-top:15px;
+
+  font-size:clamp(45px,6vw,90px);
+
+  line-height:.88;
+
+  letter-spacing:-.07em;
+}
+
+.story-text{
+  max-width:520px;
+
+  margin-top:28px;
+
+  color:#999;
+
+  font-size:15px;
+  line-height:1.7;
+}
+
+.story-mark{
+  display:grid;
+  place-items:center;
+
+  border-left:1px solid #30302d;
+
+  font-size:19vw;
+
   font-weight:900;
-  letter-spacing:4px;
+
+  line-height:1;
+
+  letter-spacing:-.12em;
 }
 
-.story-content h2{
-  margin-top:25px;
-  font-size:clamp(58px,7vw,105px);
-  line-height:.8;
-  letter-spacing:-6px;
-}
-
-.story-content p{
-  max-width:450px;
-  margin-top:36px;
-  color:#707070;
-  font-size:12px;
-  line-height:1.95;
-}
-
-/* =========================================================
+/* =========================
    SIZE GUIDE
-========================================================= */
+========================= */
 
 .size-guide{
-  background:#0b0b0b;
-}
+  display:grid;
 
-.size-guide > p{
-  max-width:520px;
-  margin-top:20px;
-  color:#707070;
-  font-size:12px;
+  grid-template-columns:1fr 1fr;
+
+  gap:70px;
 }
 
 .size-table{
   width:100%;
-  margin-top:45px;
+
+  margin-top:20px;
+
   border-collapse:collapse;
-  border:1px solid #252525;
 }
 
 .size-table th,
 .size-table td{
-  padding:18px 20px;
-  border-bottom:1px solid #222;
   text-align:left;
-  font-size:9px;
-  letter-spacing:1.5px;
+
+  padding:14px 5px;
+
+  border-bottom:1px solid var(--line);
+
+  font-size:12px;
 }
 
 .size-table th{
-  background:#151515;
-  color:#777;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:3px;
+  color:var(--muted);
+
+  font-weight:normal;
+
+  text-transform:uppercase;
+
+  letter-spacing:.08em;
 }
 
-.size-table td{
-  color:#999;
-}
-
-.size-table tr:last-child td{
-  border-bottom:0;
-}
-
-.size-table tbody tr{
-  transition:.25s ease;
-}
-
-.size-table tbody tr:hover{
-  background:#111;
-}
-
-.size-table td:first-child{
-  color:#fff;
-  font-weight:900;
-}
-
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
-footer{
-  background:#050505;
-  border-top:1px solid #202020;
+.footer{
+  background:#0b0b0a;
+
+  color:white;
+
+  padding:60px 6vw 25px;
 }
 
 .footer-top{
-  display:grid;
-  grid-template-columns:1.4fr 1fr;
-  gap:80px;
-  padding:90px 6%;
-}
-
-.footer-logo{
-  font-size:42px;
-  font-weight:900;
-  letter-spacing:9px;
-}
-
-.footer-copy{
-  max-width:300px;
-  margin-top:20px;
-  color:#5f5f5f;
-  font-size:10px;
-  line-height:1.9;
-}
-
-.footer-links{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
-}
-
-.footer-links div{
   display:flex;
-  flex-direction:column;
-  gap:13px;
+
+  justify-content:space-between;
+
+  gap:40px;
 }
 
-.footer-links strong{
-  margin-bottom:8px;
-  color:#4d4d4d;
-  font-size:7px;
-  letter-spacing:3px;
+.footer-title{
+  margin-top:10px;
+
+  font-size:clamp(45px,6vw,80px);
+
+  line-height:.88;
+
+  letter-spacing:-.065em;
 }
 
-.footer-links a{
-  color:#7b7b7b;
-  font-size:9px;
-  transition:.25s ease;
-}
+.footer-note{
+  color:#777;
 
-.footer-links a:hover{
-  color:#fff;
-  transform:translateX(3px);
+  font-size:12px;
+  line-height:1.7;
 }
 
 .footer-bottom{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  padding:22px 6%;
-  border-top:1px solid #1b1b1b;
-  color:#414141;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:2px;
+  border-top:1px solid #292929;
+
+  margin-top:60px;
+
+  padding-top:18px;
+
+  color:#666;
+
+  font-size:9px;
+
+  letter-spacing:.15em;
 }
 
-/* =========================================================
-   REVEAL
-========================================================= */
+/* =========================
+   WHATSAPP
+========================= */
 
-.reveal{
-  opacity:0;
-  transform:translateY(28px);
-  transition:
-    opacity .8s var(--ease),
-    transform .8s var(--ease);
-}
-
-.reveal.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* =========================================================
-   OVERLAY
-========================================================= */
-
-.overlay{
+.whatsapp{
   position:fixed;
-  inset:0;
-  z-index:5000;
-  background:rgba(0,0,0,.75);
-  backdrop-filter:blur(5px);
-  opacity:0;
-  visibility:hidden;
-  transition:.35s ease;
+
+  right:20px;
+  bottom:20px;
+
+  width:58px;
+  height:58px;
+
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  background:var(--green);
+  color:white;
+
+  z-index:1100;
+
+  font-size:11px;
+  font-weight:bold;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.25);
+
+  transition:.3s;
 }
 
-.overlay.active{
-  opacity:1;
-  visibility:visible;
+.whatsapp:hover{
+  transform:translateY(-4px) scale(1.04);
 }
 
-/* =========================================================
+/* =========================
    CART
-========================================================= */
+========================= */
 
-.cart{
+.cart-panel{
   position:fixed;
-  z-index:6000;
+
   top:0;
-  right:0;
-  width:min(430px,92vw);
+  right:-430px;
+
+  width:min(410px,92vw);
   height:100vh;
-  display:flex;
-  flex-direction:column;
-  background:#0d0d0d;
-  border-left:1px solid #292929;
-  transform:translateX(105%);
-  transition:transform .45s var(--ease);
-  box-shadow:-30px 0 90px rgba(0,0,0,.5);
+
+  background:white;
+
+  z-index:3000;
+
+  padding:28px;
+
+  box-shadow:
+    -10px 0 35px rgba(0,0,0,.15);
+
+  transition:.4s ease;
+
+  overflow-y:auto;
 }
 
-.cart.active{
-  transform:translateX(0);
+.cart-panel.open{
+  right:0;
 }
 
-.cart-head{
+.cart-header{
   display:flex;
-  align-items:center;
+
   justify-content:space-between;
-  padding:25px;
-  border-bottom:1px solid #242424;
+  align-items:center;
+
+  border-bottom:1px solid var(--line);
+
+  padding-bottom:20px;
 }
 
-.cart-head h3{
-  font-size:10px;
-  letter-spacing:3px;
+.cart-header strong{
+  font-size:13px;
+  letter-spacing:.1em;
 }
 
-.close{
-  width:36px;
-  height:36px;
-  border:1px solid #292929;
-  background:#111;
-  color:#fff;
-  font-size:21px;
-}
+.close-cart{
+  background:none;
+  border:0;
 
-.close:hover{
-  background:#fff;
-  color:#000;
+  font-size:27px;
+
+  cursor:pointer;
 }
 
 .cart-items{
-  flex:1;
-  overflow-y:auto;
-  padding:20px;
+  padding:25px 0;
 }
 
 .empty-cart{
-  min-height:200px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#505050;
-  font-size:9px;
-  letter-spacing:2px;
+  color:var(--muted);
+
+  font-size:13px;
 }
 
 .cart-item{
   display:flex;
+
   justify-content:space-between;
-  gap:15px;
-  padding:18px 0;
-  border-bottom:1px solid #222;
+
+  gap:20px;
+
+  padding:14px 0;
+
+  border-bottom:1px solid var(--line);
+
+  font-size:12px;
 }
 
-.cart-item h4{
-  margin-bottom:8px;
-  font-size:11px;
-}
-
-.cart-item p{
-  color:#777;
-  font-size:8px;
-  line-height:1.8;
-}
-
-.remove{
-  align-self:flex-start;
-  padding:7px 8px;
-  border:1px solid #333;
-  background:transparent;
-  color:#777;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-
-.remove:hover{
-  color:#fff;
-  border-color:#fff;
-}
-
-.cart-bottom{
-  padding:22px;
-  border-top:1px solid #242424;
-}
-
-.total{
+.cart-total{
   display:flex;
+
   justify-content:space-between;
-  margin-bottom:18px;
-  color:#777;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:2px;
+
+  margin-top:20px;
+
+  padding-top:20px;
+
+  border-top:1px solid var(--line);
+
+  font-size:14px;
+  font-weight:bold;
 }
 
-.total span:last-child{
-  color:#fff;
-}
-
-/* =========================================================
-   QUICK VIEW
-========================================================= */
-
-.quick-overlay{
-  position:fixed;
-  inset:0;
-  z-index:7000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:25px;
-  background:rgba(0,0,0,.84);
-  backdrop-filter:blur(8px);
-  opacity:0;
-  visibility:hidden;
-  transition:.35s ease;
-}
-
-.quick-overlay.active{
-  opacity:1;
-  visibility:visible;
-}
-
-.quick-modal{
-  position:relative;
-  width:min(850px,100%);
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  background:#111;
-  border:1px solid #303030;
-  box-shadow:0 30px 100px rgba(0,0,0,.65);
-  transform:translateY(25px) scale(.98);
-  transition:.4s var(--ease);
-}
-
-.quick-overlay.active .quick-modal{
-  transform:translateY(0) scale(1);
-}
-
-.quick-close{
-  position:absolute;
-  z-index:5;
-  top:12px;
-  right:12px;
-  width:38px;
-  height:38px;
-  border:1px solid #444;
-  background:rgba(0,0,0,.75);
-  color:#fff;
-  font-size:21px;
-}
-
-.quick-close:hover{
-  background:#fff;
-  color:#000;
-}
-
-.quick-image{
-  min-height:500px;
-  background:#181818;
-}
-
-.quick-image img{
+.checkout-button{
   width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
 
-.quick-details{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:50px;
-}
+  margin-top:20px;
 
-.quick-label-small{
-  color:#555;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:3px;
-}
+  padding:15px;
 
-.quick-details h2{
-  margin-top:15px;
-  font-size:32px;
-  line-height:1;
-  letter-spacing:-1.5px;
-}
+  border:0;
 
-.quick-description{
-  margin-top:18px;
-  color:#777;
+  background:var(--black);
+  color:white;
+
   font-size:10px;
-  line-height:1.8;
+  font-weight:bold;
+
+  letter-spacing:.13em;
+
+  text-transform:uppercase;
+
+  cursor:pointer;
 }
 
-.quick-price{
-  margin-top:22px;
-  font-size:19px;
-  font-weight:900;
-}
-
-.quick-selects{
-  display:flex;
-  gap:8px;
-  margin-top:25px;
-}
-
-.quick-selects select{
-  width:50%;
-  padding:12px;
-  border:1px solid #333;
-  background:#090909;
-  color:#fff;
-  outline:none;
-  font-size:8px;
-}
-
-.quick-add{
-  width:100%;
-  min-height:48px;
-  margin-top:10px;
-  border:1px solid #fff;
-  background:#fff;
-  color:#000;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:2px;
-  transition:.3s ease;
-}
-
-.quick-add:hover{
-  background:#000;
-  color:#fff;
-}
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast{
-  position:fixed;
-  z-index:9000;
-  left:50%;
-  bottom:25px;
-  padding:13px 20px;
-  background:#fff;
-  color:#000;
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:2px;
-  transform:translate(-50%,20px);
-  opacity:0;
-  visibility:hidden;
-  transition:.35s var(--ease);
-}
-
-.toast.active{
-  transform:translate(-50%,0);
-  opacity:1;
-  visibility:visible;
-}
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media(max-width:1100px){
-
-  .products{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .nav-links{
-    gap:25px;
-  }
-
-  .story-content{
-    padding:8%;
-  }
-
-}
-
-/* =========================================================
-   MOBILE NAV
-========================================================= */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:900px){
 
-  nav{
-    grid-template-columns:auto 1fr auto;
-    padding:0 5%;
-  }
-
-  .mobile-menu-btn{
-    display:flex;
-  }
-
-  .logo{
-    justify-self:center;
-    font-size:22px;
-  }
-
   .nav-links{
     display:none;
   }
 
-  .nav-actions{
-    justify-self:end;
+  .hero{
+    min-height:78vh;
+
+    padding:
+      130px
+      6vw
+      55px;
   }
 
-  .hero-side-info{
-    display:none;
+  .hero h1{
+    font-size:21vw;
+  }
+
+  .product-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:15px;
   }
 
   .story{
     grid-template-columns:1fr;
   }
 
-  .story-visual{
-    min-height:430px;
-    border-right:0;
-    border-bottom:1px solid #202020;
+  .story-mark{
+    min-height:280px;
+
+    border-left:0;
+
+    border-top:1px solid #30302d;
   }
 
-  .story-content{
-    min-height:500px;
-    padding:12% 8%;
+  .size-guide{
+    grid-template-columns:1fr;
+
+    gap:35px;
+  }
+
+  .footer-top{
+    flex-direction:column;
   }
 
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:600px){
+@media(max-width:520px){
 
   .topbar{
-    min-height:32px;
-    padding:7px 10px;
-    font-size:6.5px;
-    letter-spacing:1.4px;
+    font-size:8px;
+
+    letter-spacing:.15em;
   }
 
-  nav{
-    height:64px;
-  }
-
-  nav.scrolled{
-    height:60px;
-  }
-
-  .mobile-menu{
-    top:96px;
+  .navbar{
+    padding:
+      17px
+      5vw;
   }
 
   .logo{
     font-size:21px;
-    letter-spacing:5px;
-    padding-left:5px;
   }
 
-  .nav-icon{
-    width:37px;
-    height:37px;
-    font-size:14px;
+  .cart-button{
+    padding:8px 10px;
   }
-
-  /* HERO */
-
-  .hero{
-    min-height:calc(100vh - 96px);
-  }
-
-  .hero-frame{
-    inset:10px;
-  }
-
-  .hero-grid{
-    background-size:55px 55px;
-    opacity:.07;
-  }
-
-  .hero-content{
-    padding:65px 7% 85px;
-  }
-
-  .eyebrow{
-    margin-bottom:21px;
-    font-size:7px;
-    letter-spacing:3px;
-  }
-
-  .eyebrow::before{
-    width:20px;
-  }
-
-  .hero h1{
-    font-size:clamp(59px,18.5vw,90px);
-    line-height:.82;
-    letter-spacing:-5px;
-  }
-
-  .hero-copy{
-    max-width:330px;
-    margin-top:28px;
-    font-size:10px;
-    line-height:1.85;
-  }
-
-  .hero-buttons{
-    margin-top:27px;
-    gap:7px;
-  }
-
-  .btn{
-    width:100%;
-    min-height:48px;
-  }
-
-  .hero-meta{
-    display:none;
-  }
-
-  .hero-mark{
-    right:-17%;
-    bottom:-2%;
-    font-size:205px;
-    letter-spacing:-14px;
-  }
-
-  .hero-glow{
-    width:260px;
-    height:260px;
-    right:-12%;
-    top:28%;
-  }
-
-  .hero-scroll{
-    left:7%;
-    bottom:18px;
-    font-size:6px;
-  }
-
-  /* INTRO */
-
-  .intro{
-    padding:82px 7% 72px;
-  }
-
-  .intro h2{
-    font-size:34px;
-    letter-spacing:-2px;
-  }
-
-  .intro p{
-    font-size:10px;
-    line-height:1.8;
-  }
-
-  /* SECTION */
 
   .section{
-    padding:72px 5%;
+    padding:
+      75px
+      5vw;
   }
 
-  .section-head{
+  .section-header{
     align-items:flex-start;
+
     flex-direction:column;
-    margin-bottom:30px;
+
+    gap:15px;
   }
 
-  .section h2{
-    font-size:40px;
-    letter-spacing:-2.5px;
-  }
-
-  .collection-section::before{
-    top:55px;
-    right:4%;
-    font-size:100px;
-  }
-
-  /* PRODUCTS */
-
-  .products{
+  .product-grid{
     grid-template-columns:1fr 1fr;
-    gap:7px;
+
+    gap:12px;
   }
 
-  .product-card:hover{
-    transform:none;
-    box-shadow:none;
+  .product-name{
+    font-size:12px;
   }
 
-  .badge{
-    top:7px;
-    left:7px;
-    padding:5px 7px;
-    font-size:6px;
-  }
-
-  .wishlist-btn{
-    top:7px;
-    right:7px;
-    width:30px;
-    height:30px;
-    font-size:13px;
-  }
-
-  .quick-label{
-    display:none;
-  }
-
-  .product-info{
-    padding:12px 9px;
-  }
-
-  .product-info h3{
-    font-size:9px;
-    line-height:1.35;
-  }
-
-  .product-info p{
-    font-size:7px;
-  }
-
-  .price{
-    margin-top:8px;
+  .product-price{
     font-size:12px;
   }
 
   .product-options{
     flex-direction:column;
-    gap:4px;
-    margin-top:10px;
-  }
-
-  .product-options select{
-    width:100%;
-    padding:8px 6px;
-    font-size:7px;
   }
 
   .product-actions{
-    gap:4px;
-  }
-
-  .add-btn{
-    min-height:37px;
-    padding:6px 2px;
-    font-size:6.5px;
-    letter-spacing:.7px;
-  }
-
-  .buy-btn{
-    width:36px;
-    min-height:37px;
-    font-size:14px;
-  }
-
-  /* STORY */
-
-  .story-visual{
-    min-height:350px;
+    flex-direction:column;
   }
 
   .story-content{
-    min-height:auto;
-    padding:78px 7%;
+    padding:
+      75px
+      6vw;
   }
 
-  .story-content h2{
-    font-size:59px;
-    letter-spacing:-4px;
+  .story-title{
+    font-size:15vw;
   }
 
-  .story-content p{
-    font-size:10px;
-    line-height:1.85;
-  }
-
-  /* SIZE */
-
-  .size-table{
-    margin-top:30px;
-  }
-
-  .size-table th,
-  .size-table td{
-    padding:13px 9px;
-    font-size:7px;
-  }
-
-  .size-guide > p{
-    font-size:10px;
-  }
-
-  /* FOOTER */
-
-  .footer-top{
-    grid-template-columns:1fr;
-    padding:62px 7%;
-    gap:48px;
-  }
-
-  .footer-logo{
-    font-size:35px;
-  }
-
-  .footer-links{
-    gap:20px;
-  }
-
-  .footer-bottom{
-    flex-direction:column;
-    padding:20px 7%;
-    font-size:5.5px;
-  }
-
-  /* QUICK VIEW */
-
-  .quick-overlay{
-    padding:10px;
-  }
-
-  .quick-modal{
-    grid-template-columns:1fr;
-    max-height:94vh;
-    overflow-y:auto;
-  }
-
-  .quick-image{
-    min-height:290px;
-    max-height:360px;
-  }
-
-  .quick-details{
-    padding:28px 22px 32px;
-  }
-
-  .quick-details h2{
-    font-size:26px;
-  }
-
-}
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media(max-width:380px){
-
-  .products{
-    gap:5px;
-  }
-
-  .product-info{
-    padding:10px 7px;
-  }
-
-  .product-info h3{
-    font-size:8.5px;
-  }
-
-  .price{
-    font-size:11px;
-  }
-
-  .hero h1{
-    font-size:56px;
-    letter-spacing:-3px;
-  }
-
-}
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-  *,
-  *::before,
-  *::after{
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    scroll-behavior:auto !important;
-    transition-duration:.01ms !important;
+  .footer{
+    padding:
+      55px
+      5vw
+      25px;
   }
 
 }
@@ -2043,387 +876,154 @@ footer{
 <body>
 
 <!-- LOADER -->
-
-<div class="page-loader" id="pageLoader">
-
-  <div class="loader-inner">
-
-    <div class="loader-logo">VYRO</div>
-
-    <div class="loader-line"></div>
-
-  </div>
-
+<div class="loader">
+  <span>VYRO</span>
 </div>
-
 
 <!-- TOP BAR -->
-
 <div class="topbar">
-
-  <span>
-    VYRO WINTER 26 — WEAR YOUR VISION
-  </span>
-
+  VYRO WINTER '26 — WEAR YOUR VISION
 </div>
 
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
 
-<!-- NAV -->
-
-<nav id="mainNav">
-
-  <button
-    class="mobile-menu-btn"
-    id="mobileMenuBtn"
-    onclick="toggleMobileMenu()"
-    aria-label="Open menu">
-
-    ☰
-
-  </button>
-
-
-  <a
-    href="#"
-    class="logo"
-    aria-label="VYRO Home">
-
+  <a href="#" class="logo">
     VYRO
-
   </a>
 
-
-  <ul class="nav-links">
-
-    <li>
-      <a href="#collection">Collection</a>
-    </li>
-
-    <li>
-      <a href="#story">Story</a>
-    </li>
-
-    <li>
-      <a href="#size">Size Guide</a>
-    </li>
-
-  </ul>
-
-
-  <div class="nav-actions">
-
-    <button
-      class="nav-icon"
-      onclick="openCart()"
-      aria-label="Open cart">
-
-      🛒
-
-      <span
-        class="nav-count"
-        id="cartCount">
-
-        0
-
-      </span>
-
-    </button>
-
+  <div class="nav-links">
+    <a href="#collection">Collection</a>
+    <a href="#story">Story</a>
+    <a href="#size">Size Guide</a>
   </div>
+
+  <button
+    class="cart-button"
+    onclick="toggleCart()"
+  >
+    CART (<span id="cartCount">0</span>)
+  </button>
 
 </nav>
 
-
-<!-- MOBILE MENU -->
-
-<div
-  class="mobile-menu"
-  id="mobileMenu">
-
-  <a
-    href="#collection"
-    onclick="closeMobileMenu()">
-
-    COLLECTION
-
-  </a>
-
-  <a
-    href="#story"
-    onclick="closeMobileMenu()">
-
-    OUR STORY
-
-  </a>
-
-  <a
-    href="#size"
-    onclick="closeMobileMenu()">
-
-    SIZE GUIDE
-
-  </a>
-
-</div>
-
-
 <!-- HERO -->
-
-<section class="hero">
-
-  <div class="hero-grid"></div>
-
-  <div class="hero-frame"></div>
-
+<header class="hero">
 
   <div class="hero-content">
 
-    <div class="eyebrow">
-      VYRO / WINTER 26
+    <div class="hero-kicker">
+      WINTER '26 / DROP 01
     </div>
-
 
     <h1>
-
-      WEAR
-
-      <span>YOUR</span>
-
+      WEAR<br>
+      YOUR<br>
       VISION.
-
     </h1>
 
-
-    <p class="hero-copy">
-
-      WINTER 26 IS HERE.
-      Heavyweight essentials, clean silhouettes
-      and a stronger VYRO identity.
-
+    <p class="hero-description">
+      Minimal design. Strong identity.
+      Built for the ones who see things differently.
     </p>
 
-
-    <div class="hero-buttons">
-
-      <a
-        href="#collection"
-        class="btn">
-
-        SHOP WINTER 26
-
-      </a>
-
-
-      <a
-        href="#story"
-        class="btn secondary">
-
-        DISCOVER VYRO
-
-      </a>
-
-    </div>
-
-
-    <div class="hero-meta">
-
-      <span>DROP 01</span>
-      <span>WINTER 26</span>
-      <span>EGYPT</span>
-
-    </div>
+    <a
+      href="#collection"
+      class="primary-button"
+    >
+      Explore Collection
+    </a>
 
   </div>
 
+</header>
 
-  <div class="hero-side-info">
-    VYRO / EST. 2026
-  </div>
-
-
-  <div class="hero-scroll">
-
-    <div class="hero-scroll-line"></div>
-
-    SCROLL TO EXPLORE
-
-  </div>
-
-
-  <div class="hero-glow"></div>
-
-  <div class="hero-mark">V</div>
-
-</section>
-
-
-<!-- INTRO -->
-
-<section class="intro reveal">
-
-  <small>
-    VYRO / EST. 2026
-  </small>
-
-
-  <h2>
-
-    NOT JUST WHAT
-    YOU WEAR.
-    WHO YOU ARE.
-
-  </h2>
-
-
-  <p>
-
-    VYRO is a modern clothing identity built around
-    clean design, strong silhouettes and everyday confidence.
-
-  </p>
-
-</section>
-
+<main>
 
 <!-- COLLECTION -->
-
 <section
-  class="section collection-section"
-  id="collection">
+  class="section"
+  id="collection"
+>
 
-  <div class="section-head reveal">
+  <div class="section-header">
 
     <div>
 
-      <div class="section-label">
-        01 / COLLECTION
+      <div class="eyebrow">
+        01 / VYRO
       </div>
 
-      <h2>
+      <h2 class="section-title">
         WINTER 26
       </h2>
 
     </div>
 
-
-    <a
-      href="#collection"
-      class="view-all">
-
-      VIEW ALL
-
-    </a>
+    <div class="eyebrow">
+      SELECTED PIECES
+    </div>
 
   </div>
 
 
-  <div class="products">
-
+  <div class="product-grid">
 
     <!-- PRODUCT 1 -->
 
-    <article class="product-card reveal">
+    <article class="product-card">
 
-      <div
-        class="product-image"
-        onclick="openQuickView(
-          'VYRO Essential T-Shirt',
-          499,
-          'Heavyweight everyday essential.',
-          'IMG_8132.jpeg',
-          'Black,White,Grey'
-        )">
+      <div class="product-image">
 
-        <span class="badge">
+        <span class="product-badge">
           NEW
         </span>
 
-
-        <button
-          class="wishlist-btn"
-          onclick="toggleWishlist(event,'VYRO Essential T-Shirt')"
-          aria-label="Add to wishlist">
-
-          ♡
-
-        </button>
-
-
         <img
-          src="IMG_8132.jpeg"
+          src="IMG_8035.jpeg"
           alt="VYRO Essential T-Shirt"
-          loading="lazy">
-
-
-        <span class="quick-label">
-          QUICK VIEW
-        </span>
+        >
 
       </div>
 
-
       <div class="product-info">
 
-        <h3>
+        <h3 class="product-name">
           VYRO Essential T-Shirt
         </h3>
 
-        <p>
-          Heavyweight everyday essential.
-        </p>
-
-        <div class="price">
+        <div class="product-price">
           499 EGP
         </div>
 
-
         <div class="product-options">
 
-          <select id="color1">
+          <select>
             <option>Black</option>
             <option>White</option>
-            <option>Grey</option>
           </select>
 
-
-          <select id="size1">
+          <select>
             <option>M</option>
             <option>L</option>
             <option>XL</option>
-            <option>XXL</option>
           </select>
 
         </div>
-
 
         <div class="product-actions">
 
           <button
-            class="add-btn"
-            onclick="addToCart(
-              'VYRO Essential T-Shirt',
-              499,
-              'color1',
-              'size1'
-            )">
-
-            ADD TO CART
-
+            onclick="addToCart('VYRO Essential T-Shirt',499)"
+          >
+            Add to Cart
           </button>
 
-
           <button
-            class="buy-btn"
-            onclick="buyNow(
-              'VYRO Essential T-Shirt',
-              499,
-              'color1',
-              'size1'
-            )"
-            aria-label="Buy now">
-
-            ↗
-
+            class="buy"
+            onclick="buyNow('VYRO Essential T-Shirt',499)"
+          >
+            Buy Now
           </button>
 
         </div>
@@ -2435,108 +1035,59 @@ footer{
 
     <!-- PRODUCT 2 -->
 
-    <article class="product-card reveal">
+    <article class="product-card">
 
-      <div
-        class="product-image"
-        onclick="openQuickView(
-          'VYRO Oversized T-Shirt',
-          599,
-          'Relaxed oversized silhouette.',
-          'IMG_8133.jpeg',
-          'Black,White,Beige'
-        )">
+      <div class="product-image">
 
-        <span class="badge">
-          NEW
+        <span class="product-badge">
+          WINTER
         </span>
-
-
-        <button
-          class="wishlist-btn"
-          onclick="toggleWishlist(event,'VYRO Oversized T-Shirt')"
-          aria-label="Add to wishlist">
-
-          ♡
-
-        </button>
-
 
         <img
-          src="IMG_8133.jpeg"
+          src="IMG_8036.jpeg"
           alt="VYRO Oversized T-Shirt"
-          loading="lazy">
-
-
-        <span class="quick-label">
-          QUICK VIEW
-        </span>
+        >
 
       </div>
 
-
       <div class="product-info">
 
-        <h3>
+        <h3 class="product-name">
           VYRO Oversized T-Shirt
         </h3>
 
-        <p>
-          Relaxed oversized silhouette.
-        </p>
-
-        <div class="price">
+        <div class="product-price">
           599 EGP
         </div>
 
-
         <div class="product-options">
 
-          <select id="color2">
+          <select>
             <option>Black</option>
-            <option>White</option>
-            <option>Beige</option>
+            <option>Grey</option>
           </select>
 
-
-          <select id="size2">
+          <select>
             <option>M</option>
             <option>L</option>
             <option>XL</option>
-            <option>XXL</option>
           </select>
 
         </div>
-
 
         <div class="product-actions">
 
           <button
-            class="add-btn"
-            onclick="addToCart(
-              'VYRO Oversized T-Shirt',
-              599,
-              'color2',
-              'size2'
-            )">
-
-            ADD TO CART
-
+            onclick="addToCart('VYRO Oversized T-Shirt',599)"
+          >
+            Add to Cart
           </button>
 
-
           <button
-            class="buy-btn"
-            onclick="buyNow(
-              'VYRO Oversized T-Shirt',
-              599,
-              'color2',
-              'size2'
-            )"
-            aria-label="Buy now">
-
-            ↗
-
+            class="buy"
+            onclick="buyNow('VYRO Oversized T-Shirt',599)"
+          >
+            Buy Now
           </button>
 
         </div>
@@ -2548,107 +1099,59 @@ footer{
 
     <!-- PRODUCT 3 -->
 
-    <article class="product-card reveal">
+    <article class="product-card">
 
-      <div
-        class="product-image"
-        onclick="openQuickView(
-          'VYRO Hoodie',
-          899,
-          'Heavyweight winter hoodie.',
-          '',
-          'Black,Grey,Off White'
-        )">
+      <div class="product-image">
 
-        <span class="badge">
+        <span class="product-badge">
           WINTER
         </span>
 
-
-        <button
-          class="wishlist-btn"
-          onclick="toggleWishlist(event,'VYRO Hoodie')"
-          aria-label="Add to wishlist">
-
-          ♡
-
-        </button>
-
-
-        <div class="image-placeholder">
-          PRODUCT IMAGE
-        </div>
-
-
-        <span class="quick-label">
-          QUICK VIEW
-        </span>
+        <img
+          src="IMG_8037.jpeg"
+          alt="VYRO Hoodie"
+        >
 
       </div>
 
-
       <div class="product-info">
 
-        <h3>
+        <h3 class="product-name">
           VYRO Hoodie
         </h3>
 
-        <p>
-          Heavyweight winter hoodie.
-        </p>
-
-        <div class="price">
+        <div class="product-price">
           899 EGP
         </div>
 
-
         <div class="product-options">
 
-          <select id="color3">
+          <select>
             <option>Black</option>
             <option>Grey</option>
-            <option>Off White</option>
           </select>
 
-
-          <select id="size3">
+          <select>
             <option>M</option>
             <option>L</option>
             <option>XL</option>
-            <option>XXL</option>
           </select>
 
         </div>
-
 
         <div class="product-actions">
 
           <button
-            class="add-btn"
-            onclick="addToCart(
-              'VYRO Hoodie',
-              899,
-              'color3',
-              'size3'
-            )">
-
-            ADD TO CART
-
+            onclick="addToCart('VYRO Hoodie',899)"
+          >
+            Add to Cart
           </button>
 
-
           <button
-            class="buy-btn"
-            onclick="buyNow(
-              'VYRO Hoodie',
-              899,
-              'color3',
-              'size3'
-            )"
-            aria-label="Buy now">
-
-            ↗
-
+            class="buy"
+            onclick="buyNow('VYRO Hoodie',899)"
+          >
+            Buy Now
           </button>
 
         </div>
@@ -2660,107 +1163,59 @@ footer{
 
     <!-- PRODUCT 4 -->
 
-    <article class="product-card reveal">
+    <article class="product-card">
 
-      <div
-        class="product-image"
-        onclick="openQuickView(
-          'VYRO Cargo Pants',
-          799,
-          'Utility fit / everyday comfort.',
-          '',
-          'Black,Olive,Beige'
-        )">
+      <div class="product-image">
 
-        <span class="badge">
-          WINTER
+        <span class="product-badge">
+          NEW
         </span>
 
-
-        <button
-          class="wishlist-btn"
-          onclick="toggleWishlist(event,'VYRO Cargo Pants')"
-          aria-label="Add to wishlist">
-
-          ♡
-
-        </button>
-
-
-        <div class="image-placeholder">
-          PRODUCT IMAGE
-        </div>
-
-
-        <span class="quick-label">
-          QUICK VIEW
-        </span>
+        <img
+          src="IMG_8038.jpeg"
+          alt="VYRO Cargo Pants"
+        >
 
       </div>
 
-
       <div class="product-info">
 
-        <h3>
+        <h3 class="product-name">
           VYRO Cargo Pants
         </h3>
 
-        <p>
-          Utility fit / everyday comfort.
-        </p>
-
-        <div class="price">
+        <div class="product-price">
           799 EGP
         </div>
 
-
         <div class="product-options">
 
-          <select id="color4">
+          <select>
             <option>Black</option>
             <option>Olive</option>
-            <option>Beige</option>
           </select>
 
-
-          <select id="size4">
+          <select>
             <option>M</option>
             <option>L</option>
             <option>XL</option>
-            <option>XXL</option>
           </select>
 
         </div>
-
 
         <div class="product-actions">
 
           <button
-            class="add-btn"
-            onclick="addToCart(
-              'VYRO Cargo Pants',
-              799,
-              'color4',
-              'size4'
-            )">
-
-            ADD TO CART
-
+            onclick="addToCart('VYRO Cargo Pants',799)"
+          >
+            Add to Cart
           </button>
 
-
           <button
-            class="buy-btn"
-            onclick="buyNow(
-              'VYRO Cargo Pants',
-              799,
-              'color4',
-              'size4'
-            )"
-            aria-label="Buy now">
-
-            ↗
-
+            class="buy"
+            onclick="buyNow('VYRO Cargo Pants',799)"
+          >
+            Buy Now
           </button>
 
         </div>
@@ -2778,47 +1233,31 @@ footer{
 
 <section
   class="story"
-  id="story">
-
-  <div class="story-visual">
-
-    <span>
-      VYRO
-    </span>
-
-  </div>
-
+  id="story"
+>
 
   <div class="story-content">
 
-    <small>
-      02 / OUR IDENTITY
-    </small>
+    <div class="eyebrow">
+      02 / THE IDEA
+    </div>
 
-
-    <h2>
-
-      WEAR<br>
-      YOUR<br>
-      VISION.
-
+    <h2 class="story-title">
+      NO NOISE.<br>
+      JUST VISION.
     </h2>
 
-
-    <p>
-
-      VYRO is built around one simple idea:
-      your clothes should feel like an extension
-      of your identity.
-
-      <br><br>
-
-      Clean lines.
-      Strong silhouettes.
-      No unnecessary noise.
-
+    <p class="story-text">
+      VYRO is a modern local clothing label built
+      around clean silhouettes, everyday confidence
+      and a clear point of view.
+      Winter '26 is the beginning.
     </p>
 
+  </div>
+
+  <div class="story-mark">
+    V
   </div>
 
 </section>
@@ -2828,186 +1267,131 @@ footer{
 
 <section
   class="section size-guide"
-  id="size">
+  id="size"
+>
 
-  <div class="section-label">
-    03 / SIZE GUIDE
+  <div>
+
+    <div class="eyebrow">
+      03 / FIT
+    </div>
+
+    <h2 class="section-title">
+      SIZE<br>
+      GUIDE
+    </h2>
+
   </div>
 
+  <div>
 
-  <h2>
-    FIND YOUR FIT
-  </h2>
+    <table class="size-table">
 
+      <thead>
 
-  <p>
-    Use our basic size guide before placing your order.
-  </p>
+        <tr>
+          <th>Size</th>
+          <th>Chest</th>
+          <th>Length</th>
+        </tr>
 
+      </thead>
 
-  <table class="size-table">
+      <tbody>
 
-    <thead>
+        <tr>
+          <td>M</td>
+          <td>54 cm</td>
+          <td>72 cm</td>
+        </tr>
 
-      <tr>
-        <th>SIZE</th>
-        <th>CHEST</th>
-        <th>LENGTH</th>
-      </tr>
+        <tr>
+          <td>L</td>
+          <td>57 cm</td>
+          <td>74 cm</td>
+        </tr>
 
-    </thead>
+        <tr>
+          <td>XL</td>
+          <td>60 cm</td>
+          <td>76 cm</td>
+        </tr>
 
+      </tbody>
 
-    <tbody>
+    </table>
 
-      <tr>
-        <td>M</td>
-        <td>52 CM</td>
-        <td>70 CM</td>
-      </tr>
-
-      <tr>
-        <td>L</td>
-        <td>55 CM</td>
-        <td>72 CM</td>
-      </tr>
-
-      <tr>
-        <td>XL</td>
-        <td>58 CM</td>
-        <td>74 CM</td>
-      </tr>
-
-      <tr>
-        <td>XXL</td>
-        <td>61 CM</td>
-        <td>76 CM</td>
-      </tr>
-
-    </tbody>
-
-  </table>
+  </div>
 
 </section>
+
+</main>
 
 
 <!-- FOOTER -->
 
-<footer>
+<footer class="footer">
 
   <div class="footer-top">
 
     <div>
 
-      <div class="footer-logo">
-        VYRO
+      <div class="eyebrow">
+        VYRO / WINTER '26
       </div>
 
-
-      <p class="footer-copy">
-
-        Modern local clothing.
-        Minimal design.
-        Strong identity.
-        Wear your vision.
-
-      </p>
+      <h2 class="footer-title">
+        WEAR YOUR<br>
+        VISION.
+      </h2>
 
     </div>
 
-
-    <div class="footer-links">
-
-      <div>
-
-        <strong>
-          EXPLORE
-        </strong>
-
-        <a href="#collection">
-          Collection
-        </a>
-
-        <a href="#story">
-          Our Story
-        </a>
-
-        <a href="#size">
-          Size Guide
-        </a>
-
-      </div>
-
-
-      <div>
-
-        <strong>
-          SOCIAL
-        </strong>
-
-        <a href="#" target="_blank" rel="noopener">
-          Instagram
-        </a>
-
-        <a href="#" target="_blank" rel="noopener">
-          Facebook
-        </a>
-
-        <a href="#" target="_blank" rel="noopener">
-          TikTok
-        </a>
-
-      </div>
-
+    <div class="footer-note">
+      Minimal design.<br>
+      Strong identity.<br>
+      Made for your vision.
     </div>
 
   </div>
 
-
   <div class="footer-bottom">
-
-    <span>
-      © 2026 VYRO. ALL RIGHTS RESERVED.
-    </span>
-
-    <span>
-      WEAR YOUR VISION.
-    </span>
-
+    © 2026 VYRO — ALL RIGHTS RESERVED
   </div>
 
 </footer>
 
 
-<!-- CART OVERLAY -->
+<!-- WHATSAPP -->
 
-<div
-  class="overlay"
-  id="overlay"
-  onclick="closeCart()">
-</div>
+<a
+  class="whatsapp"
+  href="https://wa.me/?text=Hello%20VYRO%2C%20I%27d%20like%20to%20order."
+  target="_blank"
+  aria-label="Order via WhatsApp"
+>
+  WA
+</a>
 
 
 <!-- CART -->
 
 <aside
-  class="cart"
-  id="cart">
+  class="cart-panel"
+  id="cartPanel"
+>
 
-  <div class="cart-head">
+  <div class="cart-header">
 
-    <h3>
+    <strong>
       YOUR CART
-    </h3>
-
+    </strong>
 
     <button
-      class="close"
-      onclick="closeCart()"
-      aria-label="Close cart">
-
+      class="close-cart"
+      onclick="toggleCart()"
+    >
       ×
-
     </button>
 
   </div>
@@ -3015,7 +1399,8 @@ footer{
 
   <div
     class="cart-items"
-    id="cartItems">
+    id="cartItems"
+  >
 
     <div class="empty-cart">
       Your cart is empty.
@@ -3024,295 +1409,91 @@ footer{
   </div>
 
 
-  <div class="cart-bottom">
+  <div
+    class="cart-total"
+    id="cartTotal"
+    style="display:none;"
+  >
 
-    <div class="total">
+    <span>
+      TOTAL
+    </span>
 
-      <span>
-        TOTAL
-      </span>
-
-      <span id="cartTotal">
-        0 EGP
-      </span>
-
-    </div>
-
-
-    <button
-      class="btn"
-      style="width:100%;"
-      onclick="checkoutWhatsApp()">
-
-      ORDER VIA WHATSAPP
-
-    </button>
+    <span id="totalPrice">
+      0 EGP
+    </span>
 
   </div>
+
+
+  <button
+    class="checkout-button"
+    onclick="checkoutWhatsApp()"
+  >
+    Order via WhatsApp
+  </button>
 
 </aside>
 
 
-<!-- QUICK VIEW -->
-
-<div
-  class="quick-overlay"
-  id="quickOverlay"
-  onclick="closeQuickView(event)">
-
-  <div
-    class="quick-modal"
-    onclick="event.stopPropagation()">
-
-    <button
-      class="quick-close"
-      onclick="closeQuickView()"
-      aria-label="Close product preview">
-
-      ×
-
-    </button>
-
-
-    <div class="quick-image">
-
-      <img
-        id="quickImage"
-        src=""
-        alt="VYRO Product">
-
-    </div>
-
-
-    <div class="quick-details">
-
-      <div class="quick-label-small">
-        VYRO / WINTER 26
-      </div>
-
-
-      <h2 id="quickName">
-        Product
-      </h2>
-
-
-      <p
-        class="quick-description"
-        id="quickDescription">
-      </p>
-
-
-      <div
-        class="quick-price"
-        id="quickPrice">
-
-        0 EGP
-
-      </div>
-
-
-      <div class="quick-selects">
-
-        <select id="quickColor"></select>
-
-
-        <select id="quickSize">
-
-          <option>M</option>
-          <option>L</option>
-          <option>XL</option>
-          <option>XXL</option>
-
-        </select>
-
-      </div>
-
-
-      <button
-        class="quick-add"
-        onclick="addQuickToCart()">
-
-        ADD TO CART
-
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- TOAST -->
-
-<div
-  class="toast"
-  id="toast">
-
-  ADDED TO CART
-
-</div>
-
-
 <script>
 
-/* =========================================================
-   CART
-========================================================= */
+/* =========================
+   NAVBAR
+========================= */
 
-let cart =
-  JSON.parse(
-    localStorage.getItem("vyroCart")
-  ) || [];
+const navbar =
+  document.getElementById("navbar");
 
+window.addEventListener("scroll",function(){
 
-/* =========================================================
-   QUICK PRODUCT
-========================================================= */
+  if(window.scrollY > 40){
 
-let quickProduct = {
-  name:"",
-  price:0,
-  description:"",
-  image:"",
-  colors:[]
-};
+    navbar.classList.add("scrolled");
 
+  }else{
 
-/* =========================================================
-   SAVE
-========================================================= */
+    navbar.classList.remove("scrolled");
 
-function saveCart(){
-
-  localStorage.setItem(
-    "vyroCart",
-    JSON.stringify(cart)
-  );
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-function showToast(message){
-
-  const toast =
-    document.getElementById("toast");
-
-  if(!toast) return;
-
-  toast.textContent = message;
-
-  toast.classList.add("active");
-
-  clearTimeout(toastTimer);
-
-  toastTimer =
-    setTimeout(() => {
-
-      toast.classList.remove("active");
-
-    },2200);
-
-}
-
-
-/* =========================================================
-   ADD TO CART
-========================================================= */
-
-function addToCart(
-  name,
-  price,
-  colorId,
-  sizeId
-){
-
-  const colorElement =
-    document.getElementById(colorId);
-
-  const sizeElement =
-    document.getElementById(sizeId);
-
-  if(!colorElement || !sizeElement){
-    return;
   }
+
+});
+
+
+/* =========================
+   CART
+========================= */
+
+let cart = [];
+
+
+function toggleCart(){
+
+  const panel =
+    document.getElementById("cartPanel");
+
+  panel.classList.toggle("open");
+
+}
+
+
+function addToCart(name,price){
 
   cart.push({
-
     name:name,
-
-    price:Number(price),
-
-    color:colorElement.value,
-
-    size:sizeElement.value
-
+    price:price
   });
 
-  saveCart();
+  renderCart();
 
-  updateCart();
-
-  showToast("ADDED TO CART");
-
-  openCart();
+  document
+    .getElementById("cartPanel")
+    .classList.add("open");
 
 }
 
 
-/* =========================================================
-   BUY NOW
-========================================================= */
-
-function buyNow(
-  name,
-  price,
-  colorId,
-  sizeId
-){
-
-  const colorElement =
-    document.getElementById(colorId);
-
-  const sizeElement =
-    document.getElementById(sizeId);
-
-  if(!colorElement || !sizeElement){
-    return;
-  }
-
-  cart = [{
-
-    name:name,
-
-    price:Number(price),
-
-    color:colorElement.value,
-
-    size:sizeElement.value
-
-  }];
-
-  saveCart();
-
-  updateCart();
-
-  openCart();
-
-}
-
-
-/* =========================================================
-   UPDATE CART
-========================================================= */
-
-function updateCart(){
+function renderCart(){
 
   const items =
     document.getElementById("cartItems");
@@ -3320,12 +1501,12 @@ function updateCart(){
   const count =
     document.getElementById("cartCount");
 
-  const total =
+  const totalBox =
     document.getElementById("cartTotal");
 
-  if(!items || !count || !total){
-    return;
-  }
+  const totalPrice =
+    document.getElementById("totalPrice");
+
 
   count.textContent =
     cart.length;
@@ -3333,396 +1514,77 @@ function updateCart(){
 
   if(cart.length === 0){
 
-    items.innerHTML = `
-      <div class="empty-cart">
-        Your cart is empty.
-      </div>
-    `;
+    items.innerHTML =
+      '<div class="empty-cart">Your cart is empty.</div>';
 
-    total.textContent =
-      "0 EGP";
-
-    saveCart();
+    totalBox.style.display="none";
 
     return;
 
   }
 
 
-  let totalPrice = 0;
-
-  items.innerHTML = "";
+  let total = 0;
 
 
-  cart.forEach((item,index) => {
+  items.innerHTML =
+    cart.map(function(item,index){
 
-    totalPrice += Number(item.price);
+      total += item.price;
 
+      return `
+        <div class="cart-item">
 
-    const div =
-      document.createElement("div");
+          <span>
+            ${item.name}
+          </span>
 
-    div.className =
-      "cart-item";
+          <strong>
+            ${item.price} EGP
+          </strong>
 
+        </div>
+      `;
 
-    div.innerHTML = `
-
-      <div>
-
-        <h4>
-          ${item.name}
-        </h4>
-
-        <p>
-          Color: ${item.color}
-        </p>
-
-        <p>
-          Size: ${item.size}
-        </p>
-
-        <p>
-          ${item.price} EGP
-        </p>
-
-      </div>
+    }).join("");
 
 
-      <button
-        class="remove"
-        onclick="removeItem(${index})">
+  totalPrice.textContent =
+    total + " EGP";
 
-        REMOVE
-
-      </button>
-
-    `;
-
-
-    items.appendChild(div);
-
-  });
-
-
-  total.textContent =
-    totalPrice + " EGP";
-
-
-  saveCart();
+  totalBox.style.display =
+    "flex";
 
 }
 
 
-/* =========================================================
-   REMOVE
-========================================================= */
-
-function removeItem(index){
-
-  if(
-    index < 0 ||
-    index >= cart.length
-  ){
-    return;
-  }
-
-  cart.splice(index,1);
-
-  saveCart();
-
-  updateCart();
-
-  showToast("REMOVED FROM CART");
-
-}
-
-
-/* =========================================================
-   OPEN CART
-========================================================= */
-
-function openCart(){
-
-  const cartElement =
-    document.getElementById("cart");
-
-  const overlay =
-    document.getElementById("overlay");
-
-  if(!cartElement || !overlay){
-    return;
-  }
-
-  cartElement.classList.add("active");
-
-  overlay.classList.add("active");
-
-  document.body.classList.add("modal-open");
-
-}
-
-
-/* =========================================================
-   CLOSE CART
-========================================================= */
-
-function closeCart(){
-
-  const cartElement =
-    document.getElementById("cart");
-
-  const overlay =
-    document.getElementById("overlay");
-
-
-  if(cartElement){
-
-    cartElement.classList.remove("active");
-
-  }
-
-
-  if(overlay){
-
-    overlay.classList.remove("active");
-
-  }
-
-
-  document.body.classList.remove("modal-open");
-
-}
-
-
-/* =========================================================
-   QUICK VIEW
-========================================================= */
-
-function openQuickView(
-  name,
-  price,
-  description,
-  image,
-  colors
-){
-
-  quickProduct = {
-
-    name:name,
-
-    price:Number(price),
-
-    description:description,
-
-    image:image,
-
-    colors:colors
-      .split(",")
-      .map(color => color.trim())
-
-  };
-
-
-  document.getElementById(
-    "quickName"
-  ).textContent = name;
-
-
-  document.getElementById(
-    "quickPrice"
-  ).textContent = price + " EGP";
-
-
-  document.getElementById(
-    "quickDescription"
-  ).textContent = description;
-
-
-  const imageElement =
-    document.getElementById("quickImage");
-
-
-  if(image){
-
-    imageElement.src = image;
-
-    imageElement.style.display =
-      "block";
-
-  }else{
-
-    imageElement.removeAttribute("src");
-
-    imageElement.style.display =
-      "none";
-
-  }
-
-
-  const colorSelect =
-    document.getElementById("quickColor");
-
-
-  colorSelect.innerHTML = "";
-
-
-  quickProduct.colors.forEach(color => {
-
-    const option =
-      document.createElement("option");
-
-    option.value = color;
-
-    option.textContent = color;
-
-    colorSelect.appendChild(option);
-
-  });
-
-
-  document
-    .getElementById("quickOverlay")
-    .classList.add("active");
-
-
-  document.body.classList.add("modal-open");
-
-}
-
-
-/* =========================================================
-   CLOSE QUICK VIEW
-========================================================= */
-
-function closeQuickView(event){
-
-  const overlay =
-    document.getElementById("quickOverlay");
-
-  if(
-    event &&
-    event.target !== overlay
-  ){
-    return;
-  }
-
-  overlay.classList.remove("active");
-
-  document.body.classList.remove("modal-open");
-
-}
-
-
-/* =========================================================
-   ADD QUICK PRODUCT
-========================================================= */
-
-function addQuickToCart(){
-
-  const color =
-    document.getElementById(
-      "quickColor"
-    ).value;
-
-
-  const size =
-    document.getElementById(
-      "quickSize"
-    ).value;
-
-
-  cart.push({
-
-    name:quickProduct.name,
-
-    price:Number(
-      quickProduct.price
-    ),
-
-    color:color,
-
-    size:size
-
-  });
-
-
-  saveCart();
-
-  updateCart();
-
-  closeQuickView();
-
-  showToast("ADDED TO CART");
-
-  openCart();
-
-}
-
-
-/* =========================================================
-   WISHLIST
-========================================================= */
-
-function toggleWishlist(event,name){
-
-  event.stopPropagation();
-
-
-  const button =
-    event.currentTarget;
-
-
-  let wishlist =
-    JSON.parse(
-      localStorage.getItem("vyroWishlist")
-    ) || [];
-
-
-  const index =
-    wishlist.indexOf(name);
-
-
-  if(index === -1){
-
-    wishlist.push(name);
-
-    button.classList.add("active");
-
-    button.textContent = "♥";
-
-    showToast("ADDED TO WISHLIST");
-
-  }else{
-
-    wishlist.splice(index,1);
-
-    button.classList.remove("active");
-
-    button.textContent = "♡";
-
-    showToast("REMOVED FROM WISHLIST");
-
-  }
-
-
-  localStorage.setItem(
-    "vyroWishlist",
-    JSON.stringify(wishlist)
+/* =========================
+   BUY NOW
+========================= */
+
+function buyNow(name,price){
+
+  const message =
+    `Hello VYRO, I want to order ${name} — ${price} EGP.`;
+
+  window.open(
+    "https://wa.me/?text=" +
+    encodeURIComponent(message),
+    "_blank"
   );
 
 }
 
 
-/* =========================================================
-   WHATSAPP CHECKOUT
-========================================================= */
+/* =========================
+   CART CHECKOUT
+========================= */
 
 function checkoutWhatsApp(){
 
   if(cart.length === 0){
 
-    showToast("YOUR CART IS EMPTY");
+    alert("Your cart is empty.");
 
     return;
 
@@ -3730,373 +1592,32 @@ function checkoutWhatsApp(){
 
 
   let message =
-    "VYRO ORDER\n\n";
+    "Hello VYRO, I want to order:%0A%0A";
 
 
-  let total = 0;
-
-
-  cart.forEach((item,index) => {
+  cart.forEach(function(item){
 
     message +=
-      (index + 1) +
-      ". " +
+      "• " +
       item.name +
-      "\n";
-
-
-    message +=
-      "Color: " +
-      item.color +
-      "\n";
-
-
-    message +=
-      "Size: " +
-      item.size +
-      "\n";
-
-
-    message +=
-      "Price: " +
+      " — " +
       item.price +
-      " EGP\n\n";
-
-
-    total +=
-      Number(item.price);
+      " EGP%0A";
 
   });
 
 
   message +=
-    "TOTAL: " +
-    total +
-    " EGP\n\n";
-
-
-  message +=
-    "Thank you for choosing VYRO.";
-
-
-  const phone =
-    "201129327133";
-
-
-  const url =
-    "https://wa.me/" +
-    phone +
-    "?text=" +
-    encodeURIComponent(message);
+    "%0AThank you.";
 
 
   window.open(
-    url,
+    "https://wa.me/?text=" +
+    message,
     "_blank"
   );
 
 }
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-function toggleMobileMenu(){
-
-  const menu =
-    document.getElementById(
-      "mobileMenu"
-    );
-
-
-  if(!menu){
-    return;
-  }
-
-
-  menu.classList.toggle("active");
-
-}
-
-
-function closeMobileMenu(){
-
-  const menu =
-    document.getElementById(
-      "mobileMenu"
-    );
-
-
-  if(!menu){
-    return;
-  }
-
-
-  menu.classList.remove("active");
-
-}
-
-
-/* =========================================================
-   NAV SCROLL
-========================================================= */
-
-window.addEventListener(
-  "scroll",
-  function(){
-
-    const nav =
-      document.getElementById(
-        "mainNav"
-      );
-
-
-    if(!nav){
-      return;
-    }
-
-
-    if(window.scrollY > 20){
-
-      nav.classList.add("scrolled");
-
-    }else{
-
-      nav.classList.remove("scrolled");
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   OUTSIDE MOBILE MENU
-========================================================= */
-
-document.addEventListener(
-  "click",
-  function(event){
-
-    const menu =
-      document.getElementById(
-        "mobileMenu"
-      );
-
-
-    const button =
-      document.getElementById(
-        "mobileMenuBtn"
-      );
-
-
-    if(!menu || !button){
-      return;
-    }
-
-
-    if(
-      menu.classList.contains("active") &&
-      !menu.contains(event.target) &&
-      !button.contains(event.target)
-    ){
-
-      closeMobileMenu();
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   ESCAPE
-========================================================= */
-
-document.addEventListener(
-  "keydown",
-  function(event){
-
-    if(event.key === "Escape"){
-
-      closeCart();
-
-      closeQuickView();
-
-      closeMobileMenu();
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   REVEAL
-========================================================= */
-
-function initReveal(){
-
-  const elements =
-    document.querySelectorAll(".reveal");
-
-
-  if(
-    !("IntersectionObserver" in window)
-  ){
-
-    elements.forEach(
-      element =>
-        element.classList.add("visible")
-    );
-
-    return;
-
-  }
-
-
-  const observer =
-    new IntersectionObserver(
-      entries => {
-
-        entries.forEach(entry => {
-
-          if(entry.isIntersecting){
-
-            entry.target.classList.add(
-              "visible"
-            );
-
-            observer.unobserve(
-              entry.target
-            );
-
-          }
-
-        });
-
-      },
-      {
-        threshold:.12
-      }
-    );
-
-
-  elements.forEach(
-    element =>
-      observer.observe(element)
-  );
-
-}
-
-
-/* =========================================================
-   LOAD WISHLIST
-========================================================= */
-
-function loadWishlist(){
-
-  const wishlist =
-    JSON.parse(
-      localStorage.getItem(
-        "vyroWishlist"
-      )
-    ) || [];
-
-
-  document
-    .querySelectorAll(".wishlist-btn")
-    .forEach(button => {
-
-      const card =
-        button.closest(
-          ".product-card"
-        );
-
-
-      if(!card){
-        return;
-      }
-
-
-      const title =
-        card.querySelector("h3");
-
-
-      if(!title){
-        return;
-      }
-
-
-      const name =
-        title.textContent.trim();
-
-
-      if(
-        wishlist.includes(name)
-      ){
-
-        button.classList.add(
-          "active"
-        );
-
-        button.textContent =
-          "♥";
-
-      }
-
-    });
-
-}
-
-
-/* =========================================================
-   LOADER
-========================================================= */
-
-window.addEventListener(
-  "load",
-  function(){
-
-    const loader =
-      document.getElementById(
-        "pageLoader"
-      );
-
-
-    setTimeout(() => {
-
-      if(loader){
-
-        loader.classList.add(
-          "hide"
-        );
-
-      }
-
-    },500);
-
-  }
-);
-
-
-/* =========================================================
-   INIT
-========================================================= */
-
-document.addEventListener(
-  "DOMContentLoaded",
-  function(){
-
-    updateCart();
-
-    initReveal();
-
-    loadWishlist();
-
-  }
-);
 
 </script>
 
