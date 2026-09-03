@@ -7,17 +7,16 @@
 
 <title>VYRO — Winter '26</title>
 
-<meta
-  name="description"
-  content="VYRO — Winter '26. Wear Your Vision. Modern Egyptian fashion built around clean silhouettes and strong identity."
->
+<meta name="description"
+content="VYRO — Winter '26. Wear Your Vision. Modern Egyptian fashion built around clean silhouettes and strong identity.">
 
 <meta name="theme-color" content="#090909">
 
 <style>
 
 /* =========================================================
-   VYRO 2.1 — E-COMMERCE EXPERIENCE
+   VYRO 2.2 — LEVEL UP
+   Premium E-Commerce Experience
 ========================================================= */
 
 :root{
@@ -31,6 +30,7 @@
   --line:rgba(9,9,9,.14);
   --dark-line:rgba(255,255,255,.12);
   --green:#25D366;
+  --danger:#9b3737;
   --ease:cubic-bezier(.2,.7,.2,1);
 }
 
@@ -57,18 +57,18 @@ body.no-scroll{
   overflow:hidden;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
 button,
-select{
+input{
   font:inherit;
 }
 
 button{
   -webkit-tap-highlight-color:transparent;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
 img{
@@ -78,6 +78,13 @@ img{
 ::selection{
   background:var(--black);
   color:white;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible{
+  outline:2px solid var(--black);
+  outline-offset:3px;
 }
 
 
@@ -108,43 +115,32 @@ img{
   font-weight:900;
   letter-spacing:.28em;
   margin-left:.28em;
-
   animation:logoIn 1s ease;
 }
 
 .loader-sub{
   margin-top:12px;
-
   color:#70706b;
-
   font-size:8px;
   letter-spacing:.4em;
-
   text-transform:uppercase;
 }
 
 .loader-line{
   width:120px;
   height:1px;
-
   background:#2c2c29;
-
   margin:22px auto 0;
-
   position:relative;
   overflow:hidden;
 }
 
 .loader-line::after{
   content:"";
-
   position:absolute;
   inset:0;
-
   background:white;
-
   transform:translateX(-100%);
-
   animation:lineIn 1s ease forwards;
 }
 
@@ -154,7 +150,6 @@ img{
     transform:translateY(15px);
     letter-spacing:.45em;
   }
-
   to{
     opacity:1;
     transform:translateY(0);
@@ -210,7 +205,6 @@ img{
 
   top:30px;
   left:0;
-
   width:100%;
 
   z-index:4000;
@@ -233,12 +227,10 @@ img{
 
 .navbar.scrolled{
   top:0;
-
   padding-top:13px;
   padding-bottom:13px;
 
   background:rgba(9,9,9,.93);
-
   backdrop-filter:blur(20px);
 
   border-bottom:1px solid rgba(255,255,255,.08);
@@ -249,7 +241,6 @@ img{
 
   font-size:27px;
   font-weight:900;
-
   letter-spacing:.19em;
 }
 
@@ -257,7 +248,6 @@ img{
   content:"";
 
   position:absolute;
-
   left:0;
   bottom:-5px;
 
@@ -276,20 +266,16 @@ img{
 .nav-links{
   display:flex;
   align-items:center;
-
   gap:40px;
 
   font-size:8px;
   letter-spacing:.2em;
-
   text-transform:uppercase;
 }
 
 .nav-links a{
   position:relative;
-
   opacity:.65;
-
   transition:.3s;
 }
 
@@ -301,7 +287,6 @@ img{
   content:"";
 
   position:absolute;
-
   left:0;
   bottom:-9px;
 
@@ -320,8 +305,59 @@ img{
 .nav-actions{
   display:flex;
   align-items:center;
+  gap:8px;
+}
 
-  gap:9px;
+.icon-button{
+  width:40px;
+  height:40px;
+
+  display:grid;
+  place-items:center;
+
+  border:1px solid rgba(255,255,255,.3);
+
+  background:transparent;
+  color:white;
+
+  cursor:pointer;
+
+  transition:.35s var(--ease);
+}
+
+.icon-button:hover{
+  background:white;
+  color:var(--black);
+}
+
+.heart-icon{
+  font-size:17px;
+  line-height:1;
+}
+
+.wishlist-count{
+  position:absolute;
+
+  top:-4px;
+  right:-4px;
+
+  min-width:16px;
+  height:16px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:50%;
+
+  background:white;
+  color:var(--black);
+
+  font-size:7px;
+  font-weight:bold;
+}
+
+.wishlist-nav{
+  position:relative;
 }
 
 .cart-button{
@@ -399,16 +435,13 @@ img{
 
   display:flex;
   flex-direction:column;
-
   gap:5px;
 }
 
 .menu-lines span{
   width:100%;
   height:1px;
-
   background:white;
-
   transition:.3s;
 }
 
@@ -451,18 +484,15 @@ img{
 .mobile-menu.open{
   opacity:1;
   visibility:visible;
-
   transform:translateY(0);
 }
 
 .mobile-label{
   margin-bottom:25px;
-
   color:#555;
 
   font-size:8px;
   letter-spacing:.3em;
-
   text-transform:uppercase;
 }
 
@@ -472,11 +502,9 @@ img{
   border-bottom:1px solid rgba(255,255,255,.1);
 
   font-size:clamp(40px,12vw,70px);
-
   line-height:.85;
 
   font-weight:900;
-
   letter-spacing:-.07em;
 }
 
@@ -487,7 +515,6 @@ img{
 
   font-size:8px;
   letter-spacing:.22em;
-
   text-transform:uppercase;
 }
 
@@ -522,7 +549,6 @@ img{
 
 .hero::before{
   content:"";
-
   position:absolute;
   inset:0;
 
@@ -536,7 +562,6 @@ img{
 
 .hero::after{
   content:"";
-
   position:absolute;
   inset:0;
 
@@ -552,14 +577,12 @@ img{
     );
 
   background-size:100px 100px;
-
   opacity:.15;
 }
 
 .hero-content{
   position:relative;
   z-index:3;
-
   max-width:1100px;
 }
 
@@ -574,7 +597,6 @@ img{
 
   font-size:8px;
   letter-spacing:.36em;
-
   text-transform:uppercase;
 
   animation:heroIn .9s .1s var(--ease) both;
@@ -582,10 +604,8 @@ img{
 
 .hero-kicker::before{
   content:"";
-
   width:32px;
   height:1px;
-
   background:#aaa;
 }
 
@@ -620,7 +640,6 @@ img{
   gap:18px;
 
   margin-top:31px;
-
   padding:15px 22px;
 
   background:white;
@@ -630,9 +649,7 @@ img{
 
   font-size:8px;
   font-weight:bold;
-
   letter-spacing:.18em;
-
   text-transform:uppercase;
 
   transition:.4s var(--ease);
@@ -642,18 +659,14 @@ img{
 
 .hero-button::after{
   content:"→";
-
   font-size:15px;
-
   transition:.4s var(--ease);
 }
 
 .hero-button:hover{
   background:transparent;
   color:white;
-
   transform:translateY(-4px);
-
   gap:24px;
 }
 
@@ -675,7 +688,6 @@ img{
 
   font-size:7px;
   letter-spacing:.3em;
-
   text-transform:uppercase;
 }
 
@@ -695,7 +707,6 @@ img{
 
   font-size:7px;
   letter-spacing:.22em;
-
   text-transform:uppercase;
 }
 
@@ -726,7 +737,6 @@ img{
     opacity:0;
     transform:translateY(35px);
   }
-
   to{
     opacity:1;
     transform:translateY(0);
@@ -734,17 +744,9 @@ img{
 }
 
 @keyframes heroLine{
-  0%{
-    transform:translateX(-100%);
-  }
-
-  50%{
-    transform:translateX(0);
-  }
-
-  100%{
-    transform:translateX(100%);
-  }
+  0%{transform:translateX(-100%)}
+  50%{transform:translateX(0)}
+  100%{transform:translateX(100%)}
 }
 
 
@@ -754,7 +756,6 @@ img{
 
 .intro{
   display:grid;
-
   grid-template-columns:repeat(3,1fr);
 
   background:var(--black);
@@ -773,7 +774,6 @@ img{
 
   font-size:7px;
   letter-spacing:.25em;
-
   text-transform:uppercase;
 }
 
@@ -787,7 +787,7 @@ img{
 
 
 /* =========================================================
-   GENERAL SECTION
+   GENERAL
 ========================================================= */
 
 .section{
@@ -802,7 +802,7 @@ img{
   gap:40px;
 
   padding-bottom:23px;
-  margin-bottom:48px;
+  margin-bottom:35px;
 
   border-bottom:1px solid var(--line);
 }
@@ -812,7 +812,6 @@ img{
 
   font-size:8px;
   letter-spacing:.3em;
-
   text-transform:uppercase;
 }
 
@@ -837,8 +836,130 @@ img{
 
   font-size:8px;
   line-height:1.9;
-
   letter-spacing:.05em;
+}
+
+
+/* =========================================================
+   COLLECTION TOOLBAR
+========================================================= */
+
+.collection-tools{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:20px;
+
+  margin-bottom:35px;
+}
+
+.filter-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+.filter-button{
+  padding:10px 14px;
+
+  border:1px solid var(--line);
+
+  background:transparent;
+  color:var(--black);
+
+  cursor:pointer;
+
+  font-size:7px;
+  letter-spacing:.14em;
+
+  text-transform:uppercase;
+
+  transition:.3s var(--ease);
+}
+
+.filter-button:hover,
+.filter-button.active{
+  background:var(--black);
+  color:white;
+  border-color:var(--black);
+}
+
+.search-box{
+  position:relative;
+
+  width:min(280px,100%);
+}
+
+.search-box input{
+  width:100%;
+
+  padding:12px 35px 12px 14px;
+
+  border:1px solid var(--line);
+
+  outline:none;
+
+  background:transparent;
+  color:var(--black);
+
+  font-size:9px;
+
+  transition:.3s;
+}
+
+.search-box input:focus{
+  border-color:var(--black);
+}
+
+.search-box span{
+  position:absolute;
+
+  right:13px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  color:var(--muted);
+
+  font-size:13px;
+
+  pointer-events:none;
+}
+
+.results-note{
+  display:none;
+
+  margin-bottom:25px;
+
+  color:var(--muted);
+
+  font-size:8px;
+  letter-spacing:.12em;
+
+  text-transform:uppercase;
+}
+
+.no-results{
+  grid-column:1/-1;
+
+  padding:100px 20px;
+
+  text-align:center;
+
+  color:var(--muted);
+
+  border:1px solid var(--line);
+}
+
+.no-results strong{
+  display:block;
+
+  margin-bottom:10px;
+
+  color:var(--black);
+
+  font-size:18px;
 }
 
 
@@ -856,8 +977,24 @@ img{
 
 .product-card{
   position:relative;
-
   min-width:0;
+
+  animation:productIn .55s var(--ease) both;
+}
+
+.product-card.hidden{
+  display:none;
+}
+
+@keyframes productIn{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .product-image{
@@ -928,9 +1065,7 @@ img{
 .product-card:hover .product-image::before{
   opacity:1;
 
-  transform:
-    translate(-50%,-50%)
-    scale(1);
+  transform:translate(-50%,-50%) scale(1);
 }
 
 .product-image::after{
@@ -965,7 +1100,6 @@ img{
 
   font-size:6px;
   letter-spacing:.18em;
-
   text-transform:uppercase;
 }
 
@@ -985,6 +1119,50 @@ img{
   mix-blend-mode:difference;
 }
 
+.product-heart{
+  position:absolute;
+
+  top:13px;
+  right:13px;
+
+  z-index:8;
+
+  width:38px;
+  height:38px;
+
+  display:grid;
+  place-items:center;
+
+  border:1px solid rgba(255,255,255,.35);
+
+  border-radius:50%;
+
+  background:rgba(0,0,0,.28);
+
+  color:white;
+
+  cursor:pointer;
+
+  font-size:16px;
+
+  transition:.3s var(--ease);
+}
+
+.product-heart:hover{
+  transform:scale(1.08);
+  background:white;
+  color:var(--black);
+}
+
+.product-heart.active{
+  background:white;
+  color:var(--black);
+}
+
+.product-heart.active:hover{
+  transform:scale(1.12);
+}
+
 .product-info{
   padding-top:19px;
 }
@@ -1000,7 +1178,6 @@ img{
 .product-name{
   font-size:15px;
   font-weight:600;
-
   letter-spacing:-.02em;
 }
 
@@ -1022,7 +1199,7 @@ img{
 
 
 /* =========================================================
-   PRODUCT OPTIONS — PREMIUM BUTTONS
+   PRODUCT OPTIONS
 ========================================================= */
 
 .option-block{
@@ -1040,20 +1217,17 @@ img{
 
   font-size:7px;
   letter-spacing:.18em;
-
   text-transform:uppercase;
 }
 
 .option-current{
   color:var(--black);
-
   font-weight:bold;
 }
 
 .option-buttons{
   display:flex;
   flex-wrap:wrap;
-
   gap:6px;
 }
 
@@ -1077,20 +1251,17 @@ img{
 
 .option-button:hover{
   border-color:var(--black);
-
   transform:translateY(-1px);
 }
 
 .option-button.active{
   background:var(--black);
   color:white;
-
   border-color:var(--black);
 }
 
 .color-button{
   position:relative;
-
   padding-left:27px;
 }
 
@@ -1150,7 +1321,6 @@ img{
   font-weight:bold;
 
   letter-spacing:.12em;
-
   text-transform:uppercase;
 
   transition:.35s var(--ease);
@@ -1158,7 +1328,6 @@ img{
 
 .actions button:hover{
   transform:translateY(-2px);
-
   background:#252522;
 }
 
@@ -1316,7 +1485,6 @@ img{
 
 .size-table{
   width:100%;
-
   border-collapse:collapse;
 }
 
@@ -1333,11 +1501,9 @@ img{
 
 .size-table th{
   color:var(--muted);
-
   font-weight:normal;
 
   letter-spacing:.13em;
-
   text-transform:uppercase;
 }
 
@@ -1347,7 +1513,6 @@ img{
   color:var(--muted);
 
   font-size:9px;
-
   line-height:1.9;
 }
 
@@ -1384,7 +1549,6 @@ img{
   color:#66635c;
 
   font-size:11px;
-
   line-height:1.9;
 }
 
@@ -1406,7 +1570,6 @@ img{
   font-weight:bold;
 
   letter-spacing:.16em;
-
   text-transform:uppercase;
 
   transition:.35s var(--ease);
@@ -1415,7 +1578,6 @@ img{
 .cta-button:hover{
   background:transparent;
   color:var(--black);
-
   transform:translateY(-3px);
 }
 
@@ -1475,7 +1637,6 @@ img{
 
 .footer-links a{
   color:#777;
-
   transition:.25s;
 }
 
@@ -1496,7 +1657,6 @@ img{
 
   font-size:6px;
   letter-spacing:.18em;
-
   text-transform:uppercase;
 }
 
@@ -1526,7 +1686,6 @@ img{
 
   font-size:7px;
   font-weight:bold;
-
   letter-spacing:.1em;
 
   box-shadow:0 14px 40px rgba(0,0,0,.3);
@@ -1556,7 +1715,6 @@ img{
     transform:scale(1);
     opacity:.5;
   }
-
   50%{
     transform:scale(1.12);
     opacity:0;
@@ -1565,7 +1723,7 @@ img{
 
 
 /* =========================================================
-   CART OVERLAY
+   CART
 ========================================================= */
 
 .cart-overlay{
@@ -1586,11 +1744,6 @@ img{
   opacity:1;
   visibility:visible;
 }
-
-
-/* =========================================================
-   CART PANEL
-========================================================= */
 
 .cart-panel{
   position:fixed;
@@ -1745,19 +1898,18 @@ img{
 
 .cart-item-info strong{
   font-size:10px;
-
   line-height:1.35;
 }
 
 .cart-item-meta{
   color:var(--muted);
-
   font-size:8px;
 }
 
 .cart-item-price{
   font-size:9px;
   font-weight:bold;
+  white-space:nowrap;
 }
 
 .cart-controls{
@@ -1862,7 +2014,6 @@ img{
 
 .checkout:hover{
   transform:translateY(-2px);
-
   opacity:.85;
 }
 
@@ -1881,7 +2032,6 @@ img{
   cursor:pointer;
 
   font-size:7px;
-
   letter-spacing:.14em;
 
   text-transform:uppercase;
@@ -1923,6 +2073,7 @@ img{
   max-height:92vh;
 
   display:grid;
+
   grid-template-columns:1.05fr .95fr;
 
   background:var(--paper);
@@ -1972,6 +2123,40 @@ img{
   letter-spacing:.18em;
 
   text-transform:uppercase;
+}
+
+.quick-wishlist{
+  position:absolute;
+
+  top:18px;
+  right:18px;
+
+  z-index:5;
+
+  width:43px;
+  height:43px;
+
+  display:grid;
+  place-items:center;
+
+  border:1px solid rgba(255,255,255,.45);
+
+  border-radius:50%;
+
+  background:rgba(0,0,0,.3);
+  color:white;
+
+  cursor:pointer;
+
+  font-size:18px;
+
+  transition:.3s;
+}
+
+.quick-wishlist:hover,
+.quick-wishlist.active{
+  background:white;
+  color:var(--black);
 }
 
 .quick-info{
@@ -2035,7 +2220,6 @@ img{
   color:var(--muted);
 
   font-size:7px;
-
   letter-spacing:.16em;
 
   text-transform:uppercase;
@@ -2043,7 +2227,6 @@ img{
 
 .quick-option-value{
   color:var(--black);
-
   font-weight:bold;
 }
 
@@ -2083,7 +2266,6 @@ img{
 
 .quick-option.color-option{
   padding-left:28px;
-
   position:relative;
 }
 
@@ -2171,7 +2353,7 @@ img{
   top:16px;
   right:16px;
 
-  z-index:5;
+  z-index:6;
 
   width:38px;
   height:38px;
@@ -2193,6 +2375,138 @@ img{
 
 
 /* =========================================================
+   ORDER HANDOFF
+========================================================= */
+
+.order-overlay{
+  position:fixed;
+  inset:0;
+
+  z-index:9500;
+
+  display:grid;
+  place-items:center;
+
+  padding:20px;
+
+  background:rgba(0,0,0,.72);
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:.3s ease;
+}
+
+.order-overlay.open{
+  opacity:1;
+  visibility:visible;
+}
+
+.order-modal{
+  width:min(480px,94vw);
+
+  padding:38px;
+
+  background:var(--paper);
+
+  text-align:center;
+
+  transform:translateY(20px);
+
+  transition:.4s var(--ease);
+}
+
+.order-overlay.open .order-modal{
+  transform:translateY(0);
+}
+
+.order-symbol{
+  width:62px;
+  height:62px;
+
+  display:grid;
+  place-items:center;
+
+  margin:0 auto 22px;
+
+  border-radius:50%;
+
+  background:var(--green);
+  color:white;
+
+  font-size:9px;
+  font-weight:bold;
+  letter-spacing:.1em;
+}
+
+.order-title{
+  font-size:clamp(30px,7vw,48px);
+
+  line-height:.9;
+
+  letter-spacing:-.07em;
+
+  font-weight:900;
+}
+
+.order-text{
+  margin:20px auto 0;
+
+  max-width:340px;
+
+  color:var(--muted);
+
+  font-size:10px;
+  line-height:1.8;
+}
+
+.order-actions{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:8px;
+
+  margin-top:25px;
+}
+
+.order-continue,
+.order-cancel{
+  padding:14px;
+
+  cursor:pointer;
+
+  font-size:7px;
+  font-weight:bold;
+
+  letter-spacing:.13em;
+
+  text-transform:uppercase;
+
+  transition:.3s;
+}
+
+.order-continue{
+  border:1px solid var(--black);
+
+  background:var(--black);
+  color:white;
+}
+
+.order-cancel{
+  border:1px solid var(--line);
+
+  background:transparent;
+  color:var(--black);
+}
+
+.order-continue:hover,
+.order-cancel:hover{
+  transform:translateY(-2px);
+}
+
+
+/* =========================================================
    TOAST
 ========================================================= */
 
@@ -2202,7 +2516,7 @@ img{
   left:50%;
   bottom:25px;
 
-  z-index:9000;
+  z-index:10000;
 
   padding:13px 18px;
 
@@ -2250,7 +2564,6 @@ img{
 
 .reveal.visible{
   opacity:1;
-
   transform:translateY(0);
 }
 
@@ -2271,7 +2584,6 @@ img{
 
   .hero{
     min-height:92vh;
-
     padding:150px 6vw 70px;
   }
 
@@ -2303,6 +2615,15 @@ img{
     gap:60px 16px;
   }
 
+  .collection-tools{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .search-box{
+    width:100%;
+  }
+
   .feature{
     min-height:580px;
   }
@@ -2320,13 +2641,11 @@ img{
 
   .size-guide{
     grid-template-columns:1fr;
-
     gap:50px;
   }
 
   .footer-top{
     flex-direction:column;
-
     align-items:flex-start;
   }
 
@@ -2340,7 +2659,6 @@ img{
 
   .quick-gallery{
     min-height:420px;
-
     max-height:48vh;
   }
 
@@ -2369,13 +2687,11 @@ img{
 
   .navbar{
     top:28px;
-
     padding:15px 5vw;
   }
 
   .navbar.scrolled{
     top:0;
-
     padding:12px 5vw;
   }
 
@@ -2383,9 +2699,17 @@ img{
     font-size:21px;
   }
 
+  .nav-actions{
+    gap:5px;
+  }
+
+  .icon-button{
+    width:35px;
+    height:35px;
+  }
+
   .cart-button{
     padding:8px 9px;
-
     font-size:6px;
   }
 
@@ -2408,13 +2732,11 @@ img{
 
   .hero-kicker{
     font-size:6px;
-
     letter-spacing:.22em;
   }
 
   .hero-description{
     max-width:320px;
-
     font-size:10px;
   }
 
@@ -2434,7 +2756,7 @@ img{
 
     gap:16px;
 
-    margin-bottom:30px;
+    margin-bottom:25px;
   }
 
   .section-title{
@@ -2443,18 +2765,37 @@ img{
 
   .collection-note{
     max-width:100%;
-
     text-align:left;
+  }
+
+  .filter-row{
+    width:100%;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding-bottom:4px;
+  }
+
+  .filter-button{
+    flex:0 0 auto;
   }
 
   .product-grid{
     grid-template-columns:1fr 1fr;
-
     gap:40px 9px;
   }
 
   .product-image::before{
     display:none;
+  }
+
+  .product-heart{
+    top:7px;
+    right:7px;
+
+    width:31px;
+    height:31px;
+
+    font-size:13px;
   }
 
   .badge{
@@ -2469,7 +2810,6 @@ img{
   .number{
     top:9px;
     right:9px;
-
     font-size:6px;
   }
 
@@ -2483,19 +2823,16 @@ img{
 
   .product-name{
     font-size:9px;
-
     line-height:1.35;
   }
 
   .price{
     margin-top:5px;
-
     font-size:8px;
   }
 
   .product-description{
     font-size:6px;
-
     line-height:1.5;
   }
 
@@ -2505,7 +2842,6 @@ img{
 
   .option-label{
     margin-bottom:5px;
-
     font-size:5.5px;
   }
 
@@ -2542,13 +2878,11 @@ img{
 
   .actions button{
     padding:10px 3px;
-
     font-size:5.8px;
   }
 
   .feature{
     min-height:500px;
-
     padding:60px 5vw;
   }
 
@@ -2558,7 +2892,6 @@ img{
 
   .feature-text{
     max-width:320px;
-
     font-size:10px;
   }
 
@@ -2576,14 +2909,12 @@ img{
 
   .story-mark{
     min-height:270px;
-
     font-size:48vw;
   }
 
   .size-table th,
   .size-table td{
     padding:13px 3px;
-
     font-size:7px;
   }
 
@@ -2617,7 +2948,6 @@ img{
 
   .footer-bottom{
     flex-direction:column;
-
     gap:8px;
   }
 
@@ -2638,7 +2968,6 @@ img{
 
   .cart-item{
     grid-template-columns:68px 1fr;
-
     gap:12px;
   }
 
@@ -2667,10 +2996,14 @@ img{
     font-size:40px;
   }
 
-  .quick-actions{
+  .quick-actions,
+  .order-actions{
     grid-template-columns:1fr;
-
     gap:6px;
+  }
+
+  .order-modal{
+    padding:30px 22px;
   }
 
 }
@@ -2707,21 +3040,11 @@ img{
 ======================================================= -->
 
 <div class="loader">
-
   <div class="loader-inner">
-
-    <div class="loader-logo">
-      VYRO
-    </div>
-
-    <div class="loader-sub">
-      Winter '26
-    </div>
-
+    <div class="loader-logo">VYRO</div>
+    <div class="loader-sub">Winter '26</div>
     <div class="loader-line"></div>
-
   </div>
-
 </div>
 
 
@@ -2746,39 +3069,38 @@ img{
 
   <div class="nav-links">
 
-    <a href="#collection">
-      Collection
-    </a>
-
-    <a href="#story">
-      Story
-    </a>
-
-    <a href="#size">
-      Size Guide
-    </a>
-
-    <a href="#contact">
-      Contact
-    </a>
+    <a href="#collection">Collection</a>
+    <a href="#story">Story</a>
+    <a href="#size">Size Guide</a>
+    <a href="#contact">Contact</a>
 
   </div>
 
   <div class="nav-actions">
 
     <button
+      class="icon-button wishlist-nav"
+      onclick="showWishlist()"
+      aria-label="View wishlist"
+    >
+      <span class="heart-icon">♡</span>
+      <span
+        class="wishlist-count"
+        id="wishlistCount"
+      >0</span>
+    </button>
+
+    <button
       class="cart-button"
-      onclick="toggleCart()"
+      onclick="openCart()"
+      aria-label="Open cart"
     >
       CART
 
       <span
         class="cart-count"
         id="cartCount"
-      >
-        0
-      </span>
-
+      >0</span>
     </button>
 
     <button
@@ -2788,12 +3110,10 @@ img{
       aria-label="Open menu"
       aria-expanded="false"
     >
-
       <span class="menu-lines">
         <span></span>
         <span></span>
       </span>
-
     </button>
 
   </div>
@@ -2828,6 +3148,10 @@ img{
 
   <a href="#contact" onclick="closeMobileMenu()">
     Contact
+  </a>
+
+  <a href="#collection" onclick="showWishlist();closeMobileMenu()">
+    Wishlist
   </a>
 
   <div class="mobile-footer">
@@ -2876,10 +3200,7 @@ img{
 
   <div class="hero-bottom">
 
-    <span>
-      SCROLL TO EXPLORE
-    </span>
-
+    <span>SCROLL TO EXPLORE</span>
     <span class="hero-line"></span>
 
   </div>
@@ -2942,16 +3263,79 @@ img{
   </div>
 
 
-  <div class="product-grid">
+  <!-- COLLECTION TOOLS -->
+
+  <div class="collection-tools">
+
+    <div class="filter-row">
+
+      <button
+        class="filter-button active"
+        data-filter="all"
+        onclick="filterProducts('all',this)"
+      >
+        All
+      </button>
+
+      <button
+        class="filter-button"
+        data-filter="tshirt"
+        onclick="filterProducts('tshirt',this)"
+      >
+        T-Shirts
+      </button>
+
+      <button
+        class="filter-button"
+        data-filter="hoodie"
+        onclick="filterProducts('hoodie',this)"
+      >
+        Hoodie
+      </button>
+
+      <button
+        class="filter-button"
+        data-filter="pants"
+        onclick="filterProducts('pants',this)"
+      >
+        Pants
+      </button>
+
+    </div>
+
+    <div class="search-box">
+
+      <input
+        id="productSearch"
+        type="search"
+        placeholder="Search collection..."
+        autocomplete="off"
+        aria-label="Search collection"
+      >
+
+      <span>⌕</span>
+
+    </div>
+
+  </div>
+
+  <div
+    class="results-note"
+    id="resultsNote"
+  ></div>
 
 
-    <!-- =====================================================
-         PRODUCT 01
-    ====================================================== -->
+  <div
+    class="product-grid"
+    id="productGrid"
+  >
+
+    <!-- PRODUCT 01 -->
 
     <article
       class="product-card"
       data-product="essential"
+      data-category="tshirt"
     >
 
       <div
@@ -2959,13 +3343,15 @@ img{
         onclick="openQuickView('essential')"
       >
 
-        <span class="badge">
-          NEW
-        </span>
+        <span class="badge">NEW</span>
+        <span class="number">01</span>
 
-        <span class="number">
-          01
-        </span>
+        <button
+          class="product-heart"
+          id="heart-essential"
+          onclick="event.stopPropagation();toggleWishlist('essential')"
+          aria-label="Add Essential T-Shirt to wishlist"
+        >♡</button>
 
         <img
           src="IMG_8132.jpeg"
@@ -3001,10 +3387,7 @@ img{
         <div class="option-block">
 
           <div class="option-label">
-
-            <span>
-              Color
-            </span>
+            <span>Color</span>
 
             <span
               class="option-current"
@@ -3012,7 +3395,6 @@ img{
             >
               Black
             </span>
-
           </div>
 
           <div class="option-buttons">
@@ -3044,9 +3426,7 @@ img{
 
           <div class="option-label">
 
-            <span>
-              Size
-            </span>
+            <span>Size</span>
 
             <span
               class="option-current"
@@ -3064,36 +3444,28 @@ img{
               data-group="essential-size"
               data-value="M"
               onclick="selectOption(this)"
-            >
-              M
-            </button>
+            >M</button>
 
             <button
               class="option-button"
               data-group="essential-size"
               data-value="L"
               onclick="selectOption(this)"
-            >
-              L
-            </button>
+            >L</button>
 
             <button
               class="option-button"
               data-group="essential-size"
               data-value="XL"
               onclick="selectOption(this)"
-            >
-              XL
-            </button>
+            >XL</button>
 
             <button
               class="option-button"
               data-group="essential-size"
               data-value="XXL"
               onclick="selectOption(this)"
-            >
-              XXL
-            </button>
+            >XXL</button>
 
           </div>
 
@@ -3102,9 +3474,7 @@ img{
 
         <div class="actions">
 
-          <button
-            onclick="addProduct('essential')"
-          >
+          <button onclick="addProduct('essential')">
             Add to Cart
           </button>
 
@@ -3122,13 +3492,12 @@ img{
     </article>
 
 
-    <!-- =====================================================
-         PRODUCT 02
-    ====================================================== -->
+    <!-- PRODUCT 02 -->
 
     <article
       class="product-card"
       data-product="oversized"
+      data-category="tshirt"
     >
 
       <div
@@ -3136,13 +3505,15 @@ img{
         onclick="openQuickView('oversized')"
       >
 
-        <span class="badge">
-          WINTER
-        </span>
+        <span class="badge">WINTER</span>
+        <span class="number">02</span>
 
-        <span class="number">
-          02
-        </span>
+        <button
+          class="product-heart"
+          id="heart-oversized"
+          onclick="event.stopPropagation();toggleWishlist('oversized')"
+          aria-label="Add Oversized T-Shirt to wishlist"
+        >♡</button>
 
         <img
           src="IMG_8133.jpeg"
@@ -3179,9 +3550,7 @@ img{
 
           <div class="option-label">
 
-            <span>
-              Color
-            </span>
+            <span>Color</span>
 
             <span
               class="option-current"
@@ -3199,18 +3568,14 @@ img{
               data-group="oversized-color"
               data-value="Black"
               onclick="selectOption(this)"
-            >
-              Black
-            </button>
+            >Black</button>
 
             <button
               class="option-button color-button color-grey"
               data-group="oversized-color"
               data-value="Grey"
               onclick="selectOption(this)"
-            >
-              Grey
-            </button>
+            >Grey</button>
 
           </div>
 
@@ -3221,9 +3586,7 @@ img{
 
           <div class="option-label">
 
-            <span>
-              Size
-            </span>
+            <span>Size</span>
 
             <span
               class="option-current"
@@ -3241,36 +3604,28 @@ img{
               data-group="oversized-size"
               data-value="M"
               onclick="selectOption(this)"
-            >
-              M
-            </button>
+            >M</button>
 
             <button
               class="option-button"
               data-group="oversized-size"
               data-value="L"
               onclick="selectOption(this)"
-            >
-              L
-            </button>
+            >L</button>
 
             <button
               class="option-button"
               data-group="oversized-size"
               data-value="XL"
               onclick="selectOption(this)"
-            >
-              XL
-            </button>
+            >XL</button>
 
             <button
               class="option-button"
               data-group="oversized-size"
               data-value="XXL"
               onclick="selectOption(this)"
-            >
-              XXL
-            </button>
+            >XXL</button>
 
           </div>
 
@@ -3279,9 +3634,7 @@ img{
 
         <div class="actions">
 
-          <button
-            onclick="addProduct('oversized')"
-          >
+          <button onclick="addProduct('oversized')">
             Add to Cart
           </button>
 
@@ -3299,13 +3652,12 @@ img{
     </article>
 
 
-    <!-- =====================================================
-         PRODUCT 03
-    ====================================================== -->
+    <!-- PRODUCT 03 -->
 
     <article
       class="product-card"
       data-product="hoodie"
+      data-category="hoodie"
     >
 
       <div
@@ -3313,13 +3665,15 @@ img{
         onclick="openQuickView('hoodie')"
       >
 
-        <span class="badge">
-          WINTER
-        </span>
+        <span class="badge">WINTER</span>
+        <span class="number">03</span>
 
-        <span class="number">
-          03
-        </span>
+        <button
+          class="product-heart"
+          id="heart-hoodie"
+          onclick="event.stopPropagation();toggleWishlist('hoodie')"
+          aria-label="Add Hoodie to wishlist"
+        >♡</button>
 
         <img
           src="IMG_8215.jpeg"
@@ -3356,9 +3710,7 @@ img{
 
           <div class="option-label">
 
-            <span>
-              Color
-            </span>
+            <span>Color</span>
 
             <span
               class="option-current"
@@ -3376,18 +3728,14 @@ img{
               data-group="hoodie-color"
               data-value="Black"
               onclick="selectOption(this)"
-            >
-              Black
-            </button>
+            >Black</button>
 
             <button
               class="option-button color-button color-grey"
               data-group="hoodie-color"
               data-value="Grey"
               onclick="selectOption(this)"
-            >
-              Grey
-            </button>
+            >Grey</button>
 
           </div>
 
@@ -3398,9 +3746,7 @@ img{
 
           <div class="option-label">
 
-            <span>
-              Size
-            </span>
+            <span>Size</span>
 
             <span
               class="option-current"
@@ -3418,36 +3764,28 @@ img{
               data-group="hoodie-size"
               data-value="M"
               onclick="selectOption(this)"
-            >
-              M
-            </button>
+            >M</button>
 
             <button
               class="option-button"
               data-group="hoodie-size"
               data-value="L"
               onclick="selectOption(this)"
-            >
-              L
-            </button>
+            >L</button>
 
             <button
               class="option-button"
               data-group="hoodie-size"
               data-value="XL"
               onclick="selectOption(this)"
-            >
-              XL
-            </button>
+            >XL</button>
 
             <button
               class="option-button"
               data-group="hoodie-size"
               data-value="XXL"
               onclick="selectOption(this)"
-            >
-              XXL
-            </button>
+            >XXL</button>
 
           </div>
 
@@ -3456,9 +3794,7 @@ img{
 
         <div class="actions">
 
-          <button
-            onclick="addProduct('hoodie')"
-          >
+          <button onclick="addProduct('hoodie')">
             Add to Cart
           </button>
 
@@ -3476,13 +3812,12 @@ img{
     </article>
 
 
-    <!-- =====================================================
-         PRODUCT 04
-    ====================================================== -->
+    <!-- PRODUCT 04 -->
 
     <article
       class="product-card"
       data-product="cargo"
+      data-category="pants"
     >
 
       <div
@@ -3490,13 +3825,15 @@ img{
         onclick="openQuickView('cargo')"
       >
 
-        <span class="badge">
-          NEW
-        </span>
+        <span class="badge">NEW</span>
+        <span class="number">04</span>
 
-        <span class="number">
-          04
-        </span>
+        <button
+          class="product-heart"
+          id="heart-cargo"
+          onclick="event.stopPropagation();toggleWishlist('cargo')"
+          aria-label="Add Cargo Pants to wishlist"
+        >♡</button>
 
         <img
           src="IMG_8212.jpeg"
@@ -3533,9 +3870,7 @@ img{
 
           <div class="option-label">
 
-            <span>
-              Color
-            </span>
+            <span>Color</span>
 
             <span
               class="option-current"
@@ -3553,18 +3888,14 @@ img{
               data-group="cargo-color"
               data-value="Black"
               onclick="selectOption(this)"
-            >
-              Black
-            </button>
+            >Black</button>
 
             <button
               class="option-button color-button color-olive"
               data-group="cargo-color"
               data-value="Olive"
               onclick="selectOption(this)"
-            >
-              Olive
-            </button>
+            >Olive</button>
 
           </div>
 
@@ -3575,9 +3906,7 @@ img{
 
           <div class="option-label">
 
-            <span>
-              Size
-            </span>
+            <span>Size</span>
 
             <span
               class="option-current"
@@ -3595,36 +3924,28 @@ img{
               data-group="cargo-size"
               data-value="M"
               onclick="selectOption(this)"
-            >
-              M
-            </button>
+            >M</button>
 
             <button
               class="option-button"
               data-group="cargo-size"
               data-value="L"
               onclick="selectOption(this)"
-            >
-              L
-            </button>
+            >L</button>
 
             <button
               class="option-button"
               data-group="cargo-size"
               data-value="XL"
               onclick="selectOption(this)"
-            >
-              XL
-            </button>
+            >XL</button>
 
             <button
               class="option-button"
               data-group="cargo-size"
               data-value="XXL"
               onclick="selectOption(this)"
-            >
-              XXL
-            </button>
+            >XXL</button>
 
           </div>
 
@@ -3633,9 +3954,7 @@ img{
 
         <div class="actions">
 
-          <button
-            onclick="addProduct('cargo')"
-          >
+          <button onclick="addProduct('cargo')">
             Add to Cart
           </button>
 
@@ -3870,17 +4189,9 @@ img{
 
   <div class="footer-links">
 
-    <a href="#collection">
-      Collection
-    </a>
-
-    <a href="#story">
-      Story
-    </a>
-
-    <a href="#size">
-      Size Guide
-    </a>
+    <a href="#collection">Collection</a>
+    <a href="#story">Story</a>
+    <a href="#size">Size Guide</a>
 
     <a
       href="https://wa.me/201129327133?text=Hello%20VYRO%2C%20I%27d%20like%20to%20order."
@@ -3930,7 +4241,7 @@ img{
 <div
   class="cart-overlay"
   id="cartOverlay"
-  onclick="toggleCart()"
+  onclick="closeCart()"
 ></div>
 
 
@@ -3959,7 +4270,7 @@ img{
 
     <button
       class="close-cart"
-      onclick="toggleCart()"
+      onclick="closeCart()"
       aria-label="Close cart"
     >
       ×
@@ -3982,9 +4293,7 @@ img{
 
     <div class="total">
 
-      <span>
-        TOTAL
-      </span>
+      <span>TOTAL</span>
 
       <span id="totalPrice">
         0 EGP
@@ -4001,7 +4310,7 @@ img{
 
     <button
       class="cart-continue"
-      onclick="toggleCart()"
+      onclick="closeCart()"
     >
       Continue Shopping
     </button>
@@ -4043,6 +4352,15 @@ img{
         src=""
         alt=""
       >
+
+      <button
+        class="quick-wishlist"
+        id="quickWishlist"
+        onclick="toggleQuickWishlist()"
+        aria-label="Add product to wishlist"
+      >
+        ♡
+      </button>
 
       <div
         class="quick-image-tag"
@@ -4087,9 +4405,7 @@ img{
 
         <div class="quick-option-title">
 
-          <span>
-            COLOR
-          </span>
+          <span>COLOR</span>
 
           <span
             class="quick-option-value"
@@ -4111,9 +4427,7 @@ img{
           style="margin-top:18px;"
         >
 
-          <span>
-            SIZE
-          </span>
+          <span>SIZE</span>
 
           <span
             class="quick-option-value"
@@ -4158,6 +4472,57 @@ img{
 
 
 <!-- =======================================================
+     ORDER HANDOFF
+======================================================= -->
+
+<div
+  class="order-overlay"
+  id="orderOverlay"
+  onclick="closeOrderHandoff(event)"
+>
+
+  <div
+    class="order-modal"
+    onclick="event.stopPropagation()"
+  >
+
+    <div class="order-symbol">
+      WA
+    </div>
+
+    <h2 class="order-title">
+      READY TO ORDER?
+    </h2>
+
+    <p class="order-text">
+      Your order details are ready.
+      Continue to WhatsApp to send your order directly to VYRO.
+    </p>
+
+    <div class="order-actions">
+
+      <button
+        class="order-continue"
+        id="orderContinue"
+      >
+        Continue to WhatsApp
+      </button>
+
+      <button
+        class="order-cancel"
+        onclick="closeOrderHandoff()"
+      >
+        Go Back
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =======================================================
      TOAST
 ======================================================= -->
 
@@ -4172,7 +4537,7 @@ img{
 <script>
 
 /* =========================================================
-   VYRO PRODUCT DATABASE
+   VYRO 2.2 — CORE DATA
 ========================================================= */
 
 const WHATSAPP_NUMBER =
@@ -4180,6 +4545,10 @@ const WHATSAPP_NUMBER =
 
 const CART_STORAGE_KEY =
   "vyroCart";
+
+const WISHLIST_STORAGE_KEY =
+  "vyroWishlist";
+
 
 const products = {
 
@@ -4190,6 +4559,7 @@ const products = {
     price:499,
     image:"IMG_8132.jpeg",
     badge:"NEW",
+    category:"tshirt",
     description:
       "Clean everyday silhouette built for effortless daily wear.",
     colors:["Black","White"],
@@ -4203,6 +4573,7 @@ const products = {
     price:599,
     image:"IMG_8133.jpeg",
     badge:"WINTER",
+    category:"tshirt",
     description:
       "Relaxed oversized fit with a stronger VYRO street silhouette.",
     colors:["Black","Grey"],
@@ -4216,6 +4587,7 @@ const products = {
     price:899,
     image:"IMG_8215.jpeg",
     badge:"WINTER",
+    category:"hoodie",
     description:
       "Heavy winter essential designed for comfort and a strong everyday look.",
     colors:["Black","Grey"],
@@ -4229,6 +4601,7 @@ const products = {
     price:799,
     image:"IMG_8212.jpeg",
     badge:"NEW",
+    category:"pants",
     description:
       "Utility inspired everyday fit made for movement and everyday confidence.",
     colors:["Black","Olive"],
@@ -4250,13 +4623,9 @@ window.addEventListener(
   function(){
 
     if(window.scrollY > 40){
-
       navbar.classList.add("scrolled");
-
     }else{
-
       navbar.classList.remove("scrolled");
-
     }
 
   },
@@ -4287,7 +4656,7 @@ function toggleMobileMenu(){
 
   menuButton.setAttribute(
     "aria-expanded",
-    open
+    String(open)
   );
 
   document.body.classList.toggle(
@@ -4353,9 +4722,7 @@ const revealObserver =
 
 revealElements.forEach(
   function(element){
-
     revealObserver.observe(element);
-
   }
 );
 
@@ -4378,17 +4745,11 @@ function selectOption(button){
     )
     .forEach(
       function(item){
-
-        item.classList.remove(
-          "active"
-        );
-
+        item.classList.remove("active");
       }
     );
 
-  button.classList.add(
-    "active"
-  );
+  button.classList.add("active");
 
   const parts =
     group.split("-");
@@ -4429,12 +4790,10 @@ function selectOption(button){
 
 
 /* =========================================================
-   GET SELECTED PRODUCT OPTIONS
+   GET SELECTED OPTIONS
 ========================================================= */
 
-function getSelectedOptions(
-  productId
-){
+function getSelectedOptions(productId){
 
   const colorButton =
     document.querySelector(
@@ -4464,7 +4823,7 @@ function getSelectedOptions(
 
 
 /* =========================================================
-   CART
+   CART STATE
 ========================================================= */
 
 let cart = [];
@@ -4489,26 +4848,13 @@ try{
 
             return {
 
-              id:
-                item.id || "",
-
-              name:
-                item.name || "",
-
-              price:
-                Number(item.price) || 0,
-
-              image:
-                item.image || "",
-
-              color:
-                item.color || "Black",
-
-              size:
-                item.size || "M",
-
-              quantity:
-                Number(item.quantity) || 1
+              id:item.id || "",
+              name:item.name || "",
+              price:Number(item.price) || 0,
+              image:item.image || "",
+              color:item.color || "Black",
+              size:item.size || "M",
+              quantity:Number(item.quantity) || 1
 
             };
 
@@ -4547,6 +4893,427 @@ function saveCart(){
 
 
 /* =========================================================
+   WISHLIST STATE
+========================================================= */
+
+let wishlist = [];
+
+try{
+
+  const savedWishlist =
+    localStorage.getItem(
+      WISHLIST_STORAGE_KEY
+    );
+
+  if(savedWishlist){
+
+    const parsed =
+      JSON.parse(savedWishlist);
+
+    if(Array.isArray(parsed)){
+      wishlist = parsed;
+    }
+
+  }
+
+}catch(error){
+
+  wishlist = [];
+
+}
+
+
+function saveWishlist(){
+
+  try{
+
+    localStorage.setItem(
+      WISHLIST_STORAGE_KEY,
+      JSON.stringify(wishlist)
+    );
+
+  }catch(error){
+
+    console.log(
+      "Wishlist storage unavailable."
+    );
+
+  }
+
+}
+
+
+function isWishlisted(productId){
+
+  return wishlist.includes(productId);
+
+}
+
+
+/* =========================================================
+   WISHLIST
+========================================================= */
+
+function toggleWishlist(productId){
+
+  if(!products[productId]){
+    return;
+  }
+
+  const index =
+    wishlist.indexOf(productId);
+
+  if(index === -1){
+
+    wishlist.push(productId);
+
+    showToast(
+      "Added to wishlist"
+    );
+
+  }else{
+
+    wishlist.splice(
+      index,
+      1
+    );
+
+    showToast(
+      "Removed from wishlist"
+    );
+
+  }
+
+  saveWishlist();
+
+  updateWishlistUI();
+
+}
+
+
+function updateWishlistUI(){
+
+  const count =
+    document.getElementById(
+      "wishlistCount"
+    );
+
+  count.textContent =
+    wishlist.length;
+
+  Object.keys(products).forEach(
+    function(productId){
+
+      const heart =
+        document.getElementById(
+          "heart-" + productId
+        );
+
+      if(!heart){
+        return;
+      }
+
+      const active =
+        isWishlisted(productId);
+
+      heart.classList.toggle(
+        "active",
+        active
+      );
+
+      heart.textContent =
+        active ? "♥" : "♡";
+
+      heart.setAttribute(
+        "aria-pressed",
+        String(active)
+      );
+
+    }
+  );
+
+  updateQuickWishlist();
+
+}
+
+
+/* =========================================================
+   SHOW WISHLIST
+========================================================= */
+
+function showWishlist(){
+
+  const wished =
+    wishlist
+      .map(
+        function(id){
+          return products[id];
+        }
+      )
+      .filter(Boolean);
+
+  const collection =
+    document.getElementById(
+      "collection"
+    );
+
+  if(collection){
+
+    collection.scrollIntoView({
+      behavior:"smooth"
+    });
+
+  }
+
+  if(wished.length === 0){
+
+    showToast(
+      "Your wishlist is empty"
+    );
+
+    return;
+
+  }
+
+  setTimeout(
+    function(){
+
+      filterProducts(
+        "wishlist",
+        null
+      );
+
+      showToast(
+        wished.length +
+        " saved item" +
+        (wished.length > 1 ? "s" : "")
+      );
+
+    },
+    500
+  );
+
+}
+
+
+/* =========================================================
+   PRODUCT FILTER
+========================================================= */
+
+let activeFilter = "all";
+
+
+function filterProducts(
+  filter,
+  button
+){
+
+  activeFilter =
+    filter;
+
+  document
+    .querySelectorAll(
+      ".filter-button"
+    )
+    .forEach(
+      function(item){
+        item.classList.remove("active");
+      }
+    );
+
+  if(button){
+    button.classList.add("active");
+  }else if(filter === "all"){
+
+    const allButton =
+      document.querySelector(
+        '[data-filter="all"]'
+      );
+
+    if(allButton){
+      allButton.classList.add("active");
+    }
+
+  }
+
+
+  applyProductFilters();
+
+}
+
+
+function applyProductFilters(){
+
+  const searchInput =
+    document.getElementById(
+      "productSearch"
+    );
+
+  const search =
+    searchInput
+      ? searchInput.value
+          .trim()
+          .toLowerCase()
+      : "";
+
+  const cards =
+    document.querySelectorAll(
+      ".product-card"
+    );
+
+  let visible = 0;
+
+  cards.forEach(
+    function(card){
+
+      const productId =
+        card.dataset.product;
+
+      const product =
+        products[productId];
+
+      if(!product){
+        return;
+      }
+
+      const matchesSearch =
+        !search ||
+        product.name
+          .toLowerCase()
+          .includes(search) ||
+        product.description
+          .toLowerCase()
+          .includes(search);
+
+      let matchesFilter = true;
+
+      if(activeFilter !== "all"){
+
+        if(activeFilter === "wishlist"){
+
+          matchesFilter =
+            wishlist.includes(productId);
+
+        }else{
+
+          matchesFilter =
+            product.category ===
+            activeFilter;
+
+        }
+
+      }
+
+      const show =
+        matchesSearch &&
+        matchesFilter;
+
+      card.classList.toggle(
+        "hidden",
+        !show
+      );
+
+      if(show){
+        visible += 1;
+      }
+
+    }
+  );
+
+
+  const note =
+    document.getElementById(
+      "resultsNote"
+    );
+
+  if(
+    search ||
+    activeFilter !== "all"
+  ){
+
+    note.style.display =
+      "block";
+
+    let label =
+      activeFilter === "all"
+        ? "All products"
+        : activeFilter === "wishlist"
+          ? "Wishlist"
+          : activeFilter.toUpperCase();
+
+    note.textContent =
+      visible +
+      " item" +
+      (visible !== 1 ? "s" : "") +
+      " — " +
+      label +
+      (search ? ' — "' + search + '"' : "");
+
+  }else{
+
+    note.style.display =
+      "none";
+
+  }
+
+
+  let empty =
+    document.getElementById(
+      "noResults"
+    );
+
+  if(!empty){
+
+    empty =
+      document.createElement(
+        "div"
+      );
+
+    empty.id =
+      "noResults";
+
+    empty.className =
+      "no-results";
+
+    empty.innerHTML =
+      "<strong>NOTHING FOUND</strong>" +
+      "<span>Try another search or filter.</span>";
+
+    document
+      .getElementById(
+        "productGrid"
+      )
+      .appendChild(empty);
+
+  }
+
+  empty.style.display =
+    visible === 0
+      ? "block"
+      : "none";
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+document
+  .getElementById(
+    "productSearch"
+  )
+  .addEventListener(
+    "input",
+    function(){
+
+      applyProductFilters();
+
+    }
+  );
+
+
+/* =========================================================
    CART TOGGLE
 ========================================================= */
 
@@ -4557,25 +5324,19 @@ function toggleCart(){
       "cartPanel"
     );
 
-  const overlay =
-    document.getElementById(
-      "cartOverlay"
-    );
-
-  const open =
-    panel.classList.toggle(
+  if(
+    panel.classList.contains(
       "open"
-    );
+    )
+  ){
 
-  overlay.classList.toggle(
-    "open",
-    open
-  );
+    closeCart();
 
-  document.body.classList.toggle(
-    "no-scroll",
-    open
-  );
+  }else{
+
+    openCart();
+
+  }
 
 }
 
@@ -4623,7 +5384,7 @@ function closeCart(){
 
 
 /* =========================================================
-   CART COUNT ANIMATION
+   CART COUNT
 ========================================================= */
 
 function bumpCart(){
@@ -4633,15 +5394,11 @@ function bumpCart(){
       "cartCount"
     );
 
-  count.classList.remove(
-    "bump"
-  );
+  count.classList.remove("bump");
 
   void count.offsetWidth;
 
-  count.classList.add(
-    "bump"
-  );
+  count.classList.add("bump");
 
 }
 
@@ -4650,9 +5407,7 @@ function bumpCart(){
    ADD PRODUCT
 ========================================================= */
 
-function addProduct(
-  productId
-){
+function addProduct(productId){
 
   const product =
     products[productId];
@@ -4688,17 +5443,11 @@ function addProduct(
     cart.push({
 
       id:product.id,
-
       name:product.name,
-
       price:product.price,
-
       image:product.image,
-
       color:selected.color,
-
       size:selected.size,
-
       quantity:1
 
     });
@@ -4759,9 +5508,7 @@ function changeQuantity(
    REMOVE ITEM
 ========================================================= */
 
-function removeFromCart(
-  index
-){
+function removeFromCart(index){
 
   if(!cart[index]){
     return;
@@ -4832,6 +5579,7 @@ function renderCart(){
   count.textContent =
     totalItems;
 
+
   if(cart.length === 0){
 
     items.innerHTML = `
@@ -4855,6 +5603,7 @@ function renderCart(){
     return;
 
   }
+
 
   items.innerHTML =
     cart.map(
@@ -4898,7 +5647,7 @@ function renderCart(){
                 </div>
 
                 <span class="cart-item-price">
-                  ${Number(item.price) || 0} EGP
+                  ${(Number(item.price) || 0) * quantity} EGP
                 </span>
 
               </div>
@@ -4943,6 +5692,7 @@ function renderCart(){
       }
     ).join("");
 
+
   totalPrice.textContent =
     total + " EGP";
 
@@ -4953,12 +5703,103 @@ function renderCart(){
 
 
 /* =========================================================
+   WHATSAPP HANDOFF
+========================================================= */
+
+let pendingWhatsAppMessage = "";
+
+
+function openWhatsAppHandoff(
+  message
+){
+
+  pendingWhatsAppMessage =
+    message;
+
+  document
+    .getElementById(
+      "orderOverlay"
+    )
+    .classList.add("open");
+
+  document.body.classList.add(
+    "no-scroll"
+  );
+
+}
+
+
+function closeOrderHandoff(
+  event
+){
+
+  if(
+    event &&
+    event.target !==
+      document.getElementById(
+        "orderOverlay"
+      )
+  ){
+    return;
+  }
+
+  document
+    .getElementById(
+      "orderOverlay"
+    )
+    .classList.remove("open");
+
+  document.body.classList.remove(
+    "no-scroll"
+  );
+
+  pendingWhatsAppMessage =
+    "";
+
+}
+
+
+document
+  .getElementById(
+    "orderContinue"
+  )
+  .addEventListener(
+    "click",
+    function(){
+
+      if(!pendingWhatsAppMessage){
+        return;
+      }
+
+      const url =
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(
+          pendingWhatsAppMessage
+        );
+
+      window.open(
+        url,
+        "_blank",
+        "noopener"
+      );
+
+      closeOrderHandoff();
+
+      showToast(
+        "Opening WhatsApp"
+      );
+
+    }
+  );
+
+
+/* =========================================================
    BUY NOW
 ========================================================= */
 
-function buyProduct(
-  productId
-){
+function buyProduct(productId){
 
   const product =
     products[productId];
@@ -4979,9 +5820,11 @@ Product: ${product.name}
 Color: ${selected.color}
 Size: ${selected.size}
 Quantity: 1
-Price: ${product.price} EGP`;
+Price: ${product.price} EGP
 
-  openWhatsApp(
+Thank you.`;
+
+  openWhatsAppHandoff(
     message
   );
 
@@ -4989,26 +5832,7 @@ Price: ${product.price} EGP`;
 
 
 /* =========================================================
-   WHATSAPP
-========================================================= */
-
-function openWhatsApp(
-  message
-){
-
-  window.open(
-    "https://wa.me/" +
-    WHATSAPP_NUMBER +
-    "?text=" +
-    encodeURIComponent(message),
-    "_blank"
-  );
-
-}
-
-
-/* =========================================================
-   CHECKOUT
+   CART CHECKOUT
 ========================================================= */
 
 function checkoutWhatsApp(){
@@ -5061,7 +5885,7 @@ Item Total: ${itemTotal} EGP
 
 Thank you.`;
 
-  openWhatsApp(
+  openWhatsAppHandoff(
     message
   );
 
@@ -5083,9 +5907,7 @@ let quickSize = "M";
    QUICK VIEW
 ========================================================= */
 
-function openQuickView(
-  productId
-){
+function openQuickView(productId){
 
   const product =
     products[productId];
@@ -5147,12 +5969,14 @@ function openQuickView(
     product
   );
 
+  updateQuickWishlist();
 
-  document.getElementById(
-    "quickOverlay"
-  ).classList.add(
-    "open"
-  );
+
+  document
+    .getElementById(
+      "quickOverlay"
+    )
+    .classList.add("open");
 
   document.body.classList.add(
     "no-scroll"
@@ -5161,9 +5985,7 @@ function openQuickView(
 }
 
 
-function renderQuickOptions(
-  product
-){
+function renderQuickOptions(product){
 
   const colors =
     document.getElementById(
@@ -5174,6 +5996,7 @@ function renderQuickOptions(
     document.getElementById(
       "quickSizeButtons"
     );
+
 
   colors.innerHTML =
     product.colors.map(
@@ -5229,9 +6052,7 @@ function renderQuickOptions(
 }
 
 
-function selectQuickColor(
-  color
-){
+function selectQuickColor(color){
 
   quickColor =
     color;
@@ -5243,9 +6064,7 @@ function selectQuickColor(
 }
 
 
-function selectQuickSize(
-  size
-){
+function selectQuickSize(size){
 
   quickSize =
     size;
@@ -5258,115 +6077,173 @@ function selectQuickSize(
 
 
 /* =========================================================
-   QUICK VIEW ADD TO CART
+   QUICK WISHLIST
 ========================================================= */
 
-document.getElementById(
-  "quickAdd"
-).addEventListener(
-  "click",
-  function(){
+function toggleQuickWishlist(){
 
-    if(!quickProduct){
-      return;
-    }
+  if(!quickProduct){
+    return;
+  }
 
-    const existing =
-      cart.findIndex(
-        function(item){
+  toggleWishlist(
+    quickProduct.id
+  );
 
-          return (
-            item.id === quickProduct.id &&
-            item.color === quickColor &&
-            item.size === quickSize
-          );
+}
 
-        }
-      );
 
-    if(existing !== -1){
+function updateQuickWishlist(){
 
-      cart[existing].quantity += 1;
-
-    }else{
-
-      cart.push({
-
-        id:quickProduct.id,
-
-        name:quickProduct.name,
-
-        price:quickProduct.price,
-
-        image:quickProduct.image,
-
-        color:quickColor,
-
-        size:quickSize,
-
-        quantity:1
-
-      });
-
-    }
-
-    saveCart();
-
-    renderCart();
-
-    bumpCart();
-
-    closeQuickView();
-
-    openCart();
-
-    showToast(
-      quickProduct.name +
-      " added"
+  const button =
+    document.getElementById(
+      "quickWishlist"
     );
 
+  if(
+    !button ||
+    !quickProduct
+  ){
+    return;
   }
-);
+
+  const active =
+    isWishlisted(
+      quickProduct.id
+    );
+
+  button.classList.toggle(
+    "active",
+    active
+  );
+
+  button.textContent =
+    active ? "♥" : "♡";
+
+  button.setAttribute(
+    "aria-pressed",
+    String(active)
+  );
+
+}
 
 
 /* =========================================================
-   QUICK VIEW BUY NOW
+   QUICK ADD
 ========================================================= */
 
-document.getElementById(
-  "quickBuy"
-).addEventListener(
-  "click",
-  function(){
+document
+  .getElementById(
+    "quickAdd"
+  )
+  .addEventListener(
+    "click",
+    function(){
 
-    if(!quickProduct){
-      return;
+      if(!quickProduct){
+        return;
+      }
+
+      const existing =
+        cart.findIndex(
+          function(item){
+
+            return (
+              item.id === quickProduct.id &&
+              item.color === quickColor &&
+              item.size === quickSize
+            );
+
+          }
+        );
+
+
+      if(existing !== -1){
+
+        cart[existing].quantity += 1;
+
+      }else{
+
+        cart.push({
+
+          id:quickProduct.id,
+
+          name:quickProduct.name,
+
+          price:quickProduct.price,
+
+          image:quickProduct.image,
+
+          color:quickColor,
+
+          size:quickSize,
+
+          quantity:1
+
+        });
+
+      }
+
+
+      saveCart();
+
+      renderCart();
+
+      bumpCart();
+
+      closeQuickView();
+
+      openCart();
+
+      showToast(
+        quickProduct.name +
+        " added"
+      );
+
     }
+  );
 
-    const message =
+
+/* =========================================================
+   QUICK BUY
+========================================================= */
+
+document
+  .getElementById(
+    "quickBuy"
+  )
+  .addEventListener(
+    "click",
+    function(){
+
+      if(!quickProduct){
+        return;
+      }
+
+      const message =
 `Hello VYRO, I want to order:
 
 Product: ${quickProduct.name}
 Color: ${quickColor}
 Size: ${quickSize}
 Quantity: 1
-Price: ${quickProduct.price} EGP`;
+Price: ${quickProduct.price} EGP
 
-    openWhatsApp(
-      message
-    );
+Thank you.`;
 
-  }
-);
+      openWhatsAppHandoff(
+        message
+      );
+
+    }
+  );
 
 
 /* =========================================================
    CLOSE QUICK VIEW
 ========================================================= */
 
-function closeQuickView(
-  event
-){
+function closeQuickView(event){
 
   if(
     event &&
@@ -5375,18 +6252,14 @@ function closeQuickView(
         "quickOverlay"
       )
   ){
-
     return;
-
   }
 
   document
     .getElementById(
       "quickOverlay"
     )
-    .classList.remove(
-      "open"
-    );
+    .classList.remove("open");
 
   document.body.classList.remove(
     "no-scroll"
@@ -5399,9 +6272,7 @@ function closeQuickView(
    ESCAPE HTML
 ========================================================= */
 
-function escapeHTML(
-  value
-){
+function escapeHTML(value){
 
   return String(value)
     .replaceAll(
@@ -5428,9 +6299,7 @@ function escapeHTML(
 }
 
 
-function escapeAttribute(
-  value
-){
+function escapeAttribute(value){
 
   return String(value)
     .replaceAll(
@@ -5451,9 +6320,7 @@ function escapeAttribute(
 
 let toastTimer;
 
-function showToast(
-  message
-){
+function showToast(message){
 
   const toast =
     document.getElementById(
@@ -5539,6 +6406,21 @@ document.addEventListener(
 
     }
 
+
+    if(
+      document
+        .getElementById(
+          "orderOverlay"
+        )
+        .classList.contains(
+          "open"
+        )
+    ){
+
+      closeOrderHandoff();
+
+    }
+
   }
 );
 
@@ -5548,6 +6430,10 @@ document.addEventListener(
 ========================================================= */
 
 renderCart();
+
+updateWishlistUI();
+
+applyProductFilters();
 
 </script>
 
