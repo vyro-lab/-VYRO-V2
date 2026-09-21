@@ -48,6 +48,7 @@ body.lock{
 
 button,
 input,
+select,
 textarea{
   font:inherit;
 }
@@ -107,7 +108,7 @@ a{
 }
 
 /* =========================================================
-   HEADER
+   HEADER & MOBILE MENU
 ========================================================= */
 
 .header{
@@ -203,6 +204,32 @@ a{
   display:none;
 }
 
+.mobile-dropdown{
+  position:fixed;
+  top:66px;
+  left:0;
+  right:0;
+  z-index:999;
+  background:var(--paper);
+  color:#090909;
+  padding:20px 24px;
+  border-bottom:1px solid var(--line);
+  box-shadow:0 20px 55px rgba(0,0,0,.08);
+  display:none;
+}
+
+.mobile-dropdown.open{
+  display:block;
+}
+
+.mobile-dropdown a{
+  display:block;
+  padding:12px 0;
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:-.04em;
+}
+
 /* =========================================================
    HERO
 ========================================================= */
@@ -238,8 +265,7 @@ a{
 .hero-shade{
   position:absolute;
   inset:0;
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.3),transparent 40%,rgba(0,0,0,.7));
+  background:linear-gradient(180deg,rgba(0,0,0,.3),transparent 40%,rgba(0,0,0,.7));
 }
 
 .hero-inner{
@@ -288,6 +314,8 @@ a{
 .hero-button{
   height:55px;
   min-width:190px;
+  display:inline-grid;
+  place-items:center;
   border:0;
   background:#fff;
   color:#000;
@@ -535,6 +563,7 @@ a{
   font-size:9px;
   font-weight:900;
   letter-spacing:.14em;
+  width:100%;
 }
 
 .product-card:hover .product-overlay{
@@ -1135,7 +1164,7 @@ footer{
 }
 
 .quick-image{
-  min-height:620px;
+  min-height:550px;
 }
 
 .quick-image img{
@@ -1165,9 +1194,9 @@ footer{
 }
 
 .quick-name{
-  font-size:40px;
-  line-height:.9;
-  letter-spacing:-.07em;
+  font-size:38px;
+  line-height:.95;
+  letter-spacing:-.06em;
   font-weight:900;
 }
 
@@ -1181,7 +1210,14 @@ footer{
   color:var(--muted);
   font-size:11px;
   line-height:1.7;
-  margin:24px 0;
+  margin:20px 0;
+}
+
+.quick-label-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:15px 0 8px;
 }
 
 .quick-label{
@@ -1189,7 +1225,13 @@ footer{
   font-weight:900;
   text-transform:uppercase;
   letter-spacing:.14em;
-  margin:15px 0 8px;
+}
+
+.quick-size-link{
+  font-size:9px;
+  text-decoration:underline;
+  color:var(--muted);
+  text-transform:uppercase;
 }
 
 .quick-options{
@@ -1235,6 +1277,9 @@ footer{
   background:#000;
   color:#fff;
   padding:40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
 
 .flow{
@@ -1291,6 +1336,7 @@ footer{
 }
 
 .field input,
+.field select,
 .field textarea{
   width:100%;
   border:1px solid #d0cbc2;
@@ -1300,13 +1346,22 @@ footer{
   font-size:11px;
 }
 
+.field select{
+  appearance:none;
+  background-image:url("data:image/svg+xml;charset=UTF-8,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  background-size:10px;
+}
+
 .field input:focus,
+.field select:focus,
 .field textarea:focus{
   border-color:#000;
 }
 
 .field textarea{
-  min-height:80px;
+  min-height:70px;
   resize:vertical;
 }
 
@@ -1344,6 +1399,8 @@ footer{
 
 .summary-items{
   border-top:1px solid var(--dark-line);
+  max-height:260px;
+  overflow-y:auto;
 }
 
 .summary-item{
@@ -1360,16 +1417,70 @@ footer{
   color:#777;
 }
 
+.summary-lines{
+  border-top:1px solid var(--dark-line);
+  padding-top:15px;
+  margin-top:20px;
+}
+
+.summary-subline{
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  color:#aaa;
+  margin-bottom:8px;
+}
+
 .summary-total{
   display:flex;
   justify-content:space-between;
-  margin-top:25px;
+  margin-top:15px;
   font-size:18px;
   font-weight:900;
+  border-top:1px solid var(--dark-line);
+  padding-top:15px;
 }
 
 /* =========================================================
-   WHATSAPP
+   SUCCESS MODAL
+========================================================= */
+
+.success-box{
+  background:var(--paper);
+  padding:45px 35px;
+  max-width:440px;
+  width:100%;
+  text-align:center;
+}
+
+.success-box h3{
+  font-size:26px;
+  font-weight:900;
+  margin-bottom:12px;
+  letter-spacing:-.04em;
+}
+
+.success-box p{
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.7;
+  margin-bottom:25px;
+}
+
+.success-btn{
+  height:50px;
+  width:100%;
+  border:0;
+  background:#000;
+  color:#fff;
+  font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+}
+
+/* =========================================================
+   WHATSAPP & UTILS
 ========================================================= */
 
 .whatsapp{
@@ -1393,17 +1504,9 @@ footer{
   transform:translateY(-4px);
 }
 
-/* =========================================================
-   MOBILE BAR
-========================================================= */
-
 .mobile-bar{
   display:none;
 }
-
-/* =========================================================
-   TOAST
-========================================================= */
 
 .toast{
   position:fixed;
@@ -1427,10 +1530,6 @@ footer{
   transform:translate(-50%,0);
 }
 
-/* =========================================================
-   REVEAL
-========================================================= */
-
 .reveal{
   opacity:0;
   transform:translateY(25px);
@@ -1452,14 +1551,10 @@ footer{
 }
 
 /* =========================================================
-   MOBILE
+   MOBILE RESPONSIVENESS
 ========================================================= */
 
 @media(max-width:800px){
-
-  html{
-    scroll-behavior:smooth;
-  }
 
   body{
     padding-bottom:58px;
@@ -1583,37 +1678,8 @@ footer{
     row-gap:55px;
   }
 
-  .product-image{
-    aspect-ratio:4/5;
-  }
-
   .product-overlay{
     display:none;
-  }
-
-  .product-info{
-    padding-top:16px;
-  }
-
-  .product-name{
-    font-size:14px;
-  }
-
-  .product-description{
-    font-size:10px;
-  }
-
-  .variant{
-    min-width:38px;
-    height:35px;
-  }
-
-  .add{
-    height:52px;
-  }
-
-  .buy{
-    height:52px;
   }
 
   .editorial{
@@ -1631,10 +1697,6 @@ footer{
 
   .editorial-title{
     font-size:18vw;
-  }
-
-  .editorial-text{
-    margin-top:25px;
   }
 
   .story{
@@ -1663,10 +1725,7 @@ footer{
     overflow-x:auto;
   }
 
-  .size-section .section-header{
-    min-width:650px;
-  }
-
+  .size-section .section-header,
   .size-grid{
     min-width:650px;
   }
@@ -1707,26 +1766,14 @@ footer{
     width:100%;
   }
 
-  .bag-header{
-    height:72px;
-  }
-
-  .bag-body{
-    padding:15px 18px;
-  }
-
-  .bag-footer{
-    padding:16px 18px 18px;
-  }
-
   .quick{
     display:block;
     max-height:94vh;
   }
 
   .quick-image{
-    min-height:360px;
-    height:47vh;
+    min-height:340px;
+    height:45vh;
   }
 
   .quick-info{
@@ -1734,11 +1781,7 @@ footer{
   }
 
   .quick-name{
-    font-size:31px;
-  }
-
-  .quick-description{
-    margin:18px 0;
+    font-size:28px;
   }
 
   .checkout-modal{
@@ -1760,7 +1803,7 @@ footer{
   }
 
   .checkout-title{
-    font-size:32px;
+    font-size:30px;
   }
 
   .form-grid{
@@ -1805,21 +1848,6 @@ footer{
   }
 
 }
-
-@media(prefers-reduced-motion:reduce){
-
-  *,
-  *::before,
-  *::after{
-    animation-duration:.01ms!important;
-    transition-duration:.01ms!important;
-  }
-
-  html{
-    scroll-behavior:auto;
-  }
-
-}
 </style>
 </head>
 
@@ -1835,9 +1863,7 @@ footer{
 
 <!-- HEADER -->
 <header class="header" id="header">
-
   <nav class="nav">
-
     <a href="#top" class="logo">VYRO</a>
 
     <div class="nav-links">
@@ -1847,7 +1873,6 @@ footer{
     </div>
 
     <div class="nav-actions">
-
       <button class="nav-action" id="wishlistButton" aria-label="Wishlist">
         ♡
         <span class="badge-count" id="wishlistCount">0</span>
@@ -1861,66 +1886,43 @@ footer{
       <button class="nav-action menu-button" id="menuButton" aria-label="Open menu">
         ☰
       </button>
-
     </div>
-
   </nav>
 
+  <div class="mobile-dropdown" id="mobileDropdown">
+    <a href="#collection" class="mobile-nav-link">Collection</a>
+    <a href="#vision" class="mobile-nav-link">Vision</a>
+    <a href="#size-guide" class="mobile-nav-link">Size Guide</a>
+  </div>
 </header>
 
 <main id="top">
 
 <!-- HERO -->
 <section class="hero">
-
   <div class="hero-image">
-    <img
-      src="IMG_8133.jpeg"
-      alt="VYRO Winter 26"
-      fetchpriority="high"
-    >
+    <img src="IMG_8133.jpeg" alt="VYRO Winter 26" fetchpriority="high">
   </div>
-
   <div class="hero-shade"></div>
 
   <div class="hero-inner">
-
-    <div class="hero-kicker">
-      VYRO / WINTER '26 / DROP 01
-    </div>
-
-    <h1 class="hero-title">
-      Wear<br>
-      Your<br>
-      Vision.
-    </h1>
+    <div class="hero-kicker">VYRO / WINTER '26 / DROP 01</div>
+    <h1 class="hero-title">Wear<br>Your<br>Vision.</h1>
 
     <div class="hero-bottom">
-
       <p class="hero-description">
-        Modern essentials built around clean silhouettes,
-        quiet confidence and a clear point of view.
+        Modern essentials built around clean silhouettes, quiet confidence, and a clear point of view.
       </p>
-
-      <a class="hero-button" href="#collection">
-        Explore The Drop
-      </a>
-
+      <a class="hero-button" href="#collection">Explore The Drop</a>
     </div>
 
-    <div class="hero-scroll">
-      Scroll to explore
-    </div>
-
+    <div class="hero-scroll">Scroll to explore</div>
   </div>
-
 </section>
 
 <!-- BRAND STRIP -->
 <section class="brand-strip">
-
   <div class="brand-grid">
-
     <div class="brand-cell reveal">
       <div class="brand-number">01</div>
       <div>
@@ -1944,353 +1946,191 @@ footer{
         <div class="brand-copy">Built for everyday confidence.</div>
       </div>
     </div>
-
   </div>
-
 </section>
 
 <!-- COLLECTION -->
 <section class="section" id="collection">
-
   <div class="section-header reveal">
-
     <div>
       <div class="kicker">VYRO / 01—04</div>
       <h2 class="heading">The<br>Drop.</h2>
     </div>
-
     <p class="section-description">
-      Choose your piece, select your color and size,
-      then add it directly to your bag.
+      Choose your piece, select your color and size, then add it directly to your bag.
     </p>
-
   </div>
 
   <div class="controls reveal">
-
     <div class="search">
-      <input
-        id="searchInput"
-        type="search"
-        placeholder="Search the collection..."
-        autocomplete="off"
-      >
+      <input id="searchInput" type="search" placeholder="Search the collection..." autocomplete="off">
     </div>
 
     <div class="filters">
-
-      <button class="filter active" data-filter="all">
-        All
-      </button>
-
-      <button class="filter" data-filter="tshirt">
-        T-Shirts
-      </button>
-
-      <button class="filter" data-filter="hoodie">
-        Hoodie
-      </button>
-
-      <button class="filter" data-filter="pants">
-        Pants
-      </button>
-
-      <button class="filter" data-filter="wishlist">
-        ♡ Saved
-      </button>
-
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="tshirt">T-Shirts</button>
+      <button class="filter" data-filter="hoodie">Hoodie</button>
+      <button class="filter" data-filter="pants">Pants</button>
+      <button class="filter" data-filter="wishlist">♡ Saved</button>
     </div>
-
   </div>
 
   <div class="product-grid" id="productGrid"></div>
-
-  <div class="no-results" id="noResults">
-    Nothing matched your search.
-  </div>
-
+  <div class="no-results" id="noResults">Nothing matched your search.</div>
 </section>
 
 <!-- EDITORIAL -->
 <section class="editorial" id="vision">
-
   <div class="editorial-grid">
-
     <div class="editorial-image reveal">
-      <img
-        src="IMG_8132.jpeg"
-        alt="VYRO campaign"
-        loading="lazy"
-      >
+      <img src="IMG_8132.jpeg" alt="VYRO campaign" loading="lazy">
     </div>
 
     <div class="editorial-copy reveal">
-
-      <div class="editorial-label">
-        VYRO / CAMPAIGN 01
-      </div>
-
-      <h2 class="editorial-title">
-        Built<br>
-        Different.
-      </h2>
-
+      <div class="editorial-label">VYRO / CAMPAIGN 01</div>
+      <h2 class="editorial-title">Built<br>Different.</h2>
       <p class="editorial-text">
-        VYRO is about restraint.
-        Strong silhouettes, everyday pieces
-        and a visual language that does not need to shout.
+        VYRO is about restraint. Strong silhouettes, everyday pieces, and a visual language that does not need to shout.
       </p>
-
     </div>
-
   </div>
-
 </section>
 
 <!-- STORY -->
 <section class="story">
-
   <div class="story-grid">
-
     <div class="story-copy reveal">
-
-      <div class="story-label">
-        The VYRO Vision
-      </div>
-
-      <h2 class="story-title">
-        No<br>
-        Noise.<br>
-        Just<br>
-        Vision.
-      </h2>
-
+      <div class="story-label">The VYRO Vision</div>
+      <h2 class="story-title">No<br>Noise.<br>Just<br>Vision.</h2>
       <p class="story-text">
-        Designed for people who know what they want
-        and do not need their clothes to explain it.
+        Designed for people who know what they want and do not need their clothes to explain it.
       </p>
-
     </div>
 
     <div class="story-image reveal">
-      <img
-        src="IMG_8215.jpeg"
-        alt="VYRO Winter 26"
-        loading="lazy"
-      >
+      <img src="IMG_8215.jpeg" alt="VYRO Winter 26" loading="lazy">
     </div>
-
   </div>
-
 </section>
 
 <!-- SIZE GUIDE -->
 <section class="size-section" id="size-guide">
-
   <div class="section-header reveal">
-
     <div>
       <div class="kicker">Fit Reference</div>
       <h2 class="heading">Size<br>Guide.</h2>
     </div>
-
     <p class="section-description">
-      Use this as a simple fit reference.
-      For a more relaxed fit, consider sizing up.
+      Use this as a simple fit reference. For a more relaxed fit, consider sizing up.
     </p>
-
   </div>
 
   <div class="size-grid reveal">
-
     <div class="size-row">
-      <div>Size</div>
-      <div>Chest</div>
-      <div>Length</div>
-      <div>Fit</div>
+      <div>Size</div><div>Chest</div><div>Length</div><div>Fit</div>
     </div>
-
     <div class="size-row">
-      <div>M</div>
-      <div>52 cm</div>
-      <div>70 cm</div>
-      <div>Medium</div>
+      <div>M</div><div>52 cm</div><div>70 cm</div><div>Medium</div>
     </div>
-
     <div class="size-row">
-      <div>L</div>
-      <div>55 cm</div>
-      <div>72 cm</div>
-      <div>Regular</div>
+      <div>L</div><div>55 cm</div><div>72 cm</div><div>Regular</div>
     </div>
-
     <div class="size-row">
-      <div>XL</div>
-      <div>58 cm</div>
-      <div>74 cm</div>
-      <div>Relaxed</div>
+      <div>XL</div><div>58 cm</div><div>74 cm</div><div>Relaxed</div>
     </div>
-
     <div class="size-row">
-      <div>XXL</div>
-      <div>61 cm</div>
-      <div>76 cm</div>
-      <div>Oversized</div>
+      <div>XXL</div><div>61 cm</div><div>76 cm</div><div>Oversized</div>
     </div>
-
   </div>
-
 </section>
 
 <!-- FINAL CTA -->
 <section class="final">
-
   <div class="final-content reveal">
-
-    <div class="final-label">
-      Winter '26 / VYRO
-    </div>
-
-    <h2 class="final-title">
-      Wear<br>
-      Your Vision.
-    </h2>
-
-    <button
-      class="final-button"
-      onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})"
-    >
+    <div class="final-label">Winter '26 / VYRO</div>
+    <h2 class="final-title">Wear<br>Your Vision.</h2>
+    <button class="final-button" onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">
       Shop The Drop
     </button>
-
   </div>
-
 </section>
 
 </main>
 
 <!-- FOOTER -->
 <footer>
-
   <div class="footer-top">
-
-    <div class="footer-logo">
-      VYRO
-    </div>
-
+    <div class="footer-logo">VYRO</div>
     <div class="footer-links">
-
       <div class="footer-column">
         <span>Explore</span>
         <a href="#collection">Collection</a>
         <a href="#vision">Vision</a>
         <a href="#size-guide">Size Guide</a>
       </div>
-
       <div class="footer-column">
         <span>Order</span>
         <a href="#collection">Shop</a>
-        <a href="https://wa.me/201129327133" target="_blank">
-          WhatsApp
-        </a>
+        <a href="https://wa.me/201129327133" target="_blank">WhatsApp</a>
       </div>
-
     </div>
-
   </div>
 
   <div class="footer-bottom">
     <span>VYRO — WINTER '26</span>
     <span>Wear Your Vision.</span>
   </div>
-
 </footer>
 
-<!-- OVERLAY -->
+<!-- OVERLAYS & MODALS -->
 <div class="overlay" id="overlay"></div>
 
 <!-- BAG -->
 <aside class="bag" id="bag">
-
   <div class="bag-header">
-
-    <div class="bag-title">
-      Your Bag
-    </div>
-
-    <button class="close" id="closeBag">
-      ×
-    </button>
-
+    <div class="bag-title">Your Bag</div>
+    <button class="close" id="closeBag">×</button>
   </div>
-
   <div class="bag-body" id="bagBody"></div>
-
   <div class="bag-footer" id="bagFooter"></div>
-
 </aside>
 
 <!-- QUICK VIEW -->
 <div class="modal-wrap" id="quickModal">
-
   <div class="quick">
-
     <div class="quick-image">
       <img id="quickImage" src="" alt="">
     </div>
 
     <div class="quick-info">
-
-      <button class="close quick-close" id="closeQuick">
-        ×
-      </button>
-
+      <button class="close quick-close" id="closeQuick">×</button>
       <div class="quick-number" id="quickNumber"></div>
-
       <h3 class="quick-name" id="quickName"></h3>
-
       <div class="quick-price" id="quickPrice"></div>
-
       <p class="quick-description" id="quickDescription"></p>
 
-      <div class="quick-label">
-        Color
+      <div class="quick-label-row">
+        <span class="quick-label">Color</span>
       </div>
-
       <div class="quick-options" id="quickColors"></div>
 
-      <div class="quick-label">
-        Size
+      <div class="quick-label-row">
+        <span class="quick-label">Size</span>
+        <a href="#size-guide" class="quick-size-link" onclick="closeQuick()">Size Guide</a>
       </div>
-
       <div class="quick-options" id="quickSizes"></div>
 
-      <button class="quick-add" id="quickAdd">
-        Add to Bag
-      </button>
-
+      <button class="quick-add" id="quickAdd">Add to Bag</button>
     </div>
-
   </div>
-
 </div>
 
 <!-- CHECKOUT -->
 <div class="modal-wrap" id="checkoutModal">
-
   <div class="checkout-modal">
-
     <div class="checkout-layout">
-
       <div class="checkout-form">
-
-        <button
-          class="close"
-          id="closeCheckout"
-          style="float:right"
-        >
-          ×
-        </button>
+        <button class="close" id="closeCheckout" style="float:right">×</button>
 
         <div class="flow">
           <span>01 Bag</span>
@@ -2300,127 +2140,114 @@ footer{
           <span>03 WhatsApp</span>
         </div>
 
-        <h3 class="checkout-title">
-          Complete<br>
-          Your Order.
-        </h3>
+        <h3 class="checkout-title">Complete<br>Your Order.</h3>
 
         <form id="checkoutForm">
-
           <div class="form-grid">
-
             <div class="field">
               <label>Full Name</label>
-              <input id="customerName" autocomplete="name" required>
+              <input id="customerName" autocomplete="name" required placeholder="Mohamed Ahmed">
             </div>
 
             <div class="field">
-              <label>Phone</label>
-              <input
-                id="customerPhone"
-                type="tel"
-                inputmode="numeric"
-                maxlength="11"
-                placeholder="01XXXXXXXXX"
-                autocomplete="tel"
-                required
-              >
+              <label>Phone Number</label>
+              <input id="customerPhone" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX" autocomplete="tel" required>
             </div>
 
             <div class="field">
               <label>Governorate</label>
-              <input id="customerGovernorate" required>
+              <select id="customerGovernorate" required>
+                <option value="" disabled selected>Select Governorate</option>
+                <option value="Cairo" data-shipping="50">Cairo (50 EGP)</option>
+                <option value="Giza" data-shipping="50">Giza (50 EGP)</option>
+                <option value="Alexandria" data-shipping="65">Alexandria (65 EGP)</option>
+                <option value="Delta & Canal" data-shipping="65">Delta & Canal Cities (65 EGP)</option>
+                <option value="Upper Egypt" data-shipping="80">Upper Egypt (80 EGP)</option>
+              </select>
             </div>
 
             <div class="field">
-              <label>Area</label>
-              <input id="customerArea" required>
+              <label>City / District</label>
+              <input id="customerArea" required placeholder="e.g. Nasr City, Maadi">
             </div>
 
             <div class="field full">
-              <label>Full Address</label>
-              <textarea id="customerAddress" required></textarea>
+              <label>Full Street Address</label>
+              <textarea id="customerAddress" required placeholder="Building, Floor, Apartment number"></textarea>
             </div>
 
             <div class="field full">
               <label>Order Notes — Optional</label>
-              <textarea id="customerNotes"></textarea>
+              <textarea id="customerNotes" placeholder="Any specific delivery instructions"></textarea>
             </div>
-
           </div>
 
           <div class="form-error" id="formError">
-            Please complete the required information correctly.
+            Please fill in all details with a valid Egyptian phone number (01XXXXXXXXX).
           </div>
 
           <button class="place-order" type="submit">
-            Continue to WhatsApp
+            Confirm & Order on WhatsApp
           </button>
-
         </form>
-
       </div>
 
       <div class="checkout-summary">
-
-        <div class="summary-label">
-          Your Order
+        <div>
+          <div class="summary-label">Your Order</div>
+          <div class="summary-items" id="summaryItems"></div>
         </div>
 
-        <div class="summary-items" id="summaryItems"></div>
-
-        <div class="summary-total">
-          <span>Total</span>
-          <span id="summaryTotal">0 EGP</span>
+        <div class="summary-lines">
+          <div class="summary-subline">
+            <span>Items Subtotal</span>
+            <span id="summarySubtotal">0 EGP</span>
+          </div>
+          <div class="summary-subline">
+            <span>Shipping</span>
+            <span id="summaryShipping">Select Governorate</span>
+          </div>
+          <div class="summary-total">
+            <span>Total</span>
+            <span id="summaryTotal">0 EGP</span>
+          </div>
         </div>
-
       </div>
-
     </div>
-
   </div>
+</div>
 
+<!-- SUCCESS MODAL -->
+<div class="modal-wrap" id="successModal">
+  <div class="success-box">
+    <h3>Order Placed!</h3>
+    <p>Your order details have been saved. We are redirecting you to WhatsApp to complete confirmation with the VYRO team.</p>
+    <button class="success-btn" id="successBtn">Open WhatsApp Now</button>
+  </div>
 </div>
 
 <!-- MOBILE BAR -->
 <div class="mobile-bar">
-
-  <button id="mobileCart">
-    Bag · <span id="mobileCartCount">0</span>
-  </button>
-
-  <button id="mobileWhatsApp">
-    WhatsApp
-  </button>
-
+  <button id="mobileCart">Bag · <span id="mobileCartCount">0</span></button>
+  <button id="mobileWhatsApp">WhatsApp</button>
 </div>
 
 <!-- FLOATING WHATSAPP -->
-<a
-  class="whatsapp"
-  href="https://wa.me/201129327133"
-  target="_blank"
-  aria-label="Contact VYRO on WhatsApp"
->
-  ✆
-</a>
+<a class="whatsapp" href="https://wa.me/201129327133" target="_blank" aria-label="Contact VYRO on WhatsApp">✆</a>
 
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-
 /* =========================================================
-   DATA
+   DATA & STATE
 ========================================================= */
 
 const WHATSAPP_NUMBER = "201129327133";
-
 const CART_KEY = "vyroCart";
 const WISHLIST_KEY = "vyroWishlist";
 
 const products = {
-
   essential:{
     id:"essential",
     number:"01",
@@ -2433,7 +2260,6 @@ const products = {
     colors:["Black","White"],
     sizes:["M","L","XL","XXL"]
   },
-
   oversized:{
     id:"oversized",
     number:"02",
@@ -2446,7 +2272,6 @@ const products = {
     colors:["Black","Grey"],
     sizes:["M","L","XL","XXL"]
   },
-
   hoodie:{
     id:"hoodie",
     number:"03",
@@ -2459,7 +2284,6 @@ const products = {
     colors:["Black","Grey"],
     sizes:["M","L","XL","XXL"]
   },
-
   cargo:{
     id:"cargo",
     number:"04",
@@ -2472,7 +2296,6 @@ const products = {
     colors:["Black","Olive"],
     sizes:["M","L","XL","XXL"]
   }
-
 };
 
 let cart = loadArray(CART_KEY);
@@ -2485,30 +2308,29 @@ let quickProduct = null;
 let quickColor = null;
 let quickSize = null;
 
-/* Temporary Buy Now state */
 let directCheckout = null;
+let currentShippingCost = 0;
+let pendingWhatsAppUrl = "";
 
 /* =========================================================
    HELPERS
 ========================================================= */
 
 function loadArray(key){
-
   try{
     const value = JSON.parse(localStorage.getItem(key));
     return Array.isArray(value) ? value : [];
   }catch{
     return [];
   }
-
 }
 
 function saveCart(){
-  localStorage.setItem(CART_KEY,JSON.stringify(cart));
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
 function saveWishlist(){
-  localStorage.setItem(WISHLIST_KEY,JSON.stringify(wishlist));
+  localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
 }
 
 function money(value){
@@ -2516,524 +2338,260 @@ function money(value){
 }
 
 function escapeHTML(value){
-
   return String(value)
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
     .replaceAll('"',"&quot;")
     .replaceAll("'","&#039;");
-
 }
 
 function toast(message){
-
   const element = document.getElementById("toast");
-
   element.textContent = message;
   element.classList.add("show");
-
   clearTimeout(toast.timer);
-
   toast.timer = setTimeout(()=>{
     element.classList.remove("show");
   },2200);
-
 }
 
 /* =========================================================
-   PRODUCT RENDER
+   PRODUCTS RENDERING
 ========================================================= */
 
 function renderProducts(){
-
   const grid = document.getElementById("productGrid");
   const noResults = document.getElementById("noResults");
 
   const list = Object.values(products).filter(product=>{
-
-    const text =
-      `${product.name} ${product.description}`.toLowerCase();
-
-    const searchMatch =
-      text.includes(searchTerm);
-
+    const text = `${product.name} ${product.description}`.toLowerCase();
+    const searchMatch = text.includes(searchTerm);
     let filterMatch = true;
 
     if(activeFilter !== "all" && activeFilter !== "wishlist"){
-      filterMatch =
-        product.category === activeFilter;
+      filterMatch = product.category === activeFilter;
     }
-
     if(activeFilter === "wishlist"){
-      filterMatch =
-        wishlist.includes(product.id);
+      filterMatch = wishlist.includes(product.id);
     }
-
     return searchMatch && filterMatch;
-
   });
 
   grid.innerHTML = "";
-
-  noResults.style.display =
-    list.length ? "none" : "block";
+  noResults.style.display = list.length ? "none" : "block";
 
   list.forEach(product=>{
-
     const saved = wishlist.includes(product.id);
-
     const card = document.createElement("article");
-
     card.className = "product-card reveal";
 
     card.innerHTML = `
-
       <div class="product-image">
-
-        <img
-          src="${product.image}"
-          alt="${escapeHTML(product.name)}"
-          loading="lazy"
-        >
-
-        <div class="product-tag">
-          ${product.badge}
-        </div>
-
+        <img src="${product.image}" alt="${escapeHTML(product.name)}" loading="lazy">
+        <div class="product-tag">${product.badge}</div>
         <div class="product-tools">
-
-          <button
-            class="tool ${saved ? "active":""}"
-            data-wishlist="${product.id}"
-            aria-label="Save product"
-          >
+          <button class="tool ${saved ? "active":""}" data-wishlist="${product.id}" aria-label="Save product">
             ${saved ? "♥":"♡"}
           </button>
-
         </div>
-
-        <button
-          class="product-overlay"
-          data-quick="${product.id}"
-        >
-          Quick View
-        </button>
-
+        <button class="product-overlay" data-quick="${product.id}">Quick View</button>
       </div>
 
       <div class="product-info">
-
         <div class="product-main">
-
           <div>
-
-            <div class="product-number">
-              ${product.number} / 04
-            </div>
-
-            <div class="product-name">
-              ${escapeHTML(product.name)}
-            </div>
-
+            <div class="product-number">${product.number} / 04</div>
+            <div class="product-name">${escapeHTML(product.name)}</div>
           </div>
-
-          <div class="product-price">
-            ${money(product.price)}
-          </div>
-
+          <div class="product-price">${money(product.price)}</div>
         </div>
 
-        <div class="product-description">
-          ${escapeHTML(product.description)}
-        </div>
+        <div class="product-description">${escapeHTML(product.description)}</div>
 
-        <div class="variant-title">
-          Color
-        </div>
-
+        <div class="variant-title">Color</div>
         <div class="variants">
-
           ${product.colors.map((color,index)=>`
-
-            <button
-              class="variant ${index===0 ? "selected":""}"
-              data-card-color="${product.id}"
-              data-value="${escapeHTML(color)}"
-            >
+            <button class="variant ${index===0 ? "selected":""}" data-card-color="${product.id}" data-value="${escapeHTML(color)}">
               ${escapeHTML(color)}
             </button>
-
           `).join("")}
-
         </div>
 
-        <div class="variant-title">
-          Size
-        </div>
-
+        <div class="variant-title">Size</div>
         <div class="variants">
-
           ${product.sizes.map((size,index)=>`
-
-            <button
-              class="variant ${index===1 ? "selected":""}"
-              data-card-size="${product.id}"
-              data-value="${size}"
-            >
+            <button class="variant ${index===1 ? "selected":""}" data-card-size="${product.id}" data-value="${size}">
               ${size}
             </button>
-
           `).join("")}
-
         </div>
 
         <div class="selection-note">
-          Selected:
-          <span data-selection="${product.id}">
-            ${product.colors[0]} / ${product.sizes[1] || product.sizes[0]}
-          </span>
+          Selected: <span data-selection="${product.id}">${product.colors[0]} / ${product.sizes[1] || product.sizes[0]}</span>
         </div>
 
         <div class="card-actions">
-
-          <button
-            class="add"
-            data-add="${product.id}"
-          >
+          <button class="add" data-add="${product.id}">
             Add to Bag — ${money(product.price)}
           </button>
-
-          <button
-            class="buy"
-            data-buy="${product.id}"
-            aria-label="Buy now"
-          >
-            →
-          </button>
-
+          <button class="buy" data-buy="${product.id}" aria-label="Buy now">→</button>
         </div>
-
       </div>
-
     `;
-
     grid.appendChild(card);
-
   });
 
   observeReveal();
-
 }
 
 /* =========================================================
-   CARD SELECTION
+   SELECTIONS & FILTERS
 ========================================================= */
 
 document.addEventListener("click",event=>{
-
-  const colorButton =
-    event.target.closest("[data-card-color]");
-
+  const colorButton = event.target.closest("[data-card-color]");
   if(colorButton){
-
     const id = colorButton.dataset.cardColor;
-
-    document
-      .querySelectorAll(`[data-card-color="${id}"]`)
-      .forEach(button=>{
-        button.classList.remove("selected");
-      });
-
+    document.querySelectorAll(`[data-card-color="${id}"]`).forEach(btn=>btn.classList.remove("selected"));
     colorButton.classList.add("selected");
-
     updateSelectionText(id);
-
     return;
-
   }
 
-  const sizeButton =
-    event.target.closest("[data-card-size]");
-
+  const sizeButton = event.target.closest("[data-card-size]");
   if(sizeButton){
-
     const id = sizeButton.dataset.cardSize;
-
-    document
-      .querySelectorAll(`[data-card-size="${id}"]`)
-      .forEach(button=>{
-        button.classList.remove("selected");
-      });
-
+    document.querySelectorAll(`[data-card-size="${id}"]`).forEach(btn=>btn.classList.remove("selected"));
     sizeButton.classList.add("selected");
-
     updateSelectionText(id);
-
     return;
-
   }
-
 });
 
 function getCardSelection(id){
-
   const product = products[id];
-
-  const color =
-    document.querySelector(
-      `[data-card-color="${id}"].selected`
-    )?.dataset.value ||
-    product.colors[0];
-
-  const size =
-    document.querySelector(
-      `[data-card-size="${id}"].selected`
-    )?.dataset.value ||
-    product.sizes[1] ||
-    product.sizes[0];
-
-  return {color,size};
-
+  const color = document.querySelector(`[data-card-color="${id}"].selected`)?.dataset.value || product.colors[0];
+  const size = document.querySelector(`[data-card-size="${id}"].selected`)?.dataset.value || product.sizes[1] || product.sizes[0];
+  return {color, size};
 }
 
 function updateSelectionText(id){
-
-  const selection =
-    getCardSelection(id);
-
-  const target =
-    document.querySelector(
-      `[data-selection="${id}"]`
-    );
-
-  if(target){
-
-    target.textContent =
-      `${selection.color} / ${selection.size}`;
-
-  }
-
+  const selection = getCardSelection(id);
+  const target = document.querySelector(`[data-selection="${id}"]`);
+  if(target) target.textContent = `${selection.color} / ${selection.size}`;
 }
+
+document.querySelectorAll(".filter").forEach(button=>{
+  button.addEventListener("click",()=>{
+    activeFilter = button.dataset.filter;
+    document.querySelectorAll(".filter").forEach(item=>item.classList.remove("active"));
+    button.classList.add("active");
+    renderProducts();
+  });
+});
+
+document.getElementById("searchInput").addEventListener("input",event=>{
+  searchTerm = event.target.value.trim().toLowerCase();
+  renderProducts();
+});
 
 /* =========================================================
    WISHLIST
 ========================================================= */
 
 document.addEventListener("click",event=>{
-
-  const button =
-    event.target.closest("[data-wishlist]");
-
-  if(!button)return;
-
+  const button = event.target.closest("[data-wishlist]");
+  if(!button) return;
   const id = button.dataset.wishlist;
 
   if(wishlist.includes(id)){
-
-    wishlist =
-      wishlist.filter(item=>item!==id);
-
+    wishlist = wishlist.filter(item=>item!==id);
     toast("Removed from saved");
-
   }else{
-
     wishlist.push(id);
-
     toast("Saved to wishlist");
-
   }
 
   saveWishlist();
   updateCounts();
   renderProducts();
-
 });
 
 document.getElementById("wishlistButton").addEventListener("click",()=>{
-
   activeFilter = "wishlist";
-
-  document
-    .querySelectorAll(".filter")
-    .forEach(button=>{
-      button.classList.remove("active");
-    });
-
-  document
-    .querySelector('[data-filter="wishlist"]')
-    .classList.add("active");
-
-  document
-    .getElementById("collection")
-    .scrollIntoView({behavior:"smooth"});
-
+  document.querySelectorAll(".filter").forEach(btn=>btn.classList.remove("active"));
+  document.querySelector('[data-filter="wishlist"]').classList.add("active");
+  document.getElementById("collection").scrollIntoView({behavior:"smooth"});
   renderProducts();
-
 });
 
 /* =========================================================
-   FILTERS
-========================================================= */
-
-document.querySelectorAll(".filter").forEach(button=>{
-
-  button.addEventListener("click",()=>{
-
-    activeFilter = button.dataset.filter;
-
-    document
-      .querySelectorAll(".filter")
-      .forEach(item=>{
-        item.classList.remove("active");
-      });
-
-    button.classList.add("active");
-
-    renderProducts();
-
-  });
-
-});
-
-document.getElementById("searchInput").addEventListener("input",event=>{
-
-  searchTerm =
-    event.target.value.trim().toLowerCase();
-
-  renderProducts();
-
-});
-
-/* =========================================================
-   CART
+   CART LOGIC
 ========================================================= */
 
 function addToCart(product,color,size,qty=1){
-
-  const existing =
-    cart.find(item=>
-      item.id === product.id &&
-      item.color === color &&
-      item.size === size
-    );
-
+  const existing = cart.find(item=>item.id === product.id && item.color === color && item.size === size);
   if(existing){
-
     existing.qty += qty;
-
   }else{
-
-    cart.push({
-      id:product.id,
-      color,
-      size,
-      qty
-    });
-
+    cart.push({id:product.id, color, size, qty});
   }
 
   saveCart();
   updateCounts();
   renderBag();
-
   bumpCart();
-
   toast("Added to your bag");
-
 }
 
 function bumpCart(){
-
-  const count =
-    document.getElementById("cartCount");
-
+  const count = document.getElementById("cartCount");
   count.animate(
-    [
-      {transform:"scale(1)"},
-      {transform:"scale(1.4)"},
-      {transform:"scale(1)"}
-    ],
-    {
-      duration:360,
-      easing:"ease-out"
-    }
+    [{transform:"scale(1)"},{transform:"scale(1.4)"},{transform:"scale(1)"}],
+    {duration:360, easing:"ease-out"}
   );
-
 }
 
 function updateQuantity(index,change){
-
   cart[index].qty += change;
-
-  if(cart[index].qty <= 0){
-    cart.splice(index,1);
-  }
-
+  if(cart[index].qty <= 0) cart.splice(index,1);
   saveCart();
   updateCounts();
   renderBag();
-
 }
 
 function removeItem(index){
-
   cart.splice(index,1);
-
   saveCart();
   updateCounts();
   renderBag();
-
   toast("Item removed");
-
 }
 
 function cartCount(){
-
-  return cart.reduce(
-    (total,item)=>total + item.qty,
-    0
-  );
-
+  return cart.reduce((total,item)=>total + item.qty,0);
 }
 
 function cartTotal(){
-
   return cart.reduce((total,item)=>{
-
     const product = products[item.id];
-
-    return total + product.price * item.qty;
-
+    return total + (product ? product.price * item.qty : 0);
   },0);
-
 }
 
 function updateCounts(){
-
   const count = cartCount();
-
-  document.getElementById("cartCount").textContent =
-    count;
-
-  document.getElementById("mobileCartCount").textContent =
-    count;
-
-  document.getElementById("wishlistCount").textContent =
-    wishlist.length;
-
+  document.getElementById("cartCount").textContent = count;
+  document.getElementById("mobileCartCount").textContent = count;
+  document.getElementById("wishlistCount").textContent = wishlist.length;
 }
 
 function renderBag(){
-
-  const body =
-    document.getElementById("bagBody");
-
-  const footer =
-    document.getElementById("bagFooter");
+  const body = document.getElementById("bagBody");
+  const footer = document.getElementById("bagFooter");
 
   if(!cart.length){
-
     body.innerHTML = `
       <div class="empty-bag">
         <div>
@@ -3042,831 +2600,379 @@ function renderBag(){
         </div>
       </div>
     `;
-
     footer.innerHTML = "";
-
     return;
-
   }
 
-  body.innerHTML =
-    cart.map((item,index)=>{
-
-      const product =
-        products[item.id];
-
-      return `
-
-        <div class="bag-item">
-
-          <img
-            src="${product.image}"
-            alt="${escapeHTML(product.name)}"
-          >
-
-          <div>
-
-            <div class="bag-item-name">
-              ${escapeHTML(product.name)}
-            </div>
-
-            <div class="bag-item-meta">
-              ${escapeHTML(item.color)} /
-              ${escapeHTML(item.size)}
-              <br>
-              ${money(product.price)}
-            </div>
-
-            <div class="bag-item-bottom">
-
-              <div class="quantity">
-
-                <button data-minus="${index}">
-                  −
-                </button>
-
-                <span>${item.qty}</span>
-
-                <button data-plus="${index}">
-                  +
-                </button>
-
-              </div>
-
-              <button
-                class="remove"
-                data-remove="${index}"
-              >
-                Remove
-              </button>
-
-            </div>
-
+  body.innerHTML = cart.map((item,index)=>{
+    const product = products[item.id];
+    return `
+      <div class="bag-item">
+        <img src="${product.image}" alt="${escapeHTML(product.name)}">
+        <div>
+          <div class="bag-item-name">${escapeHTML(product.name)}</div>
+          <div class="bag-item-meta">
+            ${escapeHTML(item.color)} / ${escapeHTML(item.size)}<br>${money(product.price)}
           </div>
-
+          <div class="bag-item-bottom">
+            <div class="quantity">
+              <button data-minus="${index}">−</button>
+              <span>${item.qty}</span>
+              <button data-plus="${index}">+</button>
+            </div>
+            <button class="remove" data-remove="${index}">Remove</button>
+          </div>
         </div>
-
-      `;
-
-    }).join("");
+      </div>
+    `;
+  }).join("");
 
   footer.innerHTML = `
-
     <div class="total-row">
-
-      <span class="total-label">
-        Total
-      </span>
-
-      <span class="total">
-        ${money(cartTotal())}
-      </span>
-
+      <span class="total-label">Subtotal</span>
+      <span class="total">${money(cartTotal())}</span>
     </div>
-
-    <button
-      class="checkout"
-      id="checkoutButton"
-    >
-      Checkout
-    </button>
-
+    <button class="checkout" id="checkoutButton">Proceed to Checkout</button>
   `;
-
 }
 
 document.addEventListener("click",event=>{
+  const plus = event.target.closest("[data-plus]");
+  if(plus) return updateQuantity(Number(plus.dataset.plus),1);
 
-  const plus =
-    event.target.closest("[data-plus]");
+  const minus = event.target.closest("[data-minus]");
+  if(minus) return updateQuantity(Number(minus.dataset.minus),-1);
 
-  if(plus){
+  const remove = event.target.closest("[data-remove]");
+  if(remove) return removeItem(Number(remove.dataset.remove));
 
-    updateQuantity(
-      Number(plus.dataset.plus),
-      1
-    );
-
-    return;
-
+  const addBtn = event.target.closest("[data-add]");
+  if(addBtn){
+    const id = addBtn.dataset.add;
+    const selection = getCardSelection(id);
+    addToCart(products[id], selection.color, selection.size);
   }
-
-  const minus =
-    event.target.closest("[data-minus]");
-
-  if(minus){
-
-    updateQuantity(
-      Number(minus.dataset.minus),
-      -1
-    );
-
-    return;
-
-  }
-
-  const remove =
-    event.target.closest("[data-remove]");
-
-  if(remove){
-
-    removeItem(
-      Number(remove.dataset.remove)
-    );
-
-  }
-
 });
 
-/* =========================================================
-   BAG OPEN
-========================================================= */
-
 function openBag(){
-
-  document
-    .getElementById("bag")
-    .classList.add("open");
-
-  document
-    .getElementById("overlay")
-    .classList.add("show");
-
+  document.getElementById("bag").classList.add("open");
+  document.getElementById("overlay").classList.add("show");
   document.body.classList.add("lock");
-
 }
 
 function closeBag(){
-
-  document
-    .getElementById("bag")
-    .classList.remove("open");
-
-  document
-    .getElementById("overlay")
-    .classList.remove("show");
-
-  if(
-    !document.getElementById("quickModal").classList.contains("show") &&
-    !document.getElementById("checkoutModal").classList.contains("show")
-  ){
+  document.getElementById("bag").classList.remove("open");
+  document.getElementById("overlay").classList.remove("show");
+  if(!document.querySelector(".modal-wrap.show")){
     document.body.classList.remove("lock");
   }
-
 }
 
-document.getElementById("cartButton")
-  .addEventListener("click",openBag);
-
-document.getElementById("mobileCart")
-  .addEventListener("click",openBag);
-
-document.getElementById("closeBag")
-  .addEventListener("click",closeBag);
-
-document.getElementById("overlay")
-  .addEventListener("click",closeBag);
+document.getElementById("cartButton").addEventListener("click",openBag);
+document.getElementById("mobileCart").addEventListener("click",openBag);
+document.getElementById("closeBag").addEventListener("click",closeBag);
+document.getElementById("overlay").addEventListener("click",closeBag);
 
 /* =========================================================
    QUICK VIEW
 ========================================================= */
 
 function openQuick(id){
-
-  const product =
-    products[id];
-
+  const product = products[id];
   quickProduct = product;
   quickColor = product.colors[0];
-  quickSize =
-    product.sizes[1] ||
-    product.sizes[0];
+  quickSize = product.sizes[1] || product.sizes[0];
 
-  document.getElementById("quickImage").src =
-    product.image;
+  document.getElementById("quickImage").src = product.image;
+  document.getElementById("quickImage").alt = product.name;
+  document.getElementById("quickNumber").textContent = `${product.number} / 04`;
+  document.getElementById("quickName").textContent = product.name;
+  document.getElementById("quickPrice").textContent = money(product.price);
+  document.getElementById("quickDescription").textContent = product.description;
 
-  document.getElementById("quickImage").alt =
-    product.name;
+  document.getElementById("quickColors").innerHTML = product.colors.map(color=>`
+    <button class="variant ${color===quickColor ? "selected":""}" data-quick-color="${escapeHTML(color)}">
+      ${escapeHTML(color)}
+    </button>
+  `).join("");
 
-  document.getElementById("quickNumber").textContent =
-    `${product.number} / 04`;
+  document.getElementById("quickSizes").innerHTML = product.sizes.map(size=>`
+    <button class="variant ${size===quickSize ? "selected":""}" data-quick-size="${size}">
+      ${size}
+    </button>
+  `).join("");
 
-  document.getElementById("quickName").textContent =
-    product.name;
-
-  document.getElementById("quickPrice").textContent =
-    money(product.price);
-
-  document.getElementById("quickDescription").textContent =
-    product.description;
-
-  document.getElementById("quickColors").innerHTML =
-    product.colors.map(color=>`
-
-      <button
-        class="variant ${color===quickColor ? "selected":""}"
-        data-quick-color="${escapeHTML(color)}"
-      >
-        ${escapeHTML(color)}
-      </button>
-
-    `).join("");
-
-  document.getElementById("quickSizes").innerHTML =
-    product.sizes.map(size=>`
-
-      <button
-        class="variant ${size===quickSize ? "selected":""}"
-        data-quick-size="${size}"
-      >
-        ${size}
-      </button>
-
-    `).join("");
-
-  document
-    .getElementById("quickModal")
-    .classList.add("show");
-
+  document.getElementById("quickModal").classList.add("show");
   document.body.classList.add("lock");
-
 }
 
 document.addEventListener("click",event=>{
-
-  const color =
-    event.target.closest("[data-quick-color]");
-
+  const color = event.target.closest("[data-quick-color]");
   if(color){
-
-    quickColor =
-      color.dataset.quickColor;
-
-    document
-      .querySelectorAll("[data-quick-color]")
-      .forEach(button=>{
-        button.classList.remove("selected");
-      });
-
+    quickColor = color.dataset.quickColor;
+    document.querySelectorAll("[data-quick-color]").forEach(b=>b.classList.remove("selected"));
     color.classList.add("selected");
-
   }
 
-  const size =
-    event.target.closest("[data-quick-size]");
-
+  const size = event.target.closest("[data-quick-size]");
   if(size){
-
-    quickSize =
-      size.dataset.quickSize;
-
-    document
-      .querySelectorAll("[data-quick-size]")
-      .forEach(button=>{
-        button.classList.remove("selected");
-      });
-
+    quickSize = size.dataset.quickSize;
+    document.querySelectorAll("[data-quick-size]").forEach(b=>b.classList.remove("selected"));
     size.classList.add("selected");
-
   }
 
+  const quick = event.target.closest("[data-quick]");
+  if(quick) openQuick(quick.dataset.quick);
 });
 
-document.addEventListener("click",event=>{
-
-  const quick =
-    event.target.closest("[data-quick]");
-
-  if(!quick)return;
-
-  openQuick(quick.dataset.quick);
-
+document.getElementById("quickAdd").addEventListener("click",()=>{
+  if(!quickProduct) return;
+  addToCart(quickProduct, quickColor, quickSize);
+  closeQuick();
+  openBag();
 });
-
-document.getElementById("quickAdd")
-  .addEventListener("click",()=>{
-
-    if(!quickProduct)return;
-
-    addToCart(
-      quickProduct,
-      quickColor,
-      quickSize
-    );
-
-    closeQuick();
-    openBag();
-
-  });
 
 function closeQuick(){
-
-  document
-    .getElementById("quickModal")
-    .classList.remove("show");
-
-  if(
-    !document.getElementById("bag").classList.contains("open") &&
-    !document.getElementById("checkoutModal").classList.contains("show")
-  ){
+  document.getElementById("quickModal").classList.remove("show");
+  if(!document.getElementById("bag").classList.contains("open") && !document.getElementById("checkoutModal").classList.contains("show")){
     document.body.classList.remove("lock");
   }
-
 }
 
-document.getElementById("closeQuick")
-  .addEventListener("click",closeQuick);
-
-document.getElementById("quickModal")
-  .addEventListener("click",event=>{
-
-    if(event.target.id === "quickModal"){
-      closeQuick();
-    }
-
-  });
-
-/* =========================================================
-   BUY NOW
-========================================================= */
-
-function buyNow(product,color,size){
-
-  /*
-    Important:
-    Buy Now does NOT replace the existing bag.
-    It creates a temporary checkout state.
-  */
-
-  directCheckout = [{
-    id:product.id,
-    color,
-    size,
-    qty:1
-  }];
-
-  renderCheckoutSummary(directCheckout);
-
-  document
-    .getElementById("checkoutModal")
-    .classList.add("show");
-
-  document.body.classList.add("lock");
-
-}
-
-document.addEventListener("click",event=>{
-
-  const button =
-    event.target.closest("[data-buy]");
-
-  if(!button)return;
-
-  const product =
-    products[button.dataset.buy];
-
-  const selection =
-    getCardSelection(product.id);
-
-  buyNow(
-    product,
-    selection.color,
-    selection.size
-  );
-
+document.getElementById("closeQuick").addEventListener("click",closeQuick);
+document.getElementById("quickModal").addEventListener("click",e=>{
+  if(e.target.id === "quickModal") closeQuick();
 });
 
 /* =========================================================
-   CHECKOUT
+   CHECKOUT & SHIPPING
 ========================================================= */
 
 function checkoutItems(){
-
   return directCheckout || cart;
-
 }
 
-function openCheckout(){
-
-  if(!cart.length){
-
-    toast("Your bag is empty");
-    return;
-
-  }
-
-  directCheckout = null;
-
-  renderCheckoutSummary(cart);
-
-  document
-    .getElementById("checkoutModal")
-    .classList.add("show");
-
+function buyNow(product,color,size){
+  directCheckout = [{id:product.id, color, size, qty:1}];
+  renderCheckoutSummary();
+  document.getElementById("checkoutModal").classList.add("show");
   document.body.classList.add("lock");
-
-}
-
-function closeCheckout(){
-
-  document
-    .getElementById("checkoutModal")
-    .classList.remove("show");
-
-  directCheckout = null;
-
-  if(!document.getElementById("bag").classList.contains("open")){
-    document.body.classList.remove("lock");
-  }
-
-}
-
-function renderCheckoutSummary(items){
-
-  const container =
-    document.getElementById("summaryItems");
-
-  let total = 0;
-
-  container.innerHTML =
-    items.map(item=>{
-
-      const product =
-        products[item.id];
-
-      const line =
-        product.price * item.qty;
-
-      total += line;
-
-      return `
-
-        <div class="summary-item">
-
-          <span>
-            ${escapeHTML(product.name)}
-            ×${item.qty}
-            <br>
-            <small>
-              ${escapeHTML(item.color)}
-              /
-              ${escapeHTML(item.size)}
-            </small>
-          </span>
-
-          <span>
-            ${money(line)}
-          </span>
-
-        </div>
-
-      `;
-
-    }).join("");
-
-  document.getElementById("summaryTotal").textContent =
-    money(total);
-
 }
 
 document.addEventListener("click",event=>{
-
-  if(event.target.id === "checkoutButton"){
-    openCheckout();
-  }
-
+  const button = event.target.closest("[data-buy]");
+  if(!button) return;
+  const product = products[button.dataset.buy];
+  const selection = getCardSelection(product.id);
+  buyNow(product, selection.color, selection.size);
 });
 
-document.getElementById("closeCheckout")
-  .addEventListener("click",closeCheckout);
-
-document.getElementById("checkoutModal")
-  .addEventListener("click",event=>{
-
-    if(event.target.id === "checkoutModal"){
-      closeCheckout();
-    }
-
-  });
-
-/* =========================================================
-   WHATSAPP ORDER
-========================================================= */
-
-document.getElementById("checkoutForm")
-  .addEventListener("submit",event=>{
-
-    event.preventDefault();
-
-    const name =
-      document.getElementById("customerName")
-        .value.trim();
-
-    const phone =
-      document.getElementById("customerPhone")
-        .value.trim();
-
-    const governorate =
-      document.getElementById("customerGovernorate")
-        .value.trim();
-
-    const area =
-      document.getElementById("customerArea")
-        .value.trim();
-
-    const address =
-      document.getElementById("customerAddress")
-        .value.trim();
-
-    const notes =
-      document.getElementById("customerNotes")
-        .value.trim();
-
-    const error =
-      document.getElementById("formError");
-
-    const validPhone =
-      /^01[0125]\d{8}$/.test(phone);
-
-    if(
-      !name ||
-      !validPhone ||
-      !governorate ||
-      !area ||
-      !address
-    ){
-
-      error.classList.add("show");
-      return;
-
-    }
-
-    error.classList.remove("show");
-
-    const items =
-      checkoutItems();
-
-    let total = 0;
-
-    let message =
-`VYRO — NEW ORDER
-
-CUSTOMER
-Name: ${name}
-Phone: ${phone}
-Governorate: ${governorate}
-Area: ${area}
-Address: ${address}`;
-
-    if(notes){
-      message += `\nNotes: ${notes}`;
-    }
-
-    message += `
-
-ORDER`;
-
-    items.forEach((item,index)=>{
-
-      const product =
-        products[item.id];
-
-      const line =
-        product.price * item.qty;
-
-      total += line;
-
-      message += `
-
-${index+1}. ${product.name}
-Color: ${item.color}
-Size: ${item.size}
-Qty: ${item.qty}
-Price: ${product.price} EGP`;
-
-    });
-
-    message += `
-
-TOTAL: ${total} EGP
-
-Please confirm the order details with me.`;
-
-    const url =
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-    window.open(url,"_blank");
-
-  });
-
-/* =========================================================
-   MOBILE WHATSAPP
-========================================================= */
-
-document.getElementById("mobileWhatsApp")
-  .addEventListener("click",()=>{
-
-    const message =
-`VYRO — WINTER '26
-
-Hi VYRO, I'd like to ask about the collection.`;
-
-    window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
-      "_blank"
-    );
-
-  });
-
-/* =========================================================
-   HEADER SCROLL
-========================================================= */
-
-window.addEventListener("scroll",()=>{
-
-  document
-    .getElementById("header")
-    .classList.toggle(
-      "scrolled",
-      window.scrollY > 35
-    );
-
-});
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-let mobileMenu = null;
-
-document.getElementById("menuButton")
-  .addEventListener("click",()=>{
-
-    if(mobileMenu){
-
-      mobileMenu.remove();
-      mobileMenu = null;
-      return;
-
-    }
-
-    mobileMenu =
-      document.createElement("div");
-
-    mobileMenu.style.cssText = `
-      position:fixed;
-      top:66px;
-      left:0;
-      right:0;
-      z-index:999;
-      background:#f4f1ea;
-      color:#090909;
-      padding:25px 19px 30px;
-      border-bottom:1px solid rgba(0,0,0,.12);
-      box-shadow:0 20px 55px rgba(0,0,0,.1);
-    `;
-
-    mobileMenu.innerHTML = `
-
-      <a
-        href="#collection"
-        style="
-          display:block;
-          padding:15px 0;
-          font-size:25px;
-          font-weight:900;
-          letter-spacing:-.05em;
-        "
-      >
-        Collection
-      </a>
-
-      <a
-        href="#vision"
-        style="
-          display:block;
-          padding:15px 0;
-          font-size:25px;
-          font-weight:900;
-          letter-spacing:-.05em;
-        "
-      >
-        Vision
-      </a>
-
-      <a
-        href="#size-guide"
-        style="
-          display:block;
-          padding:15px 0;
-          font-size:25px;
-          font-weight:900;
-          letter-spacing:-.05em;
-        "
-      >
-        Size Guide
-      </a>
-
-    `;
-
-    document.body.appendChild(mobileMenu);
-
-    mobileMenu.querySelectorAll("a")
-      .forEach(link=>{
-
-        link.addEventListener("click",()=>{
-
-          mobileMenu.remove();
-          mobileMenu = null;
-
-        });
-
-      });
-
-  });
-
-/* =========================================================
-   REVEAL
-========================================================= */
-
-let revealObserver;
-
-function observeReveal(){
-
-  if(!revealObserver){
-
-    revealObserver =
-      new IntersectionObserver(entries=>{
-
-        entries.forEach(entry=>{
-
-          if(entry.isIntersecting){
-
-            entry.target.classList.add("visible");
-
-            revealObserver.unobserve(entry.target);
-
-          }
-
-        });
-
-      },{
-        threshold:.1
-      });
-
+function openCheckout(){
+  if(!cart.length){
+    toast("Your bag is empty");
+    return;
   }
-
-  document
-    .querySelectorAll(".reveal:not(.visible)")
-    .forEach(element=>{
-      revealObserver.observe(element);
-    });
-
+  directCheckout = null;
+  renderCheckoutSummary();
+  document.getElementById("checkoutModal").classList.add("show");
+  document.body.classList.add("lock");
 }
 
+function closeCheckout(){
+  document.getElementById("checkoutModal").classList.remove("show");
+  directCheckout = null;
+  if(!document.getElementById("bag").classList.contains("open")){
+    document.body.classList.remove("lock");
+  }
+}
+
+function renderCheckoutSummary(){
+  const container = document.getElementById("summaryItems");
+  const items = checkoutItems();
+  let subtotal = 0;
+
+  container.innerHTML = items.map(item=>{
+    const product = products[item.id];
+    const line = product.price * item.qty;
+    subtotal += line;
+
+    return `
+      <div class="summary-item">
+        <span>
+          ${escapeHTML(product.name)} × ${item.qty}<br>
+          <small>${escapeHTML(item.color)} / ${escapeHTML(item.size)}</small>
+        </span>
+        <span>${money(line)}</span>
+      </div>
+    `;
+  }).join("");
+
+  document.getElementById("summarySubtotal").textContent = money(subtotal);
+  const total = subtotal + currentShippingCost;
+  document.getElementById("summaryShipping").textContent = currentShippingCost > 0 ? money(currentShippingCost) : "Select Governorate";
+  document.getElementById("summaryTotal").textContent = money(total);
+}
+
+document.getElementById("customerGovernorate").addEventListener("change", e=>{
+  const selected = e.target.options[e.target.selectedIndex];
+  currentShippingCost = Number(selected.dataset.shipping) || 0;
+  renderCheckoutSummary();
+});
+
+document.addEventListener("click",event=>{
+  if(event.target.id === "checkoutButton"){
+    closeBag();
+    openCheckout();
+  }
+});
+
+document.getElementById("closeCheckout").addEventListener("click",closeCheckout);
+document.getElementById("checkoutModal").addEventListener("click",e=>{
+  if(e.target.id === "checkoutModal") closeCheckout();
+});
+
 /* =========================================================
-   ESC
+   FORM SUBMISSION & ORDER PLACEMENT
 ========================================================= */
 
+document.getElementById("checkoutForm").addEventListener("submit",event=>{
+  event.preventDefault();
+
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const govSelect = document.getElementById("customerGovernorate");
+  const governorate = govSelect.value;
+  const area = document.getElementById("customerArea").value.trim();
+  const address = document.getElementById("customerAddress").value.trim();
+  const notes = document.getElementById("customerNotes").value.trim();
+  const error = document.getElementById("formError");
+
+  const validPhone = /^01[0125]\d{8}$/.test(phone);
+
+  if(!name || !validPhone || !governorate || !area || !address){
+    error.classList.add("show");
+    return;
+  }
+  error.classList.remove("show");
+
+  const items = checkoutItems();
+  let subtotal = 0;
+
+  let message = `*VYRO — NEW ORDER*\n\n` +
+`*CUSTOMER DETAILS*\n` +
+`Name: ${name}\n` +
+`Phone: ${phone}\n` +
+`Governorate: ${governorate}\n` +
+`Area/City: ${area}\n` +
+`Address: ${address}\n`;
+
+  if(notes) message += `Notes: ${notes}\n`;
+
+  message += `\n*ORDER ITEMS*\n`;
+
+  items.forEach((item,index)=>{
+    const product = products[item.id];
+    const line = product.price * item.qty;
+    subtotal += line;
+    message += `${index+1}. ${product.name} (${item.color} / ${item.size}) × ${item.qty} — ${line} EGP\n`;
+  });
+
+  const total = subtotal + currentShippingCost;
+  message += `\nSubtotal: ${subtotal} EGP\nShipping: ${currentShippingCost} EGP\n*TOTAL: ${total} EGP*\n\nPlease confirm my order.`;
+
+  pendingWhatsAppUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+  // Clear cart if this was a normal checkout
+  if(!directCheckout){
+    cart = [];
+    saveCart();
+    updateCounts();
+    renderBag();
+  }
+
+  // Close checkout and show success modal
+  closeCheckout();
+  document.getElementById("checkoutForm").reset();
+  currentShippingCost = 0;
+
+  document.getElementById("successModal").classList.add("show");
+  document.body.classList.add("lock");
+
+  // Open WhatsApp after brief moment
+  setTimeout(()=>{
+    if(pendingWhatsAppUrl) window.open(pendingWhatsAppUrl, "_blank");
+  }, 700);
+});
+
+document.getElementById("successBtn").addEventListener("click", ()=>{
+  if(pendingWhatsAppUrl) window.open(pendingWhatsAppUrl, "_blank");
+  document.getElementById("successModal").classList.remove("show");
+  document.body.classList.remove("lock");
+});
+
+/* =========================================================
+   NAVIGATION & UTILITIES
+========================================================= */
+
+const mobileDropdown = document.getElementById("mobileDropdown");
+document.getElementById("menuButton").addEventListener("click",()=>{
+  mobileDropdown.classList.toggle("open");
+});
+
+document.querySelectorAll(".mobile-nav-link").forEach(link=>{
+  link.addEventListener("click",()=>{
+    mobileDropdown.classList.remove("open");
+  });
+});
+
+document.getElementById("mobileWhatsApp").addEventListener("click",()=>{
+  const message = `VYRO — WINTER '26\nHi VYRO, I'd like to ask about the collection.`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
+});
+
+window.addEventListener("scroll",()=>{
+  document.getElementById("header").classList.toggle("scrolled", window.scrollY > 35);
+});
+
+let revealObserver;
+function observeReveal(){
+  if(!revealObserver){
+    revealObserver = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },{threshold:.1});
+  }
+
+  document.querySelectorAll(".reveal:not(.visible)").forEach(element=>{
+    revealObserver.observe(element);
+  });
+}
+
 document.addEventListener("keydown",event=>{
-
-  if(event.key !== "Escape")return;
-
+  if(event.key !== "Escape") return;
   closeBag();
   closeQuick();
   closeCheckout();
-
-  if(mobileMenu){
-
-    mobileMenu.remove();
-    mobileMenu = null;
-
-  }
-
+  document.getElementById("successModal").classList.remove("show");
+  mobileDropdown.classList.remove("open");
 });
-
-/* =========================================================
-   INITIAL
-========================================================= */
 
 window.addEventListener("load",()=>{
-
   setTimeout(()=>{
-
-    document
-      .getElementById("loader")
-      .classList.add("hide");
-
+    document.getElementById("loader").classList.add("hide");
   },600);
-
 });
 
+// Init
 renderProducts();
 renderBag();
 updateCounts();
 observeReveal();
 
 </script>
-
 </body>
 </html>
